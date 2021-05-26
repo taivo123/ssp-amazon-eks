@@ -34,33 +34,35 @@ export default class PipelineStack extends cdk.Stack {
             env: {
                 region: 'us-east-2'
             }
-        }));
+        }), { manualApprovals: true });
     }
 
     private buildPipeline = () => {
         const sourceArtifact = new codepipeline.Artifact();
         const cloudAssemblyArtifact = new codepipeline.Artifact();
 
+        const sourceAction = new actions.GitHubSourceAction({
+            actionName: 'GitHub',
+            owner: 'aws-quickstart',
+            repo: 'quickstart-ssp-amazon-eks',
+            branch: 'main',
+            output: sourceArtifact,
+            oauthToken: cdk.SecretValue.secretsManager('github-token'),
+        })
+
+        // Use this if you need a build step (if you're not using ts-node
+        // or if you have TypeScript Lambdas that need to be compiled).
+        const synthAction = pipelines.SimpleSynthAction.standardNpmSynth({
+            sourceArtifact,
+            cloudAssemblyArtifact,
+            buildCommand: 'npm run build',
+        })
+
         return new pipelines.CdkPipeline(this, 'FactoryPipeline', {
             pipelineName: 'FactoryPipeline',
             cloudAssemblyArtifact,
-
-            sourceAction: new actions.GitHubSourceAction({
-                actionName: 'GitHub',
-                owner: 'aws-quickstart',
-                repo: 'quickstart-ssp-amazon-eks',
-                branch: 'main',
-                output: sourceArtifact,
-                oauthToken: cdk.SecretValue.secretsManager('github-token'),
-            }),
-
-            // Use this if you need a build step (if you're not using ts-node
-            // or if you have TypeScript Lambdas that need to be compiled).
-            synthAction: pipelines.SimpleSynthAction.standardNpmSynth({
-                sourceArtifact,
-                cloudAssemblyArtifact,
-                buildCommand: 'npm run build',
-            }),
+            sourceAction,
+            synthAction
         });
     }
 }
@@ -84,6 +86,6 @@ export class ClusterStage extends cdk.Stage {
             new ssp.ContainerInsightsAddOn,
         ];
 
-        new ssp.EksBlueprint(this, { id: 'eks', addOns, teams });
+        new ssp.EksBlueprint(this, { id: 'eks', addOns, teams }, props);
     }
 }

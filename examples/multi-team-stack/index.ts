@@ -28,7 +28,7 @@ export default class MultiTeamStack extends cdk.Stack {
             new ssp.ContainerInsightsAddOn,
         ];
 
-        new ssp.EksBlueprint(app, { id: 'east-dev-2', addOns, teams }, {
+        new ssp.EksBlueprint(app, { id: 'multi-east-dev-2', addOns, teams }, {
             env: {
                 region: 'us-east-2',
             },
