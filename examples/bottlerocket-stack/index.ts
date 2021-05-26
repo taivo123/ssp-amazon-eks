@@ -26,7 +26,7 @@ export default class BottlerocketStack extends cdk.Stack {
         ];
 
         const clusterProvider = new ssp.BottlerocketClusterProvider()
-        new ssp.EksBlueprint(app, { id: 'east-br-test', clusterProvider }, {
+        new ssp.EksBlueprint(app, { id: 'east-br-test', teams, addOns, clusterProvider }, {
             env: {
                 region: 'us-east-1'
             }

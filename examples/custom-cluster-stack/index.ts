@@ -33,7 +33,7 @@ export default class CustomClusterStack extends cdk.Stack {
         }
 
         const clusterProvider = new ssp.EC2ClusterProvider(clusterProps);
-        new ssp.EksBlueprint(app, { id: "test-cluster-provider", clusterProvider });
+        new ssp.EksBlueprint(app, { id: "test-cluster-provider", teams, addOns, clusterProvider });
     }
 }
 

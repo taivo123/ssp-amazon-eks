@@ -31,7 +31,7 @@ export default class MultiTeamStack extends cdk.Stack {
         ]);
 
         const clusterProvider = new ssp.FargateClusterProvider(fargateProfiles)
-        new ssp.EksBlueprint(app, { id: 'east-fargate-test', clusterProvider }, {
+        new ssp.EksBlueprint(app, { id: 'east-fargate-test', teams, addOns, clusterProvider }, {
             env: {
                 region: 'us-east-1'
             }
