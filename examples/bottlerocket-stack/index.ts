@@ -16,10 +16,10 @@ export default class BottlerocketStack {
 
         // AddOns for the cluster.
         const addOns: Array<ssp.ClusterAddOn> = [
-            new ssp.NginxAddon,
-            new ssp.ArgoCDAddon,
-            new ssp.CalicoAddon,
-            new ssp.MetricsServerAddon,
+            new ssp.NginxAddOn,
+            new ssp.ArgoCDAddOn,
+            new ssp.CalicoAddOn,
+            new ssp.MetricsServerAddOn,
             new ssp.ContainerInsightsAddOn,
         ];
 

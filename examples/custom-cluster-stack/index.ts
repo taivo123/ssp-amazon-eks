@@ -16,16 +16,16 @@ export default class CustomClusterStack {
 
         // AddOns for the cluster.
         const addOns: Array<ssp.ClusterAddOn> = [
-            new ssp.NginxAddon,
-            new ssp.ArgoCDAddon,
-            new ssp.CalicoAddon,
-            new ssp.MetricsServerAddon,
+            new ssp.NginxAddOn,
+            new ssp.ArgoCDAddOn,
+            new ssp.CalicoAddOn,
+            new ssp.MetricsServerAddOn,
             new ssp.ContainerInsightsAddOn,
         ];
 
         const clusterProps: ssp.EC2ProviderClusterProps = {
             version: eks.KubernetesVersion.V1_19,
-            instanceType: new ec2.InstanceType('t3.large'),
+            instanceTypes: [new ec2.InstanceType('t3.large')],
             amiType: eks.NodegroupAmiType.AL2_X86_64
         }
 

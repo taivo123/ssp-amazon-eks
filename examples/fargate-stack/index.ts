@@ -16,9 +16,9 @@ export default class FargateStack {
 
         // AddOns for the cluster.
         const addOns: Array<ssp.ClusterAddOn> = [
-            new ssp.NginxAddon,
-            new ssp.ArgoCDAddon,
-            new ssp.CalicoAddon,
+            new ssp.NginxAddOn,
+            new ssp.ArgoCDAddOn,
+            new ssp.CalicoAddOn,
         ];
 
         // TODO - what is with dynatrace?
