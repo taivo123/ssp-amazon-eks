@@ -33,7 +33,7 @@ export default class PipelineStack extends cdk.Stack {
         pipeline.addApplicationStage(new ClusterStage(this, 'production', {
             env: {
                 region: 'us-east-2'
-            }
+            },
         }), { manualApprovals: true });
     }
 
@@ -85,7 +85,6 @@ export class ClusterStage extends cdk.Stage {
             new ssp.ClusterAutoScalerAddon,
             new ssp.ContainerInsightsAddOn,
         ];
-
         new ssp.EksBlueprint(this, { id: 'eks', addOns, teams }, props);
     }
 }

@@ -8,7 +8,7 @@ const app = new cdk.App();
 //-------------------------------------------
 
 import MultiTeamStack from '../examples/multi-team-stack'
-new MultiTeamStack(app, 'MultiTeamStack', {});
+new MultiTeamStack(app, 'multi-team-stack', {});
 
 
 //-------------------------------------------
@@ -16,7 +16,7 @@ new MultiTeamStack(app, 'MultiTeamStack', {});
 //-------------------------------------------
 
 import MultiRegionStack from '../examples/multi-region-stack'
-new MultiRegionStack(app, 'MultiRegionStack', {});
+new MultiRegionStack(app, 'multi-region-stack', {});
 
 
 //-------------------------------------------
@@ -24,7 +24,7 @@ new MultiRegionStack(app, 'MultiRegionStack', {});
 //-------------------------------------------
 
 import FargateStack from '../examples/fargate-stack'
-new FargateStack(app, 'FargateStack', {});
+new FargateStack(app, 'fargate-stack', {});
 
 
 //-------------------------------------------
@@ -32,8 +32,8 @@ new FargateStack(app, 'FargateStack', {});
 //-------------------------------------------
 
 import PipelineStack from '../examples/pipeline-stack'
-const env = { account: "929819487611", region: 'us-east-1' }
-new PipelineStack(app, 'PipelineStack', { env });
+const env = { account: "115717706081", region: 'us-east-1' }
+new PipelineStack(app, 'pipeline-stack', { env });
 
 
 //-------------------------------------------
@@ -41,7 +41,7 @@ new PipelineStack(app, 'PipelineStack', { env });
 //-------------------------------------------
 
 import BottleRocketStack from '../examples/bottlerocket-stack'
-new BottleRocketStack(app, 'BottleRocketStack', {});
+new BottleRocketStack(app, 'bottlerocket-stack', {});
 
 
 //-------------------------------------------
@@ -49,7 +49,7 @@ new BottleRocketStack(app, 'BottleRocketStack', {});
 //-------------------------------------------
 
 import CustomClusterStack from '../examples/custom-cluster-stack'
-new CustomClusterStack(app, 'CustomClusterStack', {});
+new CustomClusterStack(app, 'custom-cluster-stack', {});
 
 
 

@@ -6,9 +6,8 @@ import * as ssp from '../../lib'
 // Team implementations
 import * as team from '../teams'
 
-export default class MultiRegionStack extends cdk.Stack {
+export default class MultiRegionStack {
     constructor(app: cdk.App, id: string, props?: cdk.StackProps) {
-        super(app, id, props);
 
         // Teams for the cluster.
         const teams: Array<ssp.Team> = [

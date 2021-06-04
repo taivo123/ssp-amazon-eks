@@ -7,10 +7,8 @@ import * as ssp from '../../lib'
 // Team implementations
 import * as team from '../teams'
 
-export default class CustomClusterStack extends cdk.Stack {
+export default class CustomClusterStack {
     constructor(app: cdk.App, id: string, props?: cdk.StackProps) {
-        super(app, id, props);
-
         // Teams for the cluster.
         const teams: Array<ssp.Team> = [
             new team.TeamPlatform,
@@ -22,7 +20,6 @@ export default class CustomClusterStack extends cdk.Stack {
             new ssp.ArgoCDAddon,
             new ssp.CalicoAddon,
             new ssp.MetricsServerAddon,
-            new ssp.ClusterAutoScalerAddon,
             new ssp.ContainerInsightsAddOn,
         ];
 
@@ -33,7 +30,7 @@ export default class CustomClusterStack extends cdk.Stack {
         }
 
         const clusterProvider = new ssp.EC2ClusterProvider(clusterProps);
-        new ssp.EksBlueprint(app, { id: "test-cluster-provider", teams, addOns, clusterProvider });
+        new ssp.EksBlueprint(app, { id, teams, addOns, clusterProvider });
     }
 }
 

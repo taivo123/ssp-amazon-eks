@@ -18,7 +18,10 @@ build:
 	rm -rf dist && $(TSC)
 
 deploy: 
-	$(CDK) deploy
+	$(CDK) deploy multi-team-stack
+
+list: 
+	$(CDK) list
 
 mkdocs:
 	mkdocs serve 

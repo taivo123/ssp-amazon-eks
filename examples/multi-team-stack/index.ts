@@ -6,9 +6,8 @@ import * as ssp from '../../lib'
 // Team implementations
 import * as team from '../teams'
 
-export default class MultiTeamStack extends cdk.Stack {
+export default class MultiTeamStack {
     constructor(app: cdk.App, id: string, props?: cdk.StackProps) {
-        super(app, id, props);
 
         // Teams for the cluster.
         const teams: Array<ssp.Team> = [
@@ -28,7 +27,7 @@ export default class MultiTeamStack extends cdk.Stack {
             new ssp.ContainerInsightsAddOn,
         ];
 
-        new ssp.EksBlueprint(app, { id: 'multi-east-dev-2', addOns, teams }, {
+        new ssp.EksBlueprint(app, { id, addOns, teams }, {
             env: {
                 region: 'us-east-2',
             },
