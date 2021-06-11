@@ -293,13 +293,13 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       <label class="md-nav__link" for="__nav_7">
-        Addons
+        AddOns
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Addons" data-md-level="1">
+      <nav class="md-nav" aria-label="AddOns" data-md-level="1">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
-          Addons
+          AddOns
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -367,6 +367,41 @@
         <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-metrics-for-cluster-and-workloads" class="md-nav__link">
+    View metrics for cluster and workloads
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-cluster-level-logs" class="md-nav__link">
+    View cluster level logs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-workload-level-logs" class="md-nav__link">
+    View workload level logs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-containers-via-that-container-map-in-container-insights" class="md-nav__link">
+    View containers via that container map in container insights.
   </a>
   
 </li>
@@ -483,6 +518,41 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-metrics-for-cluster-and-workloads" class="md-nav__link">
+    View metrics for cluster and workloads
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-cluster-level-logs" class="md-nav__link">
+    View cluster level logs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-workload-level-logs" class="md-nav__link">
+    View workload level logs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-containers-via-that-container-map-in-container-insights" class="md-nav__link">
+    View containers via that container map in container insights.
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -502,11 +572,15 @@
                 
                 <h1 id="container-insights-addon">Container Insights Addon<a class="headerlink" href="#container-insights-addon" title="Permanent link">&para;</a></h1>
 <p>The <code>ContainerInsights</code> addon adds support for <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy-container-insights-EKS.html">Container Insights</a> to an EKS cluster.</p>
-<p>Customers can use Container Insights to collect, aggregate, and summarize metrics and logs from your containerized applications and microservices.</p>
+<p>Customers can use Container Insights to collect, aggregate, and summarize metrics and logs from your containerized applications and microservices. Container Insights collects data as performance log events using embedded metric format. These performance log events are entries that use a structured JSON schema that enables high-cardinality data to be ingested and stored at scale. From this data, CloudWatch creates aggregated metrics at the cluster, node, pod, task, and service level as CloudWatch metrics. The metrics that Container Insights collects are available in CloudWatch automatic dashboards, and also viewable in the Metrics section of the CloudWatch console.</p>
+<p><strong>IMPORTANT</strong>
+CloudWatch does not automatically create all possible metrics from the log data, to help you manage your Container Insights costs. However, you can view additional metrics and additional levels of granularity by using CloudWatch Logs Insights to analyze the raw performance log events.</p>
+<p>Metrics collected by Container Insights are charged as custom metrics. For more information about <a href="https://aws.amazon.com/cloudwatch/pricing/">CloudWatch pricing</a>, see Amazon CloudWatch Pricing.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">addons</span> <span class="p">}</span>  <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
+<p>Add the following as an add-on to your main.ts file to add Containers Insights to your cluster</p>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">AddOns</span> <span class="p">}</span>  <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">myClusterAutoscaler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">addons</span><span class="p">.</span><span class="nx">ContainerInsights</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">myClusterAutoscaler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AddOns</span><span class="p">.</span><span class="nx">ContainerInsights</span><span class="p">();</span>
 <span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span> <span class="nx">myClusterAutoscaler</span> <span class="p">];</span>
 
 <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cdk</span><span class="p">.</span><span class="nx">App</span><span class="p">();</span>
@@ -517,6 +591,101 @@
   <span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
+
+<p>Next run <code>cdk deploy</code> to update your CDK stack. </p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>Once the Container Insights add-on has been installed to your cluster check to see that the CloudWatch Agent and the FluentD daemons are running. Run <code>kubectl get all -n amazon-cloudwatch</code> and you should see the following output.</p>
+<div class="codehilite"><pre><span></span><code>NAME                           READY   STATUS    RESTARTS   AGE
+pod/cloudwatch-agent-k8wxl     1/1     Running   0          105s
+pod/fluentd-cloudwatch-78zv4   1/1     Running   0          105s
+
+NAME                                DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+daemonset.apps/cloudwatch-agent     1         1         1       1            1           &lt;none&gt;          107s
+daemonset.apps/fluentd-cloudwatch   1         1         1       1            1           &lt;none&gt;          106s
+</code></pre></div>
+
+<p>To enable or disable control plane logs with the console, please run the following command in your terminal - <code>aws eks update-cluster-config \
+    --region us-east-2 \
+    --name east-dev \
+    --logging '{"clusterLogging":[{"types":["api","audit","authenticator","controllerManager","scheduler"],"enabled":true}]}'</code></p>
+<p>You should see a similar output as the following</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;update&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;883405c8-65c6-4758-8cee-2a7c1340a6d9&gt;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;InProgress&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;LoggingUpdate&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ClusterLogging&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;clusterLogging\&quot;:[{\&quot;types\&quot;:[\&quot;api\&quot;,\&quot;audit\&quot;,\&quot;authenticator\&quot;,\&quot;controllerManager\&quot;,\&quot;scheduler\&quot;],\&quot;enabled\&quot;:true}]}&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;createdAt&quot;</span><span class="p">:</span> <span class="mf">1553271814.684</span><span class="p">,</span>
+        <span class="nt">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>You can also monitor the status of your log configuration update to your cluster by running the following command - <code>aws eks describe-update \
+    --region &lt;region-code&gt;\
+    --name &lt;prod&gt; \
+    --update-id &lt;883405c8-65c6-4758-8cee-2a7c1340a6d9&gt;</code></p>
+<p>Once the update is complete, you should see a similar output </p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;update&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;883405c8-65c6-4758-8cee-2a7c1340a6d9&gt;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;Successful&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;LoggingUpdate&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ClusterLogging&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;clusterLogging\&quot;:[{\&quot;types\&quot;:[\&quot;api\&quot;,\&quot;audit\&quot;,\&quot;authenticator\&quot;,\&quot;controllerManager\&quot;,\&quot;scheduler\&quot;],\&quot;enabled\&quot;:true}]}&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;createdAt&quot;</span><span class="p">:</span> <span class="mf">1553271814.684</span><span class="p">,</span>
+        <span class="nt">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="view-metrics-for-cluster-and-workloads">View metrics for cluster and workloads<a class="headerlink" href="#view-metrics-for-cluster-and-workloads" title="Permanent link">&para;</a></h2>
+<p>Under Performance Monitoring, the Container Insights dashboard allows you to hone in on both cluster and workload metrics. After selecting EKS Pods and Clusters, you will see that the dashboard provides CPU and memory utilization along with other important metrics such as network performance. 
+<img alt="CloudWatch" src="/screenshots/eks-blueprint-cwinsights-performance-monitoring.png" /></p>
+<h2 id="view-cluster-level-logs">View cluster level logs<a class="headerlink" href="#view-cluster-level-logs" title="Permanent link">&para;</a></h2>
+<p>After you have enabled any of the control plane log types for your Amazon EKS cluster, you can view them on the CloudWatch console.</p>
+<p>To view these logs on the CloudWatch console follow these steps:</p>
+<ol>
+<li>Open the CloudWatch console and choose the cluster that you want to view logs for. The log group name format is /aws/eks/<cluster-name>/cluster.</li>
+<li>Choose the log stream to view. The following list describes the log stream name format for each log type.</li>
+<li>Kubernetes API server component logs (api) – kube-apiserver-<nnn...></li>
+<li>Audit (audit) – kube-apiserver-audit-<nnn...></li>
+<li>Authenticator (authenticator) – authenticator-<nnn...></li>
+<li>Controller manager (controllerManager) – kube-controller-manager-<nnn...></li>
+<li>Scheduler (scheduler) – kube-scheduler-<nnn...></li>
+</ol>
+<p>Next in the console, click on Log groups under Logs. </p>
+<p>You will see under log streams all the log streams from your Amazon EKS control plane. </p>
+<p><img alt="CloudWatch" src="../../screenshots/eks-blueprint-cwlogs.png" /></p>
+<h2 id="view-workload-level-logs">View workload level logs<a class="headerlink" href="#view-workload-level-logs" title="Permanent link">&para;</a></h2>
+<p>In order to view workload level logs follow these steps after browsing to the CloudWatch Logs Insights console</p>
+<p>In the navigation pane, choose Insights.</p>
+<p>Near the top of the screen is the query editor. When you first open CloudWatch Logs Insights, this box contains a default query that returns the 20 most recent log events.</p>
+<p>In the box above the query editor, select one of the Container Insights log groups to query. For the following example queries to work, the log group name must end with performance. We will look at <code>/aws/containerinsights/east-dev/performance</code></p>
+<p>When you select a log group, CloudWatch Logs Insights automatically detects fields in the data in the log group and displays them in Discovered fields in the right pane. It also displays a bar graph of log events in this log group over time. This bar graph shows the distribution of events in the log group that matches your query and time range, not only the events displayed in the table.</p>
+<p>In the query editor, replace the default query with the following query and choose Run query.</p>
+<p>STATS avg(node_cpu_utilization) as avg_node_cpu_utilization by NodeName
+<code>SORT avg_node_cpu_utilization DESC</code>
+This query shows a list of nodes, sorted by average node CPU utilization. Below is an example of what the visualization should look like.</p>
+<p><img alt="CloudWatch" src="../../screenshots/eks-blueprint-cloudwatch-loginsights.png" /></p>
+<p>To try another example, replace that query with another query and choose Run query. More sample queries are listed later on this page.</p>
+<p>STATS avg(number_of_container_restarts) as avg_number_of_container_restarts by PodName
+<code>SORT avg_number_of_container_restarts DESC</code>
+This query displays a list of your pods, sorted by average number of container restarts as shown below</p>
+<p><img alt="CloudWatch" src="../../screenshots/eks-blueprint-cloudwatch-loginsights-2.png" /></p>
+<p>If you want to try another query, you can use include fields in the list at the right of the screen. For more information about query syntax, see CloudWatch Logs Insights Query Syntax.</p>
+<h2 id="view-containers-via-that-container-map-in-container-insights">View containers via that container map in container insights.<a class="headerlink" href="#view-containers-via-that-container-map-in-container-insights" title="Permanent link">&para;</a></h2>
+<p>In order to view a map of all of your containers running inside your cluster, click on <code>View your container map</code> in the Container Insights tab. You will then see a map of all of your namespaces and their associated pods and services.</p>
+<p><img alt="CloudWatch" src="../../screenshots/eks-blueprint-container-insights.png" /></p>
                 
               
               

@@ -291,13 +291,13 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
       <label class="md-nav__link" for="__nav_7">
-        Addons
+        AddOns
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Addons" data-md-level="1">
+      <nav class="md-nav" aria-label="AddOns" data-md-level="1">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
-          Addons
+          AddOns
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -413,6 +413,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#upgrading-worker-nodes" class="md-nav__link">
+    Upgrading Worker Nodes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-clusters-with-spot-capacity-type" class="md-nav__link">
+    Creating Clusters with Spot Capacity Type
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -483,6 +497,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#upgrading-worker-nodes" class="md-nav__link">
+    Upgrading Worker Nodes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-clusters-with-spot-capacity-type" class="md-nav__link">
+    Creating Clusters with Spot Capacity Type
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -502,14 +530,44 @@
                 
                 <h1 id="ec2-cluster-provider">EC2 Cluster Provider<a class="headerlink" href="#ec2-cluster-provider" title="Permanent link">&para;</a></h1>
 <h2 id="stack-configuration">Stack Configuration<a class="headerlink" href="#stack-configuration" title="Permanent link">&para;</a></h2>
-<p>Supports context variables (specify in cdk.json, cdk.context.json or pass with -c command line option):</p>
+<p>Supports context variables (specify in cdk.json, cdk.context.json, ~/.cdk.json or pass with -c command line option):</p>
 <ul>
-<li><code>instanceType</code>: (defaulted to "t3.medium") Type of instance for the EKS cluster, must be a valid instance type like t3.medium</li>
-<li><code>vpc</code>: Specifies whether to use an existing VPC (if specified) or create a new one if not specified.</li>
-<li><code>minSize</code>: Min cluster size, must be positive integer greater than 0 (default 1).</li>
-<li><code>maxSize</code>: Max cluster size, must be greater than minSize.</li>
-<li><code>vpcSubnets</code>: List of VPC subnets for cluster provisioning (unsupported yet)</li>
+<li><code>eks.default.instance-type</code>: (defaulted to "m5.large") Type of instance for the EKS cluster, must be a valid instance type like t3.medium</li>
+<li><code>eks.default.vpc</code>: Specifies whether to use an existing VPC (if specified) or create a new one if not specified.</li>
+<li><code>eks.default.min-size</code>: Min cluster size, must be positive integer greater than 0 (default 1).</li>
+<li><code>eks.default.max-size</code>: Max cluster size, must be greater than minSize (default 3).</li>
+<li><code>eks.default.desired-size</code>: Desired cluster size, must be greater or equal to minSize (default <code>min-size</code>).</li>
 </ul>
+<p><code>eks.default.vpc</code> supports an option to look up default VPC in your account/region if the value is set to <code>default</code>. Note, there should be  public and private subnets for EKS cluster to work. For more information see <a href="https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html">Cluster VPC Considerations</a>.</p>
+<p>Configuration of the EC2 parameters through context parameters makes sense if you would like to apply default configuration to multiple clusters without the need to explicitly pass <code>EC2ProviderClusterProps</code> to each cluster provider.</p>
+<h2 id="upgrading-worker-nodes">Upgrading Worker Nodes<a class="headerlink" href="#upgrading-worker-nodes" title="Permanent link">&para;</a></h2>
+<p>Upgrading Kubernetes version at the cluster configuration at present won't impact the kubelet version running on the worker nodes. 
+To perform an in-place upgrade of the cluster, including worker nodes use the following configuration:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">const</span> <span class="n">props</span><span class="p">:</span> <span class="n">EC2ProviderClusterProps</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">version</span><span class="p">:</span> <span class="n">KubernetesVersion</span><span class="o">.</span><span class="n">V1_20</span><span class="p">,</span>
+    <span class="n">instanceTypes</span><span class="p">:</span> <span class="p">[</span><span class="n">new</span> <span class="n">InstanceType</span><span class="p">(</span><span class="s1">&#39;t3.large&#39;</span><span class="p">)],</span>
+    <span class="n">amiType</span><span class="p">:</span> <span class="n">NodegroupAmiType</span><span class="o">.</span><span class="n">AL2_X86_64</span><span class="p">,</span>
+    <span class="n">amiReleaseVersion</span><span class="p">:</span> <span class="s2">&quot;1.20.4-20210519&quot;</span> <span class="o">//</span> <span class="n">this</span> <span class="n">will</span> <span class="n">upgrade</span> <span class="n">kubelet</span> <span class="n">to</span> <span class="mf">1.20</span><span class="o">.</span><span class="mi">4</span>
+<span class="p">}</span>
+
+<span class="k">const</span> <span class="n">myClusterProvider</span> <span class="o">=</span> <span class="n">new</span> <span class="n">EC2ClusterProvider</span><span class="p">(</span><span class="n">props</span><span class="p">);</span>
+
+<span class="n">new</span> <span class="n">EksBlueprint</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="p">{</span> <span class="n">id</span><span class="p">:</span> <span class="s2">&quot;test-cluster-provider&quot;</span><span class="p">,</span> <span class="n">clusterProvider</span><span class="p">:</span> <span class="n">myClusterProvider</span> <span class="p">});</span>
+</code></pre></div>
+
+<p>Note: consult the <a href="https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html">official EKS documentation</a> for the information of the AMI release version that matches your Kubernetes version.</p>
+<h2 id="creating-clusters-with-spot-capacity-type">Creating Clusters with Spot Capacity Type<a class="headerlink" href="#creating-clusters-with-spot-capacity-type" title="Permanent link">&para;</a></h2>
+<p>You can specify capacity type with the cluster configuration options:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">const</span> <span class="n">props</span><span class="p">:</span> <span class="n">EC2ProviderClusterProps</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">nodeGroupCapacityType</span><span class="p">:</span> <span class="n">CapacityType</span><span class="o">.</span><span class="n">SPOT</span><span class="p">,</span>
+    <span class="n">version</span><span class="p">:</span> <span class="n">KubernetesVersion</span><span class="o">.</span><span class="n">V1_20</span><span class="p">,</span>
+    <span class="n">instanceTypes</span><span class="p">:</span> <span class="p">[</span><span class="n">new</span> <span class="n">InstanceType</span><span class="p">(</span><span class="s1">&#39;t3.large&#39;</span><span class="p">),</span> <span class="n">new</span> <span class="n">InstanceType</span><span class="p">(</span><span class="s1">&#39;m5.large&#39;</span><span class="p">)],</span>
+    <span class="n">amiType</span><span class="p">:</span> <span class="n">NodegroupAmiType</span><span class="o">.</span><span class="n">AL2_X86_64</span><span class="p">,</span>
+    <span class="n">amiReleaseVersion</span><span class="p">:</span> <span class="s2">&quot;1.20.4-20210519&quot;</span> <span class="o">//</span> <span class="n">this</span> <span class="n">will</span> <span class="n">upgrade</span> <span class="n">kubelet</span> <span class="n">to</span> <span class="mf">1.20</span><span class="o">.</span><span class="mi">4</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Note two attributes in this configuration that are relevant for Spot: <code>nodeGroupCapacityType</code> and <code>instaceTypes</code>. The latter indicates the types of instances which could be leveraged for Spot capacity and it makes sense to have a number of instance types to maximize availability. </p>
                 
               
               

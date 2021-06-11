@@ -393,13 +393,13 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
       <label class="md-nav__link" for="__nav_7">
-        Addons
+        AddOns
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Addons" data-md-level="1">
+      <nav class="md-nav" aria-label="AddOns" data-md-level="1">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
-          Addons
+          AddOns
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -651,10 +651,10 @@ Bootstrapping is an process of creating IAM roles and lambda functions that can 
 <p>Replace the contents of <code>bin/&lt;your-main-file&gt;.ts</code> (where <code>your-main-file</code> by default is the name of the root project directory) with the following code. This code will deploy a new EKS Cluster and install the <code>ArgoCD</code> addon.</p>
 <div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="s1">&#39;source-map-support/register&#39;</span><span class="p">;</span>
 <span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">cdk</span> <span class="k">from</span> <span class="s1">&#39;@aws-cdk/core&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">EksBluepint</span><span class="p">,</span> <span class="nx">Addons</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">EksBlueprint</span><span class="p">,</span> <span class="nx">AddOns</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="k">new</span> <span class="nx">Addons</span><span class="p">.</span><span class="nx">ArgoCDAddOn</span><span class="p">,</span>
+  <span class="k">new</span> <span class="nx">AddOns</span><span class="p">.</span><span class="nx">ArgoCDAddOn</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cdk</span><span class="p">.</span><span class="nx">App</span><span class="p">();</span>
@@ -671,7 +671,7 @@ Bootstrapping is an process of creating IAM roles and lambda functions that can 
 <div class="codehilite"><pre><span></span><code>cdk deploy
 </code></pre></div>
 
-<p>Congratulations! You have deployed your first EKS cluster with <code>cdk-eks-blueprint</code>. </p>
+<p>Congratulations! You have deployed your first EKS cluster with <code>cdk-eks-blueprint</code>.</p>
 <h2 id="onboard-a-team">Onboard a Team<a class="headerlink" href="#onboard-a-team" title="Permanent link">&para;</a></h2>
 <p>Now that we have our cluster deployed, it is time to onboard our first team. In its simplest form, a team is represented in a Kubernetes cluster by a namespace. In order to create a new team and namespace within your cluster do the following:</p>
 <p>Create a new file called <code>team-awesome</code>.</p>
@@ -698,12 +698,12 @@ Bootstrapping is an process of creating IAM roles and lambda functions that can 
 <p>Replace the contents of <code>bin/main.tsx</code> with the following:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="s1">&#39;source-map-support/register&#39;</span><span class="p">;</span>
 <span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">cdk</span> <span class="k">from</span> <span class="s1">&#39;@aws-cdk/core&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">EksBluepint</span><span class="p">,</span> <span class="nx">Addons</span><span class="p">,</span> <span class="nx">Team</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">EksBluepint</span><span class="p">,</span> <span class="nx">AddOns</span><span class="p">,</span> <span class="nx">Team</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="p">{</span> <span class="nx">TeamAwesome</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;../teams/team-awesome&#39;</span>
 
 <span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="k">new</span> <span class="nx">Addons</span><span class="p">.</span><span class="nx">ArgoCDAddOn</span><span class="p">,</span>
+  <span class="k">new</span> <span class="nx">AddOns</span><span class="p">.</span><span class="nx">ArgoCDAddOn</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="kd">const</span> <span class="nx">teams</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">Team</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span>
@@ -762,7 +762,7 @@ Bootstrapping is an process of creating IAM roles and lambda functions that can 
 <h3 id="deploy-workloads-to-your-cluster">Deploy workloads to your cluster<a class="headerlink" href="#deploy-workloads-to-your-cluster" title="Permanent link">&para;</a></h3>
 <p>Create a project in Argo by running the following command</p>
 <div class="codehilite"><pre><span></span><code>argocd proj create sample \
-    -d https://kubernetes.default.svc
+    -d https://kubernetes.default.svc,argocd \
     -s https://github.com/kcoleman731/argo-apps.git
 </code></pre></div>
 
