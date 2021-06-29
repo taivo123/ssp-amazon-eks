@@ -14,7 +14,7 @@
     
     
       
-        <title>Cluster management - Amazon EKS SSP Quickstart</title>
+        <title>Overview - Amazon EKS SSP Quickstart</title>
       
     
     
@@ -58,6 +58,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#addons" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -84,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cluster management
+              Overview
             
           </span>
         </div>
@@ -263,12 +268,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
       
       <label class="md-nav__link" for="__nav_6">
         AddOns
@@ -284,11 +291,51 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../addons/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Overview
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#supported-addons" class="md-nav__link">
+    Supported AddOns
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -298,7 +345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../addons/app-mesh/" class="md-nav__link">
+      <a href="app-mesh/" class="md-nav__link">
         App Mesh
       </a>
     </li>
@@ -310,7 +357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../addons/argo-cd/" class="md-nav__link">
+      <a href="argo-cd/" class="md-nav__link">
         ArgoCD
       </a>
     </li>
@@ -322,7 +369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../addons/aws-load-balancer-controller/" class="md-nav__link">
+      <a href="aws-load-balancer-controller/" class="md-nav__link">
         Load Balancer Controller
       </a>
     </li>
@@ -334,7 +381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../addons/cluster-autoscaler/" class="md-nav__link">
+      <a href="cluster-autoscaler/" class="md-nav__link">
         Cluster Autoscaler
       </a>
     </li>
@@ -346,7 +393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../addons/container-insights/" class="md-nav__link">
+      <a href="container-insights/" class="md-nav__link">
         Container Insights
       </a>
     </li>
@@ -408,19 +455,95 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#supported-addons" class="md-nav__link">
+    Supported AddOns
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aws-quickstart/quickstart-ssp-amazon-eks/edit/master/docs/cluster-management.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aws-quickstart/quickstart-ssp-amazon-eks/edit/master/docs/addons/index.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                  <h1>Cluster management</h1>
-                
-                <p>// TODO</p>
+                <h1 id="addons">AddOns<a class="headerlink" href="#addons" title="Permanent link">&para;</a></h1>
+<p>The <code>cdk-eks-blueprint</code> framework leverages a modular approach to managing <a href="https://kubernetes.io/docs/concepts/cluster-administration/addons/">AddOns</a> that run within the context of a Kubernetes cluster. Customers are free to select the AddOns that run in each of their blueprint clusters.</p>
+<p>Within the context of the <code>cdk-eks-blueprint</code> framework, an AddOn is simply an interface, and the implementation of an AddOn can do whatever is necessary to support the desired AddOn functionality. This can include applying manifests to a Kubernetes cluster or calling AWS APIs to provision new resources. </p>
+<h2 id="supported-addons">Supported AddOns<a class="headerlink" href="#supported-addons" title="Permanent link">&para;</a></h2>
+<p>The framework currently supports the following AddOns.</p>
+<table>
+<thead>
+<tr>
+<th>AddOn</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="./app-mesh"><code>AppMeshAddOn</code></a></td>
+<td>Adds an AppMesh controller and CRDs (pending validation on the latest version of CDK)</td>
+</tr>
+<tr>
+<td><a href="./argo-cd"><code>ArgoCDAddOn</code></a></td>
+<td>Provisions Argo CD into your cluster.</td>
+</tr>
+<tr>
+<td><a href="./aws-load-balancer-controller"><code>AWS Load Balancer Controller</code></a></td>
+<td>Provisions the AWS Load Balancer Controller into your cluster.</td>
+</tr>
+<tr>
+<td><a href="./calico"><code>CalicoAddOn</code></a></td>
+<td>Adds the Calico 1.7.1 CNI/Network policy engine</td>
+</tr>
+<tr>
+<td><a href="./container-insights"><code>ContainerInsightsAddOn</code></a></td>
+<td>Adds Container Insights support integrating monitoring with CloudWatch</td>
+</tr>
+<tr>
+<td><a href="./cluster-autoscaler"><code>ClusterAutoscalerAddOn</code></a></td>
+<td>Adds the standard cluster autoscaler (<a href="https://github.com/awslabs/karpenter">Karpenter</a> is coming)</td>
+</tr>
+<tr>
+<td><code>MetricsServerAddOn</code></td>
+<td>Adds metrics server (pre-req for HPA and other monitoring tools)</td>
+</tr>
+<tr>
+<td><code>NginxAddOn</code></td>
+<td>Adds NGINX ingress controller</td>
+</tr>
+</tbody>
+</table>
                 
               
               
@@ -436,6 +559,39 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../teams/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Teams
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="app-mesh/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              App Mesh
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

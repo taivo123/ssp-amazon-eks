@@ -14,7 +14,7 @@
     
     
       
-        <title>Overview - Amazon EKS SSP Quickstart</title>
+        <title>Load Balancer Controller - Amazon EKS SSP Quickstart</title>
       
     
     
@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#addons" class="md-skip">
+        <a href="#aws-load-balancer-controller-add-on" class="md-skip">
           Skip to content
         </a>
       
@@ -89,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Load Balancer Controller
             
           </span>
         </div>
@@ -225,8 +225,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../teams/" class="md-nav__link">
-        Teams
+      <a href="../../core-concepts/" class="md-nav__link">
+        Core Concepts
       </a>
     </li>
   
@@ -255,23 +255,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cluster-management/" class="md-nav__link">
-        Cluster Management
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../core-concepts/" class="md-nav__link">
-        Core Concepts
+      <a href="../../teams/" class="md-nav__link">
+        Teams
       </a>
     </li>
   
@@ -290,18 +275,54 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
       
-      <label class="md-nav__link" for="__nav_7">
+      <label class="md-nav__link" for="__nav_6">
         AddOns
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="AddOns" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
+        <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           AddOns
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../app-mesh/" class="md-nav__link">
+        App Mesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-cd/" class="md-nav__link">
+        ArgoCD
+      </a>
+    </li>
+  
+
           
             
   
@@ -318,12 +339,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Overview
+          Load Balancer Controller
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Overview
+        Load Balancer Controller
       </a>
       
         
@@ -341,8 +362,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-addons" class="md-nav__link">
-    Supported AddOns
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functionality" class="md-nav__link">
+    Functionality
   </a>
   
 </li>
@@ -396,14 +424,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
-      <label class="md-nav__link" for="__nav_8">
+      <label class="md-nav__link" for="__nav_7">
         Cluster Providers
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Cluster Providers" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
+        <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           Cluster Providers
         </label>
@@ -416,30 +444,6 @@
     <li class="md-nav__item">
       <a href="../../cluster-providers/ec2-cluster-provider/" class="md-nav__link">
         EC2 Cluster Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../cluster-providers/fargate-cluster-provider/" class="md-nav__link">
-        Fargate Cluster Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../cluster-providers/outpost-cluster-provider/" class="md-nav__link">
-        Outpost Cluster Provider
       </a>
     </li>
   
@@ -477,8 +481,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-addons" class="md-nav__link">
-    Supported AddOns
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functionality" class="md-nav__link">
+    Functionality
   </a>
   
 </li>
@@ -495,51 +506,66 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aws-quickstart/quickstart-ssp-amazon-eks/edit/master/docs/addons/overview.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aws-quickstart/quickstart-ssp-amazon-eks/edit/master/docs/addons/aws-load-balancer-controller.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="addons">AddOns<a class="headerlink" href="#addons" title="Permanent link">&para;</a></h1>
-<h2 id="supported-addons">Supported AddOns<a class="headerlink" href="#supported-addons" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>AddOn</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>AppMeshAddOn</code></td>
-<td>Adds an AppMesh controller and CRDs (pending validation on the latest version of CDK)</td>
-</tr>
-<tr>
-<td><code>ArgoCDAddOn</code></td>
-<td>Adds an ArgoCD controller</td>
-</tr>
-<tr>
-<td><code>CalicoAddOn</code></td>
-<td>Adds the Calico 1.7.1 CNI/Network policy engine</td>
-</tr>
-<tr>
-<td><a href="../container-insights/"><code>ContainerInsightsAddOn</code></a></td>
-<td>Adds Container Insights support integrating monitoring with CloudWatch</td>
-</tr>
-<tr>
-<td><a href="../cluster-autoscaler/"><code>ClusterAutoscalerAddOn</code></a></td>
-<td>Adds the standard cluster autoscaler (<a href="https://github.com/awslabs/karpenter">Karpenter</a> is coming)</td>
-</tr>
-<tr>
-<td><code>MetricsServerAddOn</code></td>
-<td>Adds metrics server (pre-req for HPA and other monitoring tools)</td>
-</tr>
-<tr>
-<td><code>NginxAddOn</code></td>
-<td>Adds NGINX ingress controller</td>
-</tr>
-</tbody>
-</table>
+                <h1 id="aws-load-balancer-controller-add-on">AWS Load Balancer Controller Add-on<a class="headerlink" href="#aws-load-balancer-controller-add-on" title="Permanent link">&para;</a></h1>
+<p>The AWS Load Balancer Controller manages AWS Elastic Load Balancers for a Kubernetes cluster. The controller provisions the following resources:</p>
+<ul>
+<li>
+<p>An AWS Application Load Balancer (ALB) when you create a Kubernetes Ingress.</p>
+</li>
+<li>
+<p>An AWS Network Load Balancer (NLB) when you create a Kubernetes Service of type LoadBalancer. In the past, you used the Kubernetes in-tree load balancer for instance targets, but used the AWS Load balancer Controller for IP targets. With the AWS Load Balancer Controller version 2.2.0 or later, you can create Network Load Balancers using either target type. For more information about NLB target types, see <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-type">Target type</a> in the User Guide for Network Load Balancers.</p>
+</li>
+</ul>
+<p>For more information about AWS Load Balancer Controller please see the <a href="https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html">official documentation</a>.</p>
+<p>This controller is a required for proper configuration of other ingress controllers such as NGINX.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">AwsLoadBalancerControllerAddon</span> <span class="p">}</span>  <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
+
+<span class="k">readonly</span> <span class="nx">awsLoadBalancerController</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AwsLoadBalancerControllerAddon</span><span class="p">({</span><span class="nx">version</span><span class="o">:</span> <span class="s1">&#39;2.2.0&#39;</span><span class="p">});</span><span class="c1">// optionally specify image version to pull  or empty constructor</span>
+<span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span> <span class="nx">awsLoadBalancerController</span> <span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cdk</span><span class="p">.</span><span class="nx">App</span><span class="p">();</span>
+<span class="k">new</span> <span class="nx">EksBlueprint</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="s1">&#39;my-stack-name&#39;</span><span class="p">,</span> <span class="nx">addOns</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{</span>
+  <span class="nx">env</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">account</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">AWS_ACCOUNT_ID</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="nx">region</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">AWS_REGION</span><span class="o">&gt;</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
+To validate that controller is running ensure that controller deployment is in <code>RUNNING</code> state:</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Assuming controller is installed in kube-system namespace</span>
+$ kubectl get deployments -n kube-system
+NAME                                                       READY   UP-TO-DATE   AVAILABLE   AGE
+aws-load-balancer-controller                               <span class="m">2</span>/2     <span class="m">2</span>            <span class="m">2</span>           3m58s
+</code></pre></div>
+You can now provision NLB and ALB load balancers. For example to provision an NLB you can use the following service manifest:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">annotations</span><span class="p">:</span>
+    <span class="nt">service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout</span><span class="p">:</span> <span class="s">&#39;60&#39;</span>
+    <span class="nt">service.beta.kubernetes.io/aws-load-balancer-type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nlb</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">udp-test1</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">LoadBalancer</span>
+  <span class="nt">ports</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5005</span>
+    <span class="nt">protocol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">UDP</span>
+    <span class="nt">targetPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5005</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">your-app</span>
+</code></pre></div>
+<h2 id="functionality">Functionality<a class="headerlink" href="#functionality" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Adds proper IAM permissions and creates a Kubernetes service account with IRSA integration. </li>
+<li>Allows configuration options such as enabling WAF and Shield. </li>
+<li>Allows to replace the helm chart version if a specific version of the controller is needed.</li>
+</ol>
                 
               
               
@@ -558,7 +584,7 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../../core-concepts/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../argo-cd/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -567,7 +593,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Core Concepts
+              ArgoCD
             </div>
           </div>
         </a>

@@ -14,7 +14,7 @@
     
     
       
-        <title>Description - Amazon EKS SSP Quickstart</title>
+        <title>Calico Add-on - Amazon EKS SSP Quickstart</title>
       
     
     
@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#description" class="md-skip">
+        <a href="#calico-add-on" class="md-skip">
           Skip to content
         </a>
       
@@ -89,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Description
+              Calico Add-on
             
           </span>
         </div>
@@ -291,7 +291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../addons/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -303,7 +303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../addons/app-mesh/" class="md-nav__link">
+      <a href="../app-mesh/" class="md-nav__link">
         App Mesh
       </a>
     </li>
@@ -315,7 +315,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../addons/argo-cd/" class="md-nav__link">
+      <a href="../argo-cd/" class="md-nav__link">
         ArgoCD
       </a>
     </li>
@@ -327,7 +327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../addons/aws-load-balancer-controller/" class="md-nav__link">
+      <a href="../aws-load-balancer-controller/" class="md-nav__link">
         Load Balancer Controller
       </a>
     </li>
@@ -339,7 +339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../addons/cluster-autoscaler/" class="md-nav__link">
+      <a href="../cluster-autoscaler/" class="md-nav__link">
         Cluster Autoscaler
       </a>
     </li>
@@ -351,7 +351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../addons/container-insights/" class="md-nav__link">
+      <a href="../container-insights/" class="md-nav__link">
         Container Insights
       </a>
     </li>
@@ -432,23 +432,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#local-development" class="md-nav__link">
-    Local Development
+  <a href="#usage" class="md-nav__link">
+    Usage
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#publishing" class="md-nav__link">
-    Publishing
+  <a href="#securing-your-environment-with-kubernetes-network-policies" class="md-nav__link">
+    Securing your environment with Kubernetes Network Policies
+  </a>
+  
+    <nav class="md-nav" aria-label="Securing your environment with Kubernetes Network Policies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod-to-pod-communications-with-no-policies" class="md-nav__link">
+    Pod to Pod communications with no policies
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#submitting-changes" class="md-nav__link">
-    Submitting Changes
+        
+          <li class="md-nav__item">
+  <a href="#applying-kubernetes-network-policy-to-block-traffic" class="md-nav__link">
+    Applying Kubernetes Network Policy to block traffic
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-additional-policy-to-re-open-pod-to-pod-communications" class="md-nav__link">
+    Applying additional policy to re-open pod to pod communications
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -464,43 +484,111 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aws-quickstart/quickstart-ssp-amazon-eks/edit/master/docs/internal/readme-internal.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aws-quickstart/quickstart-ssp-amazon-eks/edit/master/docs/addons/calico.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h1>
-<p>This is an internal readme for development processes that should be followed for this repository.</p>
-<h2 id="local-development">Local Development<a class="headerlink" href="#local-development" title="Permanent link">&para;</a></h2>
-<p>This project leverage Makefiles for project automation. We currently support the following commands.</p>
-<p>Lint the project with <code>ESLint</code>. </p>
-<div class="highlight"><pre><span></span><code>make lint
+                <h1 id="calico-add-on">Calico Add-on<a class="headerlink" href="#calico-add-on" title="Permanent link">&para;</a></h1>
+<p>The <code>Calico</code> addon adds support for Kubernetes Network Policies to an EKS cluster.</p>
+<p><a href="https://www.projectcalico.org/">Project Calico</a> is an open source networking and network security solution for containers, virtual machines, and native host-based workloads. To secure workloads in Kubernetes, Calico utilizes Network Policies as you will see below.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">addons</span> <span class="p">}</span>  <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">myCalicoCNI</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">addon</span><span class="p">.</span><span class="nx">CalicoAddon</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span> <span class="nx">myCalicoCNI</span> <span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cdk</span><span class="p">.</span><span class="nx">App</span><span class="p">();</span>
+<span class="k">new</span> <span class="nx">EksBlueprint</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="s1">&#39;my-stack-name&#39;</span><span class="p">,</span> <span class="nx">addOns</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{</span>
+  <span class="nx">env</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">account</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">AWS_ACCOUNT_ID</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="nx">region</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">AWS_REGION</span><span class="o">&gt;</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">});</span>
 </code></pre></div>
-<p>Build the project with <code>Typescript</code>. </p>
-<div class="highlight"><pre><span></span><code>make build.
+<h2 id="securing-your-environment-with-kubernetes-network-policies">Securing your environment with Kubernetes Network Policies<a class="headerlink" href="#securing-your-environment-with-kubernetes-network-policies" title="Permanent link">&para;</a></h2>
+<p>By default, native VPC-CNI plugin for Kubernetes on EKS does not support Kubernetes Network Policies. Installing Calico addon (or alternate CNI provider) for network policy support will enable customers to define and apply standard <a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/">Kubernetes Network Policies</a>. </p>
+<p>However, Calico also allows Custom Resource Definitions (CRD) which gives you the ability to add features not in the standard Kubernetes policies, such as:
+- Explicit Deny rules
+- Layer 7 rule support (i.e. Http Request types)
+- Endpoint support other than standard pods: OpenShift, VMs, interfaces, etc. </p>
+<p>In order to use CRDs (in particular defined within the <em>projectcalico.org/v3</em> Calico API), you need to install the Calico CLI (<a href="https://docs.projectcalico.org/getting-started/clis/calicoctl/install">calicoctl</a>). You can find more information about Calico Network Policy and using <code>calicoctl</code> <a href="https://docs.projectcalico.org/security/calico-network-policy">here</a>. </p>
+<p>In this section, you will look at how the standard Kubernetes Network Policies are applied. This will be done using <code>kubectl</code>.</p>
+<h3 id="pod-to-pod-communications-with-no-policies">Pod to Pod communications with no policies<a class="headerlink" href="#pod-to-pod-communications-with-no-policies" title="Permanent link">&para;</a></h3>
+<p>If you deploy <a href="https://github.com/aws-quickstart/quickstart-ssp-amazon-eks/blob/feature/calico/docs/getting-started.md#deploy-workloads-with-argocd">App of Apps installed using ArgoCD</a>, you can verify that there are no network policies in place:</p>
+<div class="highlight"><pre><span></span><code>kubectl get networkpolicy -A
 </code></pre></div>
-<h2 id="publishing">Publishing<a class="headerlink" href="#publishing" title="Permanent link">&para;</a></h2>
-<p>At the moment leveraging a private NPM repository for "shapirov". TODO: move under aws-labs.</p>
-<ol>
-<li>Change version in package.json. We are currently using <major>.<minor>.<patch>, e.g. 0.1.5</li>
-<li>Patch version increment must be used for bug fixes, including changes in code and missing documentation.</li>
-<li>Minor version is used for new features that do not change the way customers interact with the solution. For example, new add-on, extra configuration (optional) for existing add-ons. In some cases it may be used with CDK version upgrades provided they don't cause code changes.</li>
-<li>Major version is used for non-compatible changes that will require customers to re-arch. With the exception of version 1. which will be used once the code is production ready (we have tests, pipeline, validation).</li>
-<li>Publishing (if not applied through CI):</li>
-<li><code>make build</code> (compile)</li>
-<li><code>npm publish</code> (this will require credentials to npm)</li>
-</ol>
-<h2 id="submitting-changes">Submitting Changes<a class="headerlink" href="#submitting-changes" title="Permanent link">&para;</a></h2>
-<p>For   direct contributors:
-1. Create a feature branch and commit to that branch.
-2. Create PR to the main branch. 
-3. After review if approved changes will be merged.</p>
-<p>For external contributors:
-1. Create a fork of the repository
-2. Submit a PR with the following:
-   1. Clear description of the feature
-   2. Test coverage
-   3. Validation instructions</p>
+<p>This means that any resources within the cluster should be able to make ingress and egress connections with other resources within and outside the cluster. You can verify, for example, that you are able to ping from <code>team-riker</code> pod to <code>team-burnham</code> pod.</p>
+<p>First you retrieve the pod name from the <code>team-burnham</code> namespace its podIP:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">BURNHAM_POD</span><span class="o">=</span><span class="k">$(</span>kubectl get pod -n team-burnham -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[0].metadata.name}&#39;</span><span class="k">)</span> 
+<span class="nv">BURNHAM_POD_IP</span><span class="o">=</span><span class="k">$(</span>kubectl get pod -n team-burnham <span class="nv">$BURNHAM_POD</span> -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.podIP}&#39;</span><span class="k">)</span>
+</code></pre></div>
+<p>Now you can start a shell from the pod in the <code>team-riker</code> namespace and ping the pod from <code>team-burnham</code> namespace:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">RIKER_POD</span><span class="o">=</span><span class="k">$(</span>kubectl -n team-riker get pod -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[0].metadata.name}&#39;</span><span class="k">)</span>
+kubectl <span class="nb">exec</span> -ti -n team-riker <span class="nv">$RIKER_POD</span> -- sh
+</code></pre></div>
+<p>Note: since this opens a shell inside the pod, it will not have the environment variables saved above. You should retrieve the actual podIP from the environment variable <code>BURNHAM_POD_IP</code>.</p>
+<p>With those actual values, curl the IP and port 80 of the pod from <code>team-burnham</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># curl -s &lt;Team Burnham Pod IP&gt;:80&gt;/dev/null &amp;&amp; echo Success. || echo Fail. </span>
+</code></pre></div>
+<p>You should see <code>Success.</code></p>
+<h3 id="applying-kubernetes-network-policy-to-block-traffic">Applying Kubernetes Network Policy to block traffic<a class="headerlink" href="#applying-kubernetes-network-policy-to-block-traffic" title="Permanent link">&para;</a></h3>
+<p>Let's apply the following Network Policy:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NetworkPolicy</span>
+<span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default-deny</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">podSelector</span><span class="p">:</span>
+    <span class="nt">matchLabels</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
+</code></pre></div>
+<p>Save it as <code>deny-all.yaml</code>. Run the following commands to apply the policy to both <code>team-riker</code> and <code>team-burnham</code> namespaces:</p>
+<div class="highlight"><pre><span></span><code>kubectl -n team-riker apply -f deny-all.yaml 
+kubectl -n team-burnham apply -f deny-all.yaml
+</code></pre></div>
+<p>This will essentially prevent access to all resources within both namespaces. Try curl commands from above to verify that it fails.</p>
+<h3 id="applying-additional-policy-to-re-open-pod-to-pod-communications">Applying additional policy to re-open pod to pod communications<a class="headerlink" href="#applying-additional-policy-to-re-open-pod-to-pod-communications" title="Permanent link">&para;</a></h3>
+<p>You can apply Kubernetes NetworkPolicy on top of that to “poke holes” for egress and ingress needs. </p>
+<p>For example, if you wanted to be able to curl from the <code>team-riker</code> pod to the <code>team-burnham</code> pod, the following Kubernetes NetworkPolicy should be applied. </p>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NetworkPolicy</span>
+<span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">team-burnham</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">allow-riker-to-burnham</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">podSelector</span><span class="p">:</span>
+    <span class="nt">matchLabels</span><span class="p">:</span>
+      <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">guestbook-ui</span>
+  <span class="nt">policyTypes</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Egress</span>
+  <span class="nt">ingress</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">from</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">podSelector</span><span class="p">:</span>
+            <span class="nt">matchLabels</span><span class="p">:</span>
+              <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">guestbook-ui</span>
+          <span class="nt">namespaceSelector</span><span class="p">:</span>
+            <span class="nt">matchLabels</span><span class="p">:</span>
+              <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">team-riker</span>
+      <span class="nt">ports</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">protocol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TCP</span>
+          <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+  <span class="nt">egress</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">to</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">podSelector</span><span class="p">:</span>
+            <span class="nt">matchLabels</span><span class="p">:</span>
+              <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">guestbook-ui</span>
+          <span class="nt">namespaceSelector</span><span class="p">:</span>
+            <span class="nt">matchLabels</span><span class="p">:</span>
+              <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">team-riker</span>
+      <span class="nt">ports</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">protocol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TCP</span>
+          <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+</code></pre></div>
+<p>Save as <code>allow-burnham-riker.yaml</code> and apply the new NetworkPolicy:</p>
+<div class="highlight"><pre><span></span><code>kubectl apply -f allow-burnham-riker.yaml     
+</code></pre></div>
+<p>Once the policy is applied, once again try the curl command from above. You should now see <code>Success.</code> once again.</p>
                 
               
               

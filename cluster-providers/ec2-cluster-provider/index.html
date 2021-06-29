@@ -225,8 +225,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../teams/" class="md-nav__link">
-        Teams
+      <a href="../../core-concepts/" class="md-nav__link">
+        Core Concepts
       </a>
     </li>
   
@@ -255,23 +255,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cluster-management/" class="md-nav__link">
-        Cluster Management
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../core-concepts/" class="md-nav__link">
-        Core Concepts
+      <a href="../../teams/" class="md-nav__link">
+        Teams
       </a>
     </li>
   
@@ -288,14 +273,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
       
-      <label class="md-nav__link" for="__nav_7">
+      <label class="md-nav__link" for="__nav_6">
         AddOns
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="AddOns" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
+        <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           AddOns
         </label>
@@ -306,8 +291,44 @@
   
   
     <li class="md-nav__item">
-      <a href="../../addons/overview/" class="md-nav__link">
+      <a href="../../addons/" class="md-nav__link">
         Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../addons/app-mesh/" class="md-nav__link">
+        App Mesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../addons/argo-cd/" class="md-nav__link">
+        ArgoCD
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../addons/aws-load-balancer-controller/" class="md-nav__link">
+        Load Balancer Controller
       </a>
     </li>
   
@@ -356,14 +377,14 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
-      <label class="md-nav__link" for="__nav_8">
+      <label class="md-nav__link" for="__nav_7">
         Cluster Providers
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Cluster Providers" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
+        <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           Cluster Providers
         </label>
@@ -431,30 +452,6 @@
   
 </nav>
       
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../fargate-cluster-provider/" class="md-nav__link">
-        Fargate Cluster Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../outpost-cluster-provider/" class="md-nav__link">
-        Outpost Cluster Provider
-      </a>
     </li>
   
 
@@ -543,30 +540,28 @@
 <h2 id="upgrading-worker-nodes">Upgrading Worker Nodes<a class="headerlink" href="#upgrading-worker-nodes" title="Permanent link">&para;</a></h2>
 <p>Upgrading Kubernetes version at the cluster configuration at present won't impact the kubelet version running on the worker nodes. 
 To perform an in-place upgrade of the cluster, including worker nodes use the following configuration:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">const</span> <span class="n">props</span><span class="p">:</span> <span class="n">EC2ProviderClusterProps</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">version</span><span class="p">:</span> <span class="n">KubernetesVersion</span><span class="o">.</span><span class="n">V1_20</span><span class="p">,</span>
-    <span class="n">instanceTypes</span><span class="p">:</span> <span class="p">[</span><span class="n">new</span> <span class="n">InstanceType</span><span class="p">(</span><span class="s1">&#39;t3.large&#39;</span><span class="p">)],</span>
-    <span class="n">amiType</span><span class="p">:</span> <span class="n">NodegroupAmiType</span><span class="o">.</span><span class="n">AL2_X86_64</span><span class="p">,</span>
-    <span class="n">amiReleaseVersion</span><span class="p">:</span> <span class="s2">&quot;1.20.4-20210519&quot;</span> <span class="o">//</span> <span class="n">this</span> <span class="n">will</span> <span class="n">upgrade</span> <span class="n">kubelet</span> <span class="n">to</span> <span class="mf">1.20</span><span class="o">.</span><span class="mi">4</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code>const props: EC2ProviderClusterProps = {
+    version: KubernetesVersion.V1_20,
+    instanceTypes: [new InstanceType(&#39;t3.large&#39;)],
+    amiType: NodegroupAmiType.AL2_X86_64,
+    amiReleaseVersion: &quot;1.20.4-20210519&quot; // this will upgrade kubelet to 1.20.4
+}
 
-<span class="k">const</span> <span class="n">myClusterProvider</span> <span class="o">=</span> <span class="n">new</span> <span class="n">EC2ClusterProvider</span><span class="p">(</span><span class="n">props</span><span class="p">);</span>
+const myClusterProvider = new EC2ClusterProvider(props);
 
-<span class="n">new</span> <span class="n">EksBlueprint</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="p">{</span> <span class="n">id</span><span class="p">:</span> <span class="s2">&quot;test-cluster-provider&quot;</span><span class="p">,</span> <span class="n">clusterProvider</span><span class="p">:</span> <span class="n">myClusterProvider</span> <span class="p">});</span>
+new EksBlueprint(app, { id: &quot;test-cluster-provider&quot;, clusterProvider: myClusterProvider });
 </code></pre></div>
-
 <p>Note: consult the <a href="https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html">official EKS documentation</a> for the information of the AMI release version that matches your Kubernetes version.</p>
 <h2 id="creating-clusters-with-spot-capacity-type">Creating Clusters with Spot Capacity Type<a class="headerlink" href="#creating-clusters-with-spot-capacity-type" title="Permanent link">&para;</a></h2>
 <p>You can specify capacity type with the cluster configuration options:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">const</span> <span class="n">props</span><span class="p">:</span> <span class="n">EC2ProviderClusterProps</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">nodeGroupCapacityType</span><span class="p">:</span> <span class="n">CapacityType</span><span class="o">.</span><span class="n">SPOT</span><span class="p">,</span>
-    <span class="n">version</span><span class="p">:</span> <span class="n">KubernetesVersion</span><span class="o">.</span><span class="n">V1_20</span><span class="p">,</span>
-    <span class="n">instanceTypes</span><span class="p">:</span> <span class="p">[</span><span class="n">new</span> <span class="n">InstanceType</span><span class="p">(</span><span class="s1">&#39;t3.large&#39;</span><span class="p">),</span> <span class="n">new</span> <span class="n">InstanceType</span><span class="p">(</span><span class="s1">&#39;m5.large&#39;</span><span class="p">)],</span>
-    <span class="n">amiType</span><span class="p">:</span> <span class="n">NodegroupAmiType</span><span class="o">.</span><span class="n">AL2_X86_64</span><span class="p">,</span>
-    <span class="n">amiReleaseVersion</span><span class="p">:</span> <span class="s2">&quot;1.20.4-20210519&quot;</span> <span class="o">//</span> <span class="n">this</span> <span class="n">will</span> <span class="n">upgrade</span> <span class="n">kubelet</span> <span class="n">to</span> <span class="mf">1.20</span><span class="o">.</span><span class="mi">4</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code>const props: EC2ProviderClusterProps = {
+    nodeGroupCapacityType: CapacityType.SPOT,
+    version: KubernetesVersion.V1_20,
+    instanceTypes: [new InstanceType(&#39;t3.large&#39;), new InstanceType(&#39;m5.large&#39;)],
+    amiType: NodegroupAmiType.AL2_X86_64,
+    amiReleaseVersion: &quot;1.20.4-20210519&quot; // this will upgrade kubelet to 1.20.4
+}
 </code></pre></div>
-
 <p>Note two attributes in this configuration that are relevant for Spot: <code>nodeGroupCapacityType</code> and <code>instaceTypes</code>. The latter indicates the types of instances which could be leveraged for Spot capacity and it makes sense to have a number of instance types to maximize availability. </p>
                 
               
@@ -600,20 +595,6 @@ To perform an in-place upgrade of the cluster, including worker nodes use the fo
           </div>
         </a>
       
-      
-        <a href="../fargate-cluster-provider/" class="md-footer__link md-footer__link--next" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Fargate Cluster Provider
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   

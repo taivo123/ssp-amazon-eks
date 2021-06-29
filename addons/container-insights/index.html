@@ -225,8 +225,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../teams/" class="md-nav__link">
-        Teams
+      <a href="../../core-concepts/" class="md-nav__link">
+        Core Concepts
       </a>
     </li>
   
@@ -255,23 +255,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cluster-management/" class="md-nav__link">
-        Cluster Management
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../core-concepts/" class="md-nav__link">
-        Core Concepts
+      <a href="../../teams/" class="md-nav__link">
+        Teams
       </a>
     </li>
   
@@ -290,14 +275,14 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
       
-      <label class="md-nav__link" for="__nav_7">
+      <label class="md-nav__link" for="__nav_6">
         AddOns
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="AddOns" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
+        <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           AddOns
         </label>
@@ -308,8 +293,44 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../app-mesh/" class="md-nav__link">
+        App Mesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-cd/" class="md-nav__link">
+        ArgoCD
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-load-balancer-controller/" class="md-nav__link">
+        Load Balancer Controller
       </a>
     </li>
   
@@ -431,14 +452,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
-      <label class="md-nav__link" for="__nav_8">
+      <label class="md-nav__link" for="__nav_7">
         Cluster Providers
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Cluster Providers" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
+        <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           Cluster Providers
         </label>
@@ -451,30 +472,6 @@
     <li class="md-nav__item">
       <a href="../../cluster-providers/ec2-cluster-provider/" class="md-nav__link">
         EC2 Cluster Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../cluster-providers/fargate-cluster-provider/" class="md-nav__link">
-        Fargate Cluster Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../cluster-providers/outpost-cluster-provider/" class="md-nav__link">
-        Outpost Cluster Provider
       </a>
     </li>
   
@@ -578,9 +575,9 @@ CloudWatch does not automatically create all possible metrics from the log data,
 <p>Metrics collected by Container Insights are charged as custom metrics. For more information about <a href="https://aws.amazon.com/cloudwatch/pricing/">CloudWatch pricing</a>, see Amazon CloudWatch Pricing.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>Add the following as an add-on to your main.ts file to add Containers Insights to your cluster</p>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">AddOns</span> <span class="p">}</span>  <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">AddOns</span> <span class="p">}</span>  <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">myClusterAutoscaler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AddOns</span><span class="p">.</span><span class="nx">ContainerInsights</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">myClusterAutoscaler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AddOns</span><span class="p">.</span><span class="nx">ContainerInsightsAddOn</span><span class="p">();</span>
 <span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span> <span class="nx">myClusterAutoscaler</span> <span class="p">];</span>
 
 <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cdk</span><span class="p">.</span><span class="nx">App</span><span class="p">();</span>
@@ -591,25 +588,23 @@ CloudWatch does not automatically create all possible metrics from the log data,
   <span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
-
 <p>Next run <code>cdk deploy</code> to update your CDK stack. </p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>Once the Container Insights add-on has been installed to your cluster check to see that the CloudWatch Agent and the FluentD daemons are running. Run <code>kubectl get all -n amazon-cloudwatch</code> and you should see the following output.</p>
-<div class="codehilite"><pre><span></span><code>NAME                           READY   STATUS    RESTARTS   AGE
+<p>Once the Container Insights add-on has been installed to your cluster check to see that the CloudWatch Agent and the FluentD daemons are running. Run <code>kubectl get all -n amazon-cloudwatch</code> and you should see the following output.
+<div class="highlight"><pre><span></span><code>NAME                           READY   STATUS    RESTARTS   AGE
 pod/cloudwatch-agent-k8wxl     1/1     Running   0          105s
 pod/fluentd-cloudwatch-78zv4   1/1     Running   0          105s
 
 NAME                                DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
 daemonset.apps/cloudwatch-agent     1         1         1       1            1           &lt;none&gt;          107s
 daemonset.apps/fluentd-cloudwatch   1         1         1       1            1           &lt;none&gt;          106s
-</code></pre></div>
-
+</code></pre></div></p>
 <p>To enable or disable control plane logs with the console, please run the following command in your terminal - <code>aws eks update-cluster-config \
     --region us-east-2 \
     --name east-dev \
     --logging '{"clusterLogging":[{"types":["api","audit","authenticator","controllerManager","scheduler"],"enabled":true}]}'</code></p>
-<p>You should see a similar output as the following</p>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<p>You should see a similar output as the following
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;update&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;883405c8-65c6-4758-8cee-2a7c1340a6d9&gt;&quot;</span><span class="p">,</span>
         <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;InProgress&quot;</span><span class="p">,</span>
@@ -624,14 +619,13 @@ daemonset.apps/fluentd-cloudwatch   1         1         1       1            1  
         <span class="nt">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[]</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <p>You can also monitor the status of your log configuration update to your cluster by running the following command - <code>aws eks describe-update \
     --region &lt;region-code&gt;\
     --name &lt;prod&gt; \
     --update-id &lt;883405c8-65c6-4758-8cee-2a7c1340a6d9&gt;</code></p>
 <p>Once the update is complete, you should see a similar output </p>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;update&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;883405c8-65c6-4758-8cee-2a7c1340a6d9&gt;&quot;</span><span class="p">,</span>
         <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;Successful&quot;</span><span class="p">,</span>
@@ -647,7 +641,6 @@ daemonset.apps/fluentd-cloudwatch   1         1         1       1            1  
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h2 id="view-metrics-for-cluster-and-workloads">View metrics for cluster and workloads<a class="headerlink" href="#view-metrics-for-cluster-and-workloads" title="Permanent link">&para;</a></h2>
 <p>Under Performance Monitoring, the Container Insights dashboard allows you to hone in on both cluster and workload metrics. After selecting EKS Pods and Clusters, you will see that the dashboard provides CPU and memory utilization along with other important metrics such as network performance. 
 <img alt="CloudWatch" src="/screenshots/eks-blueprint-cwinsights-performance-monitoring.png" /></p>

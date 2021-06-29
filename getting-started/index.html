@@ -257,8 +257,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#onboard-a-team" class="md-nav__link">
-    Onboard a Team
+  <a href="#cluster-access" class="md-nav__link">
+    Cluster Access
   </a>
   
 </li>
@@ -311,6 +311,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    Next Steps
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -327,8 +334,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../teams/" class="md-nav__link">
-        Teams
+      <a href="../core-concepts/" class="md-nav__link">
+        Core Concepts
       </a>
     </li>
   
@@ -357,23 +364,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../cluster-management/" class="md-nav__link">
-        Cluster Management
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../core-concepts/" class="md-nav__link">
-        Core Concepts
+      <a href="../teams/" class="md-nav__link">
+        Teams
       </a>
     </li>
   
@@ -390,14 +382,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
       
-      <label class="md-nav__link" for="__nav_7">
+      <label class="md-nav__link" for="__nav_6">
         AddOns
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="AddOns" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
+        <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           AddOns
         </label>
@@ -408,8 +400,44 @@
   
   
     <li class="md-nav__item">
-      <a href="../addons/overview/" class="md-nav__link">
+      <a href="../addons/" class="md-nav__link">
         Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../addons/app-mesh/" class="md-nav__link">
+        App Mesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../addons/argo-cd/" class="md-nav__link">
+        ArgoCD
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../addons/aws-load-balancer-controller/" class="md-nav__link">
+        Load Balancer Controller
       </a>
     </li>
   
@@ -456,14 +484,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
-      <label class="md-nav__link" for="__nav_8">
+      <label class="md-nav__link" for="__nav_7">
         Cluster Providers
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Cluster Providers" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
+        <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           Cluster Providers
         </label>
@@ -476,30 +504,6 @@
     <li class="md-nav__item">
       <a href="../cluster-providers/ec2-cluster-provider/" class="md-nav__link">
         EC2 Cluster Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cluster-providers/fargate-cluster-provider/" class="md-nav__link">
-        Fargate Cluster Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cluster-providers/outpost-cluster-provider/" class="md-nav__link">
-        Outpost Cluster Provider
       </a>
     </li>
   
@@ -551,8 +555,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#onboard-a-team" class="md-nav__link">
-    Onboard a Team
+  <a href="#cluster-access" class="md-nav__link">
+    Cluster Access
   </a>
   
 </li>
@@ -605,6 +609,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    Next Steps
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -625,165 +636,134 @@
                 <h1 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
 <p>This getting started guide will walk you through setting up a new CDK project which leverages the <code>cdk-eks-blueprint</code> NPM module to deploy a simple SSP. </p>
 <h2 id="project-setup">Project setup<a class="headerlink" href="#project-setup" title="Permanent link">&para;</a></h2>
-<p>The quickstart leverages <a href="https://aws.amazon.com/cdk/">AWS Cloud Development Kit (CDK)</a>. Install CDK via the following.</p>
-<div class="codehilite"><pre><span></span><code>npm install -g aws-cdk
+<p>To use the <code>cdk-eks-blueprint</code> module, you must have the <a href="https://aws.amazon.com/cdk/">AWS Cloud Development Kit (CDK)</a> installed. Install CDK via the following.</p>
+<div class="highlight"><pre><span></span><code>npm install -g aws-cdk@1.104.0
 </code></pre></div>
-
 <p>Verify the installation.</p>
-<div class="codehilite"><pre><span></span><code>cdk --version
+<div class="highlight"><pre><span></span><code>cdk --version
 </code></pre></div>
-
 <p>Create a new <code>typescript</code> CDK project in an empty directory.</p>
-<div class="codehilite"><pre><span></span><code>cdk init app --language typescript
+<div class="highlight"><pre><span></span><code>cdk init app --language typescript
 </code></pre></div>
-
-<p>Each combination of target account and region must be bootstrapped prior to deploying stacks.
-Bootstrapping is an process of creating IAM roles and lambda functions that can execute some of the common CDK constructs.</p>
-<p><a href="https://docs.aws.amazon.com/cdk/latest/guide/bootstrapping.html">Bootstrap</a> your environment with the following command. </p>
-<div class="codehilite"><pre><span></span><code>cdk bootstrap aws://&lt;AWS_ACCOUNT_ID&gt;/&lt;AWS_REGION&gt;
-</code></pre></div>
-
 <h2 id="deploy-a-blueprint-eks-cluster">Deploy a Blueprint EKS Cluster<a class="headerlink" href="#deploy-a-blueprint-eks-cluster" title="Permanent link">&para;</a></h2>
 <p>Install the <code>cdk-eks-blueprint</code> NPM package via the following.</p>
-<div class="codehilite"><pre><span></span><code>npm i @shapirov/cdk-eks-blueprint
+<div class="highlight"><pre><span></span><code>npm i @shapirov/cdk-eks-blueprint
 </code></pre></div>
-
 <p>Replace the contents of <code>bin/&lt;your-main-file&gt;.ts</code> (where <code>your-main-file</code> by default is the name of the root project directory) with the following code. This code will deploy a new EKS Cluster and install the <code>ArgoCD</code> addon.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="s1">&#39;source-map-support/register&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="s1">&#39;source-map-support/register&#39;</span><span class="p">;</span>
 <span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">cdk</span> <span class="k">from</span> <span class="s1">&#39;@aws-cdk/core&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">EksBlueprint</span><span class="p">,</span> <span class="nx">AddOns</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="k">new</span> <span class="nx">AddOns</span><span class="p">.</span><span class="nx">ArgoCDAddOn</span><span class="p">,</span>
-<span class="p">];</span>
+<span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">ssp</span> <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cdk</span><span class="p">.</span><span class="nx">App</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;east-test-1&#39;</span><span class="p">,</span> <span class="nx">addOns</span><span class="p">}</span>
-<span class="k">new</span> <span class="nx">EksBlueprint</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="nx">opts</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">env</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">account</span><span class="o">:</span> <span class="s1">&#39;XXXXXXXXXXXX&#39;</span><span class="p">,</span>
-      <span class="nx">region</span><span class="o">:</span> <span class="s1">&#39;us-east-2&#39;</span>
-  <span class="p">},</span>
-<span class="p">});</span>
-</code></pre></div>
 
-<p>Deploy the stack using the following command</p>
-<div class="codehilite"><pre><span></span><code>cdk deploy
-</code></pre></div>
-
-<p>Congratulations! You have deployed your first EKS cluster with <code>cdk-eks-blueprint</code>.</p>
-<h2 id="onboard-a-team">Onboard a Team<a class="headerlink" href="#onboard-a-team" title="Permanent link">&para;</a></h2>
-<p>Now that we have our cluster deployed, it is time to onboard our first team. In its simplest form, a team is represented in a Kubernetes cluster by a namespace. In order to create a new team and namespace within your cluster do the following:</p>
-<p>Create a new file called <code>team-awesome</code>.</p>
-<div class="codehilite"><pre><span></span><code>touch team-awesome.tsx
-</code></pre></div>
-
-<p>Paste the following code the file. </p>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ClusterInfo</span><span class="p">,</span> <span class="nx">ApplicationTeam</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;../../stacks/eks-blueprint-stack&#39;</span><span class="p">;</span>
-
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">TeamAwesome</span> <span class="k">extends</span> <span class="nx">ApplicationTeam</span> <span class="p">{</span>
-    <span class="kr">constructor</span><span class="p">(</span><span class="nx">app</span>: <span class="kt">App</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">({</span>
-            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;team-awesome&quot;</span><span class="p">,</span>
-            <span class="nx">users</span><span class="o">:</span> <span class="p">[</span>
-                <span class="k">new</span> <span class="nx">ArnPrincipal</span><span class="p">(</span><span class="sb">`arn:aws:iam::</span><span class="si">${</span><span class="nx">YOUR_IAM_ACCOUNT</span><span class="si">}</span><span class="sb">:user/user1`</span><span class="p">),</span>  
-                <span class="k">new</span> <span class="nx">ArnPrincipal</span><span class="p">(</span><span class="sb">`arn:aws:iam::</span><span class="si">${</span><span class="nx">YOUR_IAM_ACCOUNT</span><span class="si">}</span><span class="sb">:user/user2`</span><span class="p">)</span>
-            <span class="p">]</span>
-
-        <span class="p">});</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<p>Replace the contents of <code>bin/main.tsx</code> with the following:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="s1">&#39;source-map-support/register&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">cdk</span> <span class="k">from</span> <span class="s1">&#39;@aws-cdk/core&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">EksBluepint</span><span class="p">,</span> <span class="nx">AddOns</span><span class="p">,</span> <span class="nx">Team</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
-
-<span class="k">import</span> <span class="p">{</span> <span class="nx">TeamAwesome</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;../teams/team-awesome&#39;</span>
-
-<span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="k">new</span> <span class="nx">AddOns</span><span class="p">.</span><span class="nx">ArgoCDAddOn</span><span class="p">,</span>
+<span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ssp</span><span class="p">.</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">NginxAddOn</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">ArgoCDAddOn</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">CalicoAddOn</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">MetricsServerAddOn</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">ClusterAutoScalerAddOn</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">ContainerInsightsAddOn</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">AwsLoadBalancerControllerAddOn</span><span class="p">()</span>
 <span class="p">];</span>
 
-<span class="kd">const</span> <span class="nx">teams</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">Team</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="k">new</span> <span class="nx">TeamAwesome</span>
-<span class="p">]</span>
-
-<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cdk</span><span class="p">.</span><span class="nx">App</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;east-test-1&#39;</span><span class="p">,</span> <span class="nx">addOns</span><span class="p">,</span> <span class="nx">teams</span><span class="p">}</span>
-<span class="k">new</span> <span class="nx">EksBlueprint</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="nx">opts</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">env</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">account</span><span class="o">:</span> <span class="s1">&#39;XXXXXXXXXXXX&#39;</span><span class="p">,</span>
-      <span class="nx">region</span><span class="o">:</span> <span class="s1">&#39;us-east-2&#39;</span>
-  <span class="p">},</span>
+<span class="kd">const</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;east-test-1&#39;</span><span class="p">,</span> <span class="nx">addOns</span> <span class="p">}</span>
+<span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">EksBlueprint</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="nx">opts</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">env</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">account</span><span class="o">:</span> <span class="s1">&#39;XXXXXXXXXXXXX&#39;</span><span class="p">,</span>
+        <span class="nx">region</span><span class="o">:</span> <span class="s1">&#39;us-east-1&#39;</span>
+    <span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
-
-<p>Deploy the stack using the following command</p>
-<div class="codehilite"><pre><span></span><code>cdk deploy
+<p>Each combination of target account and region must be bootstrapped prior to deploying stacks. Bootstrapping is an process of creating IAM roles and lambda functions that can execute some of the common CDK constructs.</p>
+<p><a href="https://docs.aws.amazon.com/cdk/latest/guide/bootstrapping.html">Bootstrap</a> your environment with the following command. </p>
+<div class="highlight"><pre><span></span><code>cdk bootstrap
 </code></pre></div>
-
-<p>To confirm your team has been added to the cluster, run:</p>
-<div class="codehilite"><pre><span></span><code>kubectl get ns team-awesome
+<p>Deploy the stack using the following command. This command will take roughly 20 minutes to complete.</p>
+<div class="highlight"><pre><span></span><code>cdk deploy
 </code></pre></div>
+<p>Congratulations! You have deployed your first EKS cluster with <code>cdk-eks-blueprint</code>. The above code will provision the following:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> A new Well-Architected VPC with both Public and Private subnets.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> A new Well-Architected EKS cluster in the region and account you specify.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://argoproj.github.io/argo-cd/">Nginx</a> into your cluster to serve as a reverse proxy for your workloads. </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://argoproj.github.io/argo-cd/">ArgoCD</a> into your cluster to support GitOps deployments. </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://docs.projectcalico.org/getting-started/kubernetes/">Calico</a> into your cluster to support Network policies.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://github.com/kubernetes-sigs/metrics-server">Metrics Server</a> into your cluster to support metrics collection.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> AWS and Kubernetes resources needed to support <a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html">Cluster Autoscaler</a>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> AWS and Kubernetes resources needed to forward logs and metrics to <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy-container-insights-EKS.html">Container Insights</a>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> AWS and Kubernetes resources needed to support <a href="https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html">AWS Load Balancer Controller</a>.</li>
+</ul>
+<h2 id="cluster-access">Cluster Access<a class="headerlink" href="#cluster-access" title="Permanent link">&para;</a></h2>
+<p>Once the deploy completes, you will see output in your terminal window similar to the following:</p>
+<div class="highlight"><pre><span></span><code>Outputs:
+east-test-1.easttest1ClusterName8D8E5E5E <span class="o">=</span> east-test-1
+east-test-1.easttest1ConfigCommand25ABB520 <span class="o">=</span> aws eks update-kubeconfig --name east-test-1 --region us-east-1 --role-arn &lt;ROLE_ARN&gt;
+east-test-1.easttest1GetTokenCommand337FE3DD <span class="o">=</span> aws eks get-token --cluster-name east-test-1 --region us-east-1 --role-arn &lt;ROLE_ARN&gt;
 
+Stack ARN:
+arn:aws:cloudformation:us-east-1:115717706081:stack/east-test-1/e1b9e6a0-d5f6-11eb-8498-0a374cd00e27
+</code></pre></div>
+<p>To update your Kubernetes config for you new cluster, copy and run the <code>east-test-1.easttest1ConfigCommand25ABB520</code> command (the second command) in your terminal. </p>
+<div class="highlight"><pre><span></span><code>aws eks update-kubeconfig --name east-test-1 --region us-east-1 --role-arn &lt;ROLE_ARN&gt;
+</code></pre></div>
+<p>Validate that you now have <code>kubectl</code> access to your cluster via the following:</p>
+<div class="highlight"><pre><span></span><code>kubectl get namespace
+</code></pre></div>
+<p>You should see output that lists all namespaces in your cluster. </p>
 <h2 id="deploy-workloads-with-argocd">Deploy workloads with ArgoCD<a class="headerlink" href="#deploy-workloads-with-argocd" title="Permanent link">&para;</a></h2>
-<p>Next, let's walk you through how to deploy workloads to your cluster with ArgoCD. This approach leverages the <a href="https://argoproj.github.io/argo-cd/operator-manual/cluster-bootstrapping/#app-of-apps-pattern">App of Apps</a> pattern to deploy multiple workloads arcoss multiple namespaces. The sample app of apps repository that we use in this walkthrough can be found <a href="https://github.com/kcoleman731/argo-apps.git">here</a>.</p>
+<p>Next, let's walk you through how to deploy workloads to your cluster with ArgoCD. This approach leverages the <a href="https://argoproj.github.io/argo-cd/operator-manual/cluster-bootstrapping/#app-of-apps-pattern">App of Apps</a> pattern to deploy multiple workloads across multiple namespaces. The sample app of apps repository that we use in this getting started guide can be found <a href="https://github.com/aws-samples/ssp-eks-workloads">here</a>.</p>
 <h3 id="install-argocd-cli">Install ArgoCD CLI<a class="headerlink" href="#install-argocd-cli" title="Permanent link">&para;</a></h3>
 <p>Follow the instructions found <a href="https://argoproj.github.io/argo-cd/cli_installation/">here</a> as it will include instructions for your specific OS. You can test that the ArgoCD CLI was installed correctly using the following:</p>
-<div class="codehilite"><pre><span></span><code>argocd version --short --client
+<div class="highlight"><pre><span></span><code>argocd version --short --client
 </code></pre></div>
-
 <p>You should see output similar to the following:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">argocd</span><span class="o">:</span> <span class="n">v2</span><span class="o">.</span><span class="mf">0.1</span><span class="o">+</span><span class="mi">33</span><span class="n">eaf11</span><span class="o">.</span><span class="na">dirty</span>
+<div class="highlight"><pre><span></span><code>argocd: v2.0.1+33eaf11.dirty
 </code></pre></div>
-
 <h3 id="exposing-argocd">Exposing ArgoCD<a class="headerlink" href="#exposing-argocd" title="Permanent link">&para;</a></h3>
-<p>To access the ArgoCD running in your Kubernetes cluster, we simply need leverage port-forwarding.</p>
-<p>To do so, first capture the service name in an environment variable.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="n">ARGO_SERVER</span><span class="o">=$</span><span class="p">(</span><span class="n">kubectl</span> <span class="n">get</span> <span class="n">svc</span> <span class="o">-</span><span class="n">n</span> <span class="n">argocd</span> <span class="o">-</span><span class="n">l</span> <span class="n">app</span><span class="o">.</span><span class="n">kubernetes</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">name</span><span class="o">=</span><span class="n">argocd</span><span class="o">-</span><span class="n">server</span> <span class="o">-</span><span class="n">o</span> <span class="n">name</span><span class="p">)</span> 
+<p>To access ArgoCD running in your Kubernetes cluster, we can leverage <a href="https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/">Kubernetes Port Forwarding</a>. To do so, first capture the ArgoCD service name in an environment variable.</p>
+<div class="highlight"><pre><span></span><code>export ARGO_SERVER=$(kubectl get svc -n argocd -l app.kubernetes.io/name=argocd-server -o name) 
 </code></pre></div>
-
 <p>Next, in a new terminal tab, expose the service locally.</p>
-<div class="codehilite"><pre><span></span><code>kubectl port-forward $ARGO_SERVER -n argocd 8080:443
+<div class="highlight"><pre><span></span><code>kubectl port-forward $ARGO_SERVER -n argocd 8080:443
 </code></pre></div>
-
-<p>Open your browser to http://localhost:8080 and you should see the Argo login screen.</p>
+<p>Open your browser to http://localhost:8080 and you should see the ArgoCD login screen.</p>
+<p><img alt="ArgoCD" src="/assets/images/argo-cd.png" /></p>
 <h3 id="logging-into-argocd">Logging Into ArgoCD<a class="headerlink" href="#logging-into-argocd" title="Permanent link">&para;</a></h3>
 <p>ArgoCD will create an <code>admin</code> user and password on a fresh install. To get the ArgoCD admin password, run the following.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="n">ARGO_PASSWORD</span><span class="o">=$</span><span class="p">(</span><span class="n">kubectl</span> <span class="o">-</span><span class="n">n</span> <span class="n">argocd</span> <span class="n">get</span> <span class="n">secret</span> <span class="n">argocd</span><span class="o">-</span><span class="n">initial</span><span class="o">-</span><span class="n">admin</span><span class="o">-</span><span class="n">secret</span> <span class="o">-</span><span class="n">o</span> <span class="n">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.data.password}&quot;</span> <span class="o">|</span> <span class="n">base64</span> <span class="o">-</span><span class="n">d</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code>export ARGO_PASSWORD=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath=&quot;{.data.password}&quot; | base64 -d)
 </code></pre></div>
-
 <p>While still port-forwarding, login via the following.</p>
-<div class="codehilite"><pre><span></span><code>argocd login localhost:8080 --username admin --password $ARGO_PASSWORD
+<div class="highlight"><pre><span></span><code>argocd login localhost:8080 --username admin --password $ARGO_PASSWORD
 </code></pre></div>
-
+<p>You can also login to the ArgoCD UI with generated password. </p>
+<div class="highlight"><pre><span></span><code>echo $ARGO_PASSWORD
+</code></pre></div>
 <h3 id="deploy-workloads-to-your-cluster">Deploy workloads to your cluster<a class="headerlink" href="#deploy-workloads-to-your-cluster" title="Permanent link">&para;</a></h3>
 <p>Create a project in Argo by running the following command</p>
-<div class="codehilite"><pre><span></span><code>argocd proj create sample \
+<div class="highlight"><pre><span></span><code>argocd proj create sample \
     -d https://kubernetes.default.svc,argocd \
-    -s https://github.com/kcoleman731/argo-apps.git
+    -s https://github.com/shapirov103/argo-apps.git
 </code></pre></div>
-
 <p>Create the application within Argo by running the following command</p>
-<div class="codehilite"><pre><span></span><code>argocd app create sample-apps \
+<div class="highlight"><pre><span></span><code>argocd app create dev-apps \
     --dest-namespace argocd  \
     --dest-server https://kubernetes.default.svc  \
-    --repo https://github.com/kcoleman731/argo-apps.git \
-    --path &quot;.&quot;
+    --repo https://github.com/shapirov103/argo-apps.git \
+    --path &quot;envs/dev&quot;
 </code></pre></div>
-
 <p>Sync the apps by running the following command</p>
-<div class="codehilite"><pre><span></span><code>argocd app sync sample-apps 
+<div class="highlight"><pre><span></span><code>argocd app sync sample-apps 
 </code></pre></div>
-
 <h3 id="validate-deployments">Validate deployments.<a class="headerlink" href="#validate-deployments" title="Permanent link">&para;</a></h3>
-<p>To validate your deployments, leverage kubectl port-forwarding to access the <code>guestbook-ui</code> service for <code>team-burnham</code>.</p>
-<div class="codehilite"><pre><span></span><code>kubectl port-forward svc/guestbook-ui -n team-burnham 4040:80
+<p>To validate your deployments, leverage <code>kubectl port-forwarding</code> to access the <code>guestbook-ui</code> service for <code>team-burnham</code>.</p>
+<div class="highlight"><pre><span></span><code>kubectl port-forward svc/guestbook-ui -n team-burnham 4040:80
 </code></pre></div>
-
-<p>Open up <code>localhost:4040</code> in your browser and you should see the application. </p>
+<p>Open up <code>localhost:4040</code> in your browser and you should see the application.</p>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<p>For information on setting up Continuous Delivery pipelines for your infrastructure, see <a href="/ci-cd/"><code>CI/CD</code> documentation</a>.</p>
+<p>For information on supported Addons, see <a href="/addons/"><code>AddOn</code> documentation</a></p>
+<p>For information on Onboarding teams to your clusters, see <a href="/teams/"><code>Team</code> documentation</a>. </p>
+<p>For information on Onboarding and managing workloads in your clusters, see <a href="/workloads/"><code>Workload</code> documentation</a>. </p>
                 
               
               
@@ -817,13 +797,13 @@ Bootstrapping is an process of creating IAM roles and lambda functions that can 
         </a>
       
       
-        <a href="../teams/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../core-concepts/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Teams
+              Core Concepts
             </div>
           </div>
           <div class="md-footer__button md-icon">

@@ -223,6 +223,36 @@
 
   
   
+  
+    <li class="md-nav__item">
+      <a href="../core-concepts/" class="md-nav__link">
+        Core Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ci-cd/" class="md-nav__link">
+        CI/CD
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
     
   
   
@@ -321,63 +351,18 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../ci-cd/" class="md-nav__link">
-        CI/CD
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cluster-management/" class="md-nav__link">
-        Cluster Management
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../core-concepts/" class="md-nav__link">
-        Core Concepts
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
       
-      <label class="md-nav__link" for="__nav_7">
+      <label class="md-nav__link" for="__nav_6">
         AddOns
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="AddOns" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
+        <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           AddOns
         </label>
@@ -388,8 +373,44 @@
   
   
     <li class="md-nav__item">
-      <a href="../addons/overview/" class="md-nav__link">
+      <a href="../addons/" class="md-nav__link">
         Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../addons/app-mesh/" class="md-nav__link">
+        App Mesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../addons/argo-cd/" class="md-nav__link">
+        ArgoCD
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../addons/aws-load-balancer-controller/" class="md-nav__link">
+        Load Balancer Controller
       </a>
     </li>
   
@@ -436,14 +457,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
-      <label class="md-nav__link" for="__nav_8">
+      <label class="md-nav__link" for="__nav_7">
         Cluster Providers
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Cluster Providers" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
+        <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           Cluster Providers
         </label>
@@ -456,30 +477,6 @@
     <li class="md-nav__item">
       <a href="../cluster-providers/ec2-cluster-provider/" class="md-nav__link">
         EC2 Cluster Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cluster-providers/fargate-cluster-provider/" class="md-nav__link">
-        Fargate Cluster Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cluster-providers/outpost-cluster-provider/" class="md-nav__link">
-        Outpost Cluster Provider
       </a>
     </li>
   
@@ -587,7 +584,7 @@
 <p>You are also able to create your own team implementations by creating classes that inherits from <code>Team</code>.</p>
 <h3 id="applicationteam">ApplicationTeam<a class="headerlink" href="#applicationteam" title="Permanent link">&para;</a></h3>
 <p>To create an <code>ApplicationTeam</code> for your cluster, simplye implement a class that extends <code>ApplicationTeam</code>. You will need to supply a team name and an array of users.  </p>
-<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">TeamAwesome</span> <span class="k">extends</span> <span class="nx">ApplicationTeam</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">TeamAwesome</span> <span class="k">extends</span> <span class="nx">ApplicationTeam</span> <span class="p">{</span>
     <span class="kr">constructor</span><span class="p">(</span><span class="nx">app</span>: <span class="kt">App</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">super</span><span class="p">({</span>
             <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;team-awesome&quot;</span><span class="p">,</span>
@@ -600,7 +597,6 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>The <code>ApplicationTeam</code> will do the following:</p>
 <ul>
 <li>Create a namespace</li>
@@ -611,7 +607,7 @@
 </ul>
 <h3 id="platformteam">PlatformTeam<a class="headerlink" href="#platformteam" title="Permanent link">&para;</a></h3>
 <p>To create an <code>PlatformTeam</code> for your cluster, simplye implement a class that extends <code>PlatformTeam</code>. You will need to supply a team name and an array of users.  </p>
-<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">TeamAwesome</span> <span class="k">extends</span> <span class="nx">PlatformTeam</span> <span class="p">{</span>
+<p><div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">TeamAwesome</span> <span class="k">extends</span> <span class="nx">PlatformTeam</span> <span class="p">{</span>
     <span class="kr">constructor</span><span class="p">(</span><span class="nx">app</span>: <span class="kt">App</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">super</span><span class="p">({</span>
             <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;team-awesome&quot;</span><span class="p">,</span>
@@ -624,19 +620,17 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
-<p>The <code>PlatformTeam</code> class does the following:</p>
+The <code>PlatformTeam</code> class does the following:</p>
 <ul>
 <li>registers IAM users for admin access to the cluster (<code>kubectl</code> and console)</li>
 <li>registers an existing role (or create a new role) for cluster access with trust relationship with the provided/created role</li>
 </ul>
 <p>To reduce verbosity for some of the use cases, such as for platform teams, when in reality the use case is simply to enable admin cluster access for a specific role the blueprint provides support for add-hoc team creation as well. For example:</p>
-<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">adminTeam</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PlatformTeam</span><span class="p">(</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">adminTeam</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PlatformTeam</span><span class="p">(</span> <span class="p">{</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;second-adminteam&quot;</span><span class="p">,</span> <span class="c1">// make sure this is unique within organization</span>
     <span class="nx">userRole</span>: <span class="kt">Role.fromRoleArn</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">YOUR_ROLE_ARN</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="p">})</span>
 </code></pre></div>
-
 <h3 id="defaultteamroles">DefaultTeamRoles<a class="headerlink" href="#defaultteamroles" title="Permanent link">&para;</a></h3>
 <p>The <code>DefaultTeamRoles</code> class provides default RBAC configuration for <code>ApplicationTeams</code>:</p>
 <ul>
@@ -654,15 +648,14 @@
 <p>The example above is shown for a platform team, but it could be similarly applied to a regular team with restricted access. </p>
 <h2 id="cluster-access-kubectl">Cluster Access (<code>kubectl</code>)<a class="headerlink" href="#cluster-access-kubectl" title="Permanent link">&para;</a></h2>
 <p>The stack output will contain the <code>kubeconfig</code> update command, which should be shared with the development and platform teams.</p>
-<div class="codehilite"><pre><span></span><code><span class="cp">${</span><span class="n">teamname</span><span class="cp">}</span>teamrole arn:aws:iam::<span class="cp">${</span><span class="n">account</span><span class="cp">}</span>:role/west-dev-<span class="cp">${</span><span class="n">teamname</span><span class="cp">}</span>AccessRole3CDA6927-1QA4S3TYMY36N
+<div class="highlight"><pre><span></span><code>${teamname}teamrole arn:aws:iam::${account}:role/west-dev-${teamname}AccessRole3CDA6927-1QA4S3TYMY36N
 
-platformteamadmin   arn:aws:iam::<span class="cp">${</span><span class="n">account</span><span class="cp">}</span>:role/west-dev-<span class="cp">${</span><span class="n">platform</span><span class="o">-</span><span class="n">team</span><span class="o">-</span><span class="n">name</span><span class="cp">}</span>AccessRole57468BEC-8JYMM0HZZ2CE  
+platformteamadmin   arn:aws:iam::${account}:role/west-dev-${platform-team-name}AccessRole57468BEC-8JYMM0HZZ2CE  
 
-teamtroisaiamrole   arn:aws:iam::<span class="cp">${</span><span class="n">account</span><span class="cp">}</span>:role/west-dev-westdevinfbackendRole861AD63A-2K9W8X4DDF46
+teamtroisaiamrole   arn:aws:iam::${account}:role/west-dev-westdevinfbackendRole861AD63A-2K9W8X4DDF46
 
-westdevConfigCommand1AE70258    aws eks update-kubeconfig --name west-dev --region us-west-1 --role-arn arn:aws:iam::<span class="cp">${</span><span class="n">account</span><span class="cp">}</span>:role/west-dev-westdevMastersRole509E4B82-101MDZNTGFF08
+westdevConfigCommand1AE70258    aws eks update-kubeconfig --name west-dev --region us-west-1 --role-arn arn:aws:iam::${account}:role/west-dev-westdevMastersRole509E4B82-101MDZNTGFF08
 </code></pre></div>
-
 <p>Note the last command is to update <code>kubeconfig</code> with the proper context to access cluster using <code>kubectl</code>. The last argument of this command is <code>--role-arn</code> which by default is set to the cluster master role. </p>
 <p>Developers (members of each team) should use the role name for the team role, such as <code>burnhamteamrole</code> for team name <code>burnham</code>. 
 Platform administrators must use the role output for their team name, such as platformteamadmin in the above example.</p>
@@ -674,7 +667,7 @@ Platform administrators must use the role output for their team name, such as pl
 <p>The example for team-burnham includes a way to specify IAM users through a local or project CDK context. 
 Project context is defined in <code>cdk.json</code> under context key and local context is defined in <code>~/.cdk.json</code> under context key. </p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>➜ cat ~/.cdk.json 
+<div class="highlight"><pre><span></span><code>➜ cat ~/.cdk.json 
 {
     &quot;context&quot;: {
         &quot;team-burnham.users&quot;: &quot;arn:aws:iam::YOUR_ACCOUNT:user/dev1,arn:aws:iam::YOUR_ACCOUNT:user/dev2&quot;
@@ -699,7 +692,7 @@ Project context is defined in <code>cdk.json</code> under context key and local 
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../getting-started/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../ci-cd/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -708,19 +701,19 @@ Project context is defined in <code>cdk.json</code> under context key and local 
               <span class="md-footer__direction">
                 Previous
               </span>
-              Getting Started
+              CI/CD
             </div>
           </div>
         </a>
       
       
-        <a href="../ci-cd/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../addons/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              CI/CD
+              Overview
             </div>
           </div>
           <div class="md-footer__button md-icon">
