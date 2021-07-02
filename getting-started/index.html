@@ -776,7 +776,7 @@ arn:aws:cloudformation:us-east-1:115717706081:stack/east-test-1/e1b9e6a0-d5f6-11
     --path &quot;envs/dev&quot;
 </code></pre></div>
 <p>Sync the apps by running the following command</p>
-<div class="highlight"><pre><span></span><code>argocd app sync sample-apps 
+<div class="highlight"><pre><span></span><code>argocd app sync dev-apps 
 </code></pre></div>
 <h3 id="validate-deployments">Validate deployments.<a class="headerlink" href="#validate-deployments" title="Permanent link">&para;</a></h3>
 <p>To validate your deployments, leverage <code>kubectl port-forwarding</code> to access the <code>guestbook-ui</code> service for <code>team-burnham</code>.</p>
