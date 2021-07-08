@@ -2,7 +2,7 @@ import { ClusterAddOn, ClusterInfo } from "../../stacks/eks-blueprint-stack";
 
 export class ArgoCDAddOn implements ClusterAddOn {
 
-    readonly namespace : string;
+    readonly namespace: string;
 
     constructor(namespace?: string) {
         this.namespace = namespace ?? "argocd";
