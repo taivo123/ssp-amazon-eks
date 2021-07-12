@@ -728,7 +728,7 @@ arn:aws:cloudformation:us-east-1:115717706081:stack/east-test-1/e1b9e6a0-d5f6-11
 <div class="highlight"><pre><span></span><code>kubectl port-forward $ARGO_SERVER -n argocd 8080:443
 </code></pre></div>
 <p>Open your browser to http://localhost:8080 and you should see the ArgoCD login screen.</p>
-<p><img alt="ArgoCD" src="/assets/images/argo-cd.png" /></p>
+<p><img alt="ArgoCD" src="../assets/images/argo-cd.png" /></p>
 <h3 id="logging-into-argocd">Logging Into ArgoCD<a class="headerlink" href="#logging-into-argocd" title="Permanent link">&para;</a></h3>
 <p>ArgoCD will create an <code>admin</code> user and password on a fresh install. To get the ArgoCD admin password, run the following.</p>
 <div class="highlight"><pre><span></span><code>export ARGO_PASSWORD=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath=&quot;{.data.password}&quot; | base64 -d)
@@ -761,9 +761,9 @@ arn:aws:cloudformation:us-east-1:115717706081:stack/east-test-1/e1b9e6a0-d5f6-11
 </code></pre></div>
 <p>Open up <code>localhost:4040</code> in your browser and you should see the application.</p>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>For information on Onboarding teams to your clusters, see <a href="../teams"><code>Team</code> documentation</a>. </p>
-<p>For information on setting up Continuous Delivery pipelines for your infrastructure, see <a href="../ci-cd"><code>Pipelines</code> documentation</a>.</p>
-<p>For information on supported Add-ons, see <a href="../addons"><code>Add-on</code> documentation</a></p>
+<p>For information on onboarding teams to your clusters, see <a href="../teams"><code>Team</code> documentation</a>. </p>
+<p>For information on deploying Continuous Delivery pipelines for your infrastructure, see <a href="../ci-cd"><code>Pipelines</code> documentation</a>.</p>
+<p>For information on supported add-ons, see <a href="../addons"><code>Add-on</code> documentation</a></p>
 <p>For information on Onboarding and managing workloads in your clusters, see <a href="../workloads"><code>Workload</code> documentation</a>. </p>
                 
               
