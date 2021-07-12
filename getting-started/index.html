@@ -14,7 +14,7 @@
     
     
       
-        <title>Getting Started - Amazon EKS SSP Quick Start</title>
+        <title>Getting Started - Amazon EKS SSP Quickstart</title>
       
     
     
@@ -70,7 +70,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Amazon EKS SSP Quick Start" class="md-header__button md-logo" aria-label="Amazon EKS SSP Quick Start" data-md-component="logo">
+    <a href=".." title="Amazon EKS SSP Quickstart" class="md-header__button md-logo" aria-label="Amazon EKS SSP Quickstart" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -83,7 +83,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Amazon EKS SSP Quick Start
+            Amazon EKS SSP Quickstart
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -163,13 +163,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Amazon EKS SSP Quick Start" class="md-nav__button md-logo" aria-label="Amazon EKS SSP Quick Start" data-md-component="logo">
+    <a href=".." title="Amazon EKS SSP Quickstart" class="md-nav__button md-logo" aria-label="Amazon EKS SSP Quickstart" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    Amazon EKS SSP Quick Start
+    Amazon EKS SSP Quickstart
   </label>
   
     <div class="md-nav__source">
@@ -437,19 +437,7 @@
   
     <li class="md-nav__item">
       <a href="../addons/aws-load-balancer-controller/" class="md-nav__link">
-        AWS Load Balancer Controller
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../addons/calico/" class="md-nav__link">
-        Calico
+        Load Balancer Controller
       </a>
     </li>
   
@@ -508,18 +496,6 @@
           Cluster Providers
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cluster-providers/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
           
             
   
@@ -716,6 +692,7 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> AWS and Kubernetes resources needed to support <a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html">Cluster Autoscaler</a>.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> AWS and Kubernetes resources needed to forward logs and metrics to <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy-container-insights-EKS.html">Container Insights</a>.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> AWS and Kubernetes resources needed to support <a href="https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html">AWS Load Balancer Controller</a>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> AWS and Kubernetes resources needed to support <a href="https://aws.amazon.com/xray/">AWS X-Ray</a>.</li>
 </ul>
 <h2 id="cluster-access">Cluster Access<a class="headerlink" href="#cluster-access" title="Permanent link">&para;</a></h2>
 <p>Once the deploy completes, you will see output in your terminal window similar to the following:</p>
@@ -759,20 +736,20 @@ arn:aws:cloudformation:us-east-1:115717706081:stack/east-test-1/e1b9e6a0-d5f6-11
 <p>While still port-forwarding, login via the following.</p>
 <div class="highlight"><pre><span></span><code>argocd login localhost:8080 --username admin --password $ARGO_PASSWORD
 </code></pre></div>
-<p>You can also login to the ArgoCD UI with generated password. </p>
+<p>You can also login to the ArgoCD UI with generated password and the username <code>admin</code>. </p>
 <div class="highlight"><pre><span></span><code>echo $ARGO_PASSWORD
 </code></pre></div>
 <h3 id="deploy-workloads-to-your-cluster">Deploy workloads to your cluster<a class="headerlink" href="#deploy-workloads-to-your-cluster" title="Permanent link">&para;</a></h3>
 <p>Create a project in Argo by running the following command</p>
 <div class="highlight"><pre><span></span><code>argocd proj create sample \
     -d https://kubernetes.default.svc,argocd \
-    -s https://github.com/shapirov103/argo-apps.git
+    -s https://github.com/aws-samples/ssp-eks-workloads.git
 </code></pre></div>
 <p>Create the application within Argo by running the following command</p>
 <div class="highlight"><pre><span></span><code>argocd app create dev-apps \
     --dest-namespace argocd  \
     --dest-server https://kubernetes.default.svc  \
-    --repo https://github.com/shapirov103/argo-apps.git \
+    --repo https://github.com/aws-samples/ssp-eks-workloads.git \
     --path &quot;envs/dev&quot;
 </code></pre></div>
 <p>Sync the apps by running the following command</p>
@@ -784,10 +761,10 @@ arn:aws:cloudformation:us-east-1:115717706081:stack/east-test-1/e1b9e6a0-d5f6-11
 </code></pre></div>
 <p>Open up <code>localhost:4040</code> in your browser and you should see the application.</p>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>For information on setting up Continuous Delivery pipelines for your infrastructure, see <a href="/ci-cd/"><code>CI/CD</code> documentation</a>.</p>
-<p>For information on supported Addons, see <a href="/addons/"><code>AddOn</code> documentation</a></p>
-<p>For information on Onboarding teams to your clusters, see <a href="/teams/"><code>Team</code> documentation</a>. </p>
-<p>For information on Onboarding and managing workloads in your clusters, see <a href="/workloads/"><code>Workload</code> documentation</a>. </p>
+<p>For information on Onboarding teams to your clusters, see <a href="./teams/"><code>Team</code> documentation</a>. </p>
+<p>For information on setting up Continuous Delivery pipelines for your infrastructure, see <a href="./ci-cd/"><code>Pipelines</code> documentation</a>.</p>
+<p>For information on supported Add-ons, see <a href="./addons/"><code>Add-on</code> documentation</a></p>
+<p>For information on Onboarding and managing workloads in your clusters, see <a href="./workloads/"><code>Workload</code> documentation</a>. </p>
                 
               
               
