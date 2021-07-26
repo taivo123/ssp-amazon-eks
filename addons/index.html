@@ -326,8 +326,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-addons" class="md-nav__link">
-    Supported AddOns
+  <a href="#supported-add-os" class="md-nav__link">
+    Supported Add-os
   </a>
   
 </li>
@@ -346,7 +346,7 @@
   
     <li class="md-nav__item">
       <a href="app-mesh/" class="md-nav__link">
-        App Mesh
+        AWS App Mesh
       </a>
     </li>
   
@@ -407,6 +407,78 @@
     <li class="md-nav__item">
       <a href="container-insights/" class="md-nav__link">
         Container Insights
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="external-dns/" class="md-nav__link">
+        External DNS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="metrics-server/" class="md-nav__link">
+        Metrics Server
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nginx/" class="md-nav__link">
+        Nginx
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ssm-agent/" class="md-nav__link">
+        SSM Agent
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/weaveworks/weave-gitops-ssp-addon" class="md-nav__link">
+        Weave GitOps
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="xray/" class="md-nav__link">
+        AWS XRay
       </a>
     </li>
   
@@ -498,8 +570,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-addons" class="md-nav__link">
-    Supported AddOns
+  <a href="#supported-add-os" class="md-nav__link">
+    Supported Add-os
   </a>
   
 </li>
@@ -522,9 +594,9 @@
                 
                 
                 <h1 id="add-ons">Add-ons<a class="headerlink" href="#add-ons" title="Permanent link">&para;</a></h1>
-<p>The <code>cdk-eks-blueprint</code> framework leverages a modular approach to managing <a href="https://kubernetes.io/docs/concepts/cluster-administration/addons/">add-ons</a> that run within the context of a Kubernetes cluster. Customers are free to select the add-ons that run in each of their blueprint clusters.</p>
-<p>Within the context of the <code>cdk-eks-blueprint</code> framework, an add-on is simply an class, and the implementation of an add-on can do whatever is necessary to support the desired add-on functionality. This can include applying manifests to a Kubernetes cluster or calling AWS APIs to provision new resources. </p>
-<h2 id="supported-addons">Supported AddOns<a class="headerlink" href="#supported-addons" title="Permanent link">&para;</a></h2>
+<p>The <code>cdk-eks-blueprint</code> framework leverages a modular approach to managing <a href="https://kubernetes.io/docs/concepts/cluster-administration/addons/">Add-ons</a> that run within the context of a Kubernetes cluster. Customers are free to select the add-ons that run in each of their blueprint clusters.</p>
+<p>Within the context of the <code>cdk-eks-blueprint</code> framework, an Add-n is simply an interface, and the implementation of an add-on can do whatever is necessary to support the desired add-on functionality. This can include applying manifests to a Kubernetes cluster or calling AWS APIs to provision new resources. </p>
+<h2 id="supported-add-os">Supported Add-os<a class="headerlink" href="#supported-add-os" title="Permanent link">&para;</a></h2>
 <p>The framework currently supports the following add-ons.</p>
 <table>
 <thead>
@@ -559,16 +631,28 @@
 <td>Adds the standard cluster autoscaler (<a href="https://github.com/awslabs/karpenter">Karpenter</a> is coming)</td>
 </tr>
 <tr>
-<td><code>MetricsServerAddOn</code></td>
+<td><a href="./external-dns"><code>ExternalDnsAddOn</code></a></td>
+<td>Adds <a href="https://github.com/kubernetes-sigs/external-dns">External DNS</a> support for AWS to the cluster, integrating with Amazon Route 53</td>
+</tr>
+<tr>
+<td><a href="./metrics-server"><code>MetricsServerAddOn</code></a></td>
 <td>Adds metrics server (pre-req for HPA and other monitoring tools)</td>
 </tr>
 <tr>
-<td><code>NginxAddOn</code></td>
+<td><a href="nginx/"><code>NginxAddOn</code></a></td>
 <td>Adds NGINX ingress controller</td>
 </tr>
 <tr>
-<td><code>XrayAddOn</code></td>
-<td>(./xray) Adds XRay Daemon to the EKS Cluster</td>
+<td><a href="./ssm-agent"><code>SSMAgentAddOn</code></a></td>
+<td>Adds <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html">Amazon SSM Agent</a> to worker nodes</td>
+</tr>
+<tr>
+<td><a href="https://github.com/weaveworks/weave-gitops-ssp-addon"><code>Weave GitOps</code></a></td>
+<td><a href="https://www.weave.works/product/gitops-core/">Weave GitOps Core</a> AddOn</td>
+</tr>
+<tr>
+<td><a href="./xray"><code>XrayAddOn</code></a></td>
+<td>Adds XRay Daemon to the EKS Cluster</td>
 </tr>
 </tbody>
 </table>
@@ -611,7 +695,7 @@
               <span class="md-footer__direction">
                 Next
               </span>
-              App Mesh
+              AWS App Mesh
             </div>
           </div>
           <div class="md-footer__button md-icon">

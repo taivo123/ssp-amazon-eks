@@ -14,7 +14,7 @@
     
     
       
-        <title>AWS App Mesh - Amazon EKS SSP Quick Start</title>
+        <title>External DNS - Amazon EKS SSP Quick Start</title>
       
     
     
@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws-app-mesh-add-on" class="md-skip">
+        <a href="#external-dns-add-on" class="md-skip">
           Skip to content
         </a>
       
@@ -89,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              AWS App Mesh
+              External DNS
             
           </span>
         </div>
@@ -303,79 +303,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          AWS App Mesh
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../app-mesh/" class="md-nav__link">
         AWS App Mesh
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    Usage
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#app-mesh-sidecar-injection" class="md-nav__link">
-    App Mesh Sidecar Injection
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tracing-integration" class="md-nav__link">
-    Tracing Integration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#app-mesh-and-xray-integration-example" class="md-nav__link">
-    App Mesh and XRay Integration Example
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functionality" class="md-nav__link">
-    Functionality
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -443,11 +375,72 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../external-dns/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          External DNS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         External DNS
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hosted-zone-providers" class="md-nav__link">
+    Hosted Zone Providers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-options" class="md-nav__link">
+    Configuration Options
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functionality" class="md-nav__link">
+    Functionality
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -605,22 +598,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#app-mesh-sidecar-injection" class="md-nav__link">
-    App Mesh Sidecar Injection
+  <a href="#hosted-zone-providers" class="md-nav__link">
+    Hosted Zone Providers
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tracing-integration" class="md-nav__link">
-    Tracing Integration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#app-mesh-and-xray-integration-example" class="md-nav__link">
-    App Mesh and XRay Integration Example
+  <a href="#configuration-options" class="md-nav__link">
+    Configuration Options
   </a>
   
 </li>
@@ -644,75 +630,116 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aws-quickstart/quickstart-ssp-amazon-eks/edit/master/docs/addons/app-mesh.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aws-quickstart/quickstart-ssp-amazon-eks/edit/master/docs/addons/external-dns.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="aws-app-mesh-add-on">AWS App Mesh Add-on<a class="headerlink" href="#aws-app-mesh-add-on" title="Permanent link">&para;</a></h1>
-<p><a href="https://aws.amazon.com/app-mesh/">AWS App Mesh</a> is a service mesh that makes it easy to monitor and control services.The App Mesh add-on provisions the necessary AWS resources and Helm charts into an EKS cluster that are needed to support App Mesh for EKS workloads. </p>
-<p>Full documentation on using App Mesh with EKS <a href="https://docs.aws.amazon.com/app-mesh/latest/userguide/getting-started-kubernetes.html">can be found here</a>.</p>
+                <h1 id="external-dns-add-on">External DNS Add-on<a class="headerlink" href="#external-dns-add-on" title="Permanent link">&para;</a></h1>
+<p>External DNS add-on is based on the <a href="https://github.com/kubernetes-sigs/external-dns">ExternalDNS</a> open source project and allows integration of exposed Kubernetes services and Ingresses with DNS providers, in particular <a href="https://aws.amazon.com/route53/">Amazon Route 53</a>.</p>
+<p>The add-on provides functionality to configure IAM policies and Kubernetes service accounts for Route 53 integration support based on <a href="https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md">AWS Tutorial for External DNS</a>.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">AppMeshAddOn</span><span class="p">,</span> <span class="nx">ClusterAddOn</span><span class="p">,</span> <span class="nx">EksBlueprint</span> <span class="p">}</span>  <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
+<p><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">ssp</span> <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">appMeshAddOn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AppMeshAddOn</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span> <span class="nx">appMeshAddOn</span> <span class="p">];</span>
+<span class="k">readonly</span> <span class="nx">externalDns</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">ExternalDnsAddon</span><span class="p">({</span>
+    <span class="nx">hostedZone</span>: <span class="kt">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">LookupHostedZoneProvider</span><span class="p">(</span><span class="nx">myHostedZoneName</span><span class="p">)</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span> <span class="nx">externalDns</span> <span class="p">];</span>
 
 <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cdk</span><span class="p">.</span><span class="nx">App</span><span class="p">();</span>
 <span class="k">new</span> <span class="nx">EksBlueprint</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="s1">&#39;my-stack-name&#39;</span><span class="p">,</span> <span class="nx">addOns</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{</span>
-  <span class="nx">env</span><span class="o">:</span> <span class="p">{</span>    
+  <span class="nx">env</span><span class="o">:</span> <span class="p">{</span>
       <span class="nx">account</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">AWS_ACCOUNT_ID</span><span class="o">&gt;</span><span class="p">,</span>
       <span class="nx">region</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">AWS_REGION</span><span class="o">&gt;</span><span class="p">,</span>
   <span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
-<h2 id="app-mesh-sidecar-injection">App Mesh Sidecar Injection<a class="headerlink" href="#app-mesh-sidecar-injection" title="Permanent link">&para;</a></h2>
-<p>You can configure certain namespaces for automatic injection of App Mesh sidecar (Envoy) proxy. This will enable handling cross-cutting aspects such as service to service communication, resiliency patterns (Circuit breaker/retries) as well handle ingress and egress for the workloads running in the namespace.</p>
-<p>Here is an example of a team with a namespace configured for automatic sidecar injection:</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">TeamBurnhamSetup</span> <span class="k">extends</span> <span class="nx">ApplicationTeam</span> <span class="p">{</span>
-    <span class="kr">constructor</span><span class="p">(</span><span class="nx">scope</span>: <span class="kt">Construct</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">({</span>
-            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;burnham&quot;</span><span class="p">,</span>
-            <span class="nx">users</span>: <span class="kt">getUserArns</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="s2">&quot;team-burnham.users&quot;</span><span class="p">),</span>
-            <span class="nx">namespaceAnnotations</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;appmesh.k8s.aws/sidecarInjectorWebhook&quot;</span><span class="o">:</span> <span class="s2">&quot;enabled&quot;</span>
-            <span class="p">}</span>
-        <span class="p">});</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+To validate that external DNS add-on is running ensure that the add-on deployment is in <code>RUNNING</code> state:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Assuming add-on is installed in the external-dns namespace.</span>
+$ kubectl get po -n external-dns
+NAME                           READY   STATUS    RESTARTS   AGE
+external-dns-fcf6c9c66-xd8f4   <span class="m">1</span>/1     Running   <span class="m">0</span>          3d3h
 </code></pre></div>
-<h2 id="tracing-integration">Tracing Integration<a class="headerlink" href="#tracing-integration" title="Permanent link">&para;</a></h2>
-<p>App Mesh integrates with a number of tracing providers for distributed tracing support. At the moment it supports AWS X-Ray, Jaeger and Datadog providers. 
-X-Ray integration at present requires either a managed node group or a self-managed auto-scaling group backed by EC2. Fargate is not supported. </p>
-<p>Enabling integration:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">appMeshAddOn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">AppMeshAddOn</span><span class="p">({</span><span class="nx">enableTracing</span>: <span class="kt">true</span><span class="p">,</span> <span class="nx">tracingProvider</span><span class="o">:</span> <span class="s2">&quot;x-ray&quot;</span><span class="p">}),</span>
+<p>You can now provision external services and ingresses integrating with Route 53. 
+For example to provision an NLB you can use the following service manifest:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">annotations</span><span class="p">:</span>
+    <span class="nt">service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout</span><span class="p">:</span> <span class="s">&#39;60&#39;</span>
+    <span class="nt">service.beta.kubernetes.io/aws-load-balancer-type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nlb</span>
+    <span class="nt">external-dns.alpha.kubernetes.io/hostname</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;MyDomainName&gt;</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">udp-test1</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">LoadBalancer</span>
+  <span class="nt">ports</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+    <span class="nt">protocol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TCP</span>
+    <span class="nt">targetPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">your-app</span>
 </code></pre></div>
-<p>When configured, App Mesh will automatically inject an XRay sidecar to handle tracing which enables troubleshooting latency issues.</p>
-<h2 id="app-mesh-and-xray-integration-example">App Mesh and XRay Integration Example<a class="headerlink" href="#app-mesh-and-xray-integration-example" title="Permanent link">&para;</a></h2>
-<p><code>team-burnham</code> sample workload repository is configured with an <a href="https://github.com/aws-samples/ssp-eks-workloads/tree/master/teams/team-burnham/dev">example workload</a> that demonstrates meshified workloads with SSP. </p>
-<p>After workload is bootstrapped with ArgoCD or applied directly to the cluster in <code>team-burnham</code> namespace it will create a <a href="https://github.com/aws/aws-app-mesh-examples/tree/main/examples/apps/djapp">DJ application</a> similar to the one used for the <a href="https://www.eksworkshop.com/intermediate/330_app_mesh/">EKS Workshop</a>. 
-It was adapted for GitOps integration with SSP and relies on automatic sidecar injection as well as tracing integration with App Mesh.</p>
-<p>After the workload is deployed you can generate some traffic to populated traces:</p>
-<div class="highlight"><pre><span></span><code>$ <span class="nb">export</span> <span class="nv">DJ_POD_NAME</span><span class="o">=</span><span class="k">$(</span>kubectl get pods -n team-burnham -l <span class="nv">app</span><span class="o">=</span>dj -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[].metadata.name}&#39;</span><span class="k">)</span>
-$ kubectl -n team-burnham <span class="nb">exec</span> -it <span class="si">${</span><span class="nv">DJ_POD_NAME</span><span class="si">}</span> -c dj bash
-$ <span class="k">while</span> true<span class="p">;</span> <span class="k">do</span>
-  curl http://jazz.team-burnham.svc.cluster.local:9080/
-  <span class="nb">echo</span>
-  curl http://metal.team-burnham.svc.cluster.local:9080/
-  <span class="nb">echo</span>
-<span class="k">done</span>
+<p>Note the <code>external-dns.alpha.kubernetes.io/hostname</code> annotation for the service name that allows specifying its domain name. </p>
+<h2 id="hosted-zone-providers">Hosted Zone Providers<a class="headerlink" href="#hosted-zone-providers" title="Permanent link">&para;</a></h2>
+<p>In order for external DNS to work, you need to supply one or more hosted zones. You need a reference to the EKS stack in order to either create or look up the hosted zones. </p>
+<p>To help customers handle common use cases for Route 53 provisioning the framework provides a few convenience providers. </p>
+<p><strong>Name look-up and direct import provider:</strong>
+This provider will allow to bind to an existing hosted zone based on its name.</p>
+<div class="highlight"><pre><span></span><code>    <span class="kd">const</span> <span class="nx">myDomainName</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">ExternalDnsAddon</span><span class="p">({</span>
+        <span class="nx">hostedZone</span>: <span class="kt">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">LookupHostedZoneProvider</span><span class="p">(</span><span class="nx">myDomainName</span><span class="p">);</span>
+    <span class="p">})</span>
 </code></pre></div>
-<p>The above script will start producing traces with XRay. Once traces are produced (for a minute or more) you can navigate to the AWS XRay console and click on Service Map. 
-You will see a screenshot similar to this:</p>
-<p><img alt="App Mesh XRay Service Map" src="/assets/images/appmesh-xray.png" /></p>
-<h2 id="functionality">Functionality<a class="headerlink" href="#functionality" title="Permanent link">&para;</a></h2>
+<p>If the hosted zone ID is known, then the recommended approach is to use a <code>ImportHostedZoneProvider</code> which bypasses any lookup calls.</p>
+<div class="highlight"><pre><span></span><code>    <span class="kd">const</span> <span class="nx">myHostedZoneId</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">ExternalDnsAddon</span><span class="p">({</span>
+        <span class="nx">hostedZone</span>: <span class="kt">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">ImportHostedZoneProvider</span><span class="p">(</span><span class="nx">myDomainName</span><span class="p">);</span>
+    <span class="p">})</span>
+</code></pre></div>
+<p><strong>Delegating Hosted Zone Provider</strong></p>
+<p>In many cases, enterprises choose to decouple provisioning of root domains and subdomains. A common pattern is to have a specific DNS account (AWS account) hosting the root domain, while subdomains may be created within individual workload accounts. </p>
+<p>This implies cross-account access from child account to the parent DNS account for subdomain delegation. </p>
+<p>Prerequisites:</p>
 <ol>
-<li>Creates an App Mesh IAM service account.</li>
-<li>Adds both <code>AWSCloudMapFullAccess</code> and <code>AWSAppMeshFullAccess</code> roles to the service account.</li>
-<li>Adds <code>AWSXRayDaemonWriteAccess</code> to the instance role if XRay integration is enabled.</li>
-<li>Creates the <code>appmesh-system</code> namespace.</li>
-<li>Deploys the <a href="https://github.com/aws/eks-charts/tree/master/stable/appmesh-controller"><code>appmesh-controller</code></a> Helm chart into the cluster.</li>
+<li>
+<p>Parent account defines an IAM role with the following managed policies:
+<code>AmazonRoute53DomainsFullAccess</code>
+<code>AmazonRoute53ReadOnlyAccess</code>
+<code>AmazonRoute53AutoNamingFullAccess</code></p>
+</li>
+<li>
+<p>Create trust relationship between this role and the child account that is expected to add subdomains. For info see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">IAM tutorial</a>.</p>
+</li>
 </ol>
+<p>Example:</p>
+<p>Let's assume that parent DNS account <code>parentAccountId</code> has domain named <code>myglobal-domain.com</code>. Now when provisioned an SSP EKS cluster you would like to use a stage specific name like <code>dev.myglobal-domain.com</code> or <code>test.myglobal-domain.com</code>. In addition to these requirements, you would like to enable tenant specific access to those domains such as <code>my-tenant1.dev.myglobal-domain.com</code> or team specific access <code>team-riker.dev.myglobal-domain.com</code>. </p>
+<p>The setup will look the following way:</p>
+<ol>
+<li>In the <code>parentAccountId</code> account you create a role for delegation (<code>DomainOperatorRole</code> in this example) and a trust relationship to the child account in which SSP EKS blueprint will be provisioned. In a general case, the number of child accounts can be large, so each of them will have to be listed in the trust relationship.</li>
+<li>In the <code>parentAccountId</code> you create a public hosted zone for <code>myglobal-domain.com</code>. With that the setup that may require separate automation (or a manual process) is complete. </li>
+<li>Use the following configuration of the add-on:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">useWildcardDomain</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="k">readonly</span> <span class="nx">externalDns</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">ExternalDnsAddon</span><span class="p">({</span>
+    <span class="nx">hostedZone</span>: <span class="kt">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">DelegatingHostedZoneProvider</span><span class="p">({</span>
+        <span class="nx">parentDomain</span><span class="o">:</span> <span class="s1">&#39;myglobal-domain.com&#39;</span><span class="p">,</span>
+        <span class="nx">subdomain</span><span class="o">:</span> <span class="s1">&#39;dev.myglobal-domain.com&#39;</span><span class="p">,</span> 
+        <span class="nx">parentAccountId</span>: <span class="kt">parentDnsAccountId</span><span class="p">,</span>
+        <span class="nx">delegatingRoleName</span><span class="o">:</span> <span class="s1">&#39;DomainOperatorRole&#39;</span><span class="p">,</span> 
+        <span class="nx">wildcardSubdomain</span>: <span class="kt">useWildcardDomain</span>
+    <span class="p">})</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>The parameter <code>useWildcardDomain</code> above when set to true will also create a CNAME for <code>*.dev.myglobal-domain.com</code>. This is at the moment used for host based routing within EKS (e.g. with NGINX ingress).</p>
+<h2 id="configuration-options">Configuration Options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>namespace</code>: Optional target namespace where add-on will be installed. Changing this value on the operating cluster is not recommended. Set to <code>external-dns</code> by default.</li>
+<li><code>version</code>: The add-on is leveraging a Bitnami helm chart. This parameter allows overriding the helm chart version used.</li>
+<li><code>hostedZone</code>: Hosted zone provider is a interface that provides one or more hosted zones that the add-on will leverage for the service and ingress configuration.</li>
+</ul>
+<h2 id="functionality">Functionality<a class="headerlink" href="#functionality" title="Permanent link">&para;</a></h2>
+<p>Applies External-DNS configuration for AWS DNS provider. See <a href="https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md">AWS Tutorial for External DNS</a> for more information.</p>
                 
               
               
@@ -731,7 +758,7 @@ You will see a screenshot similar to this:</p>
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../container-insights/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -740,19 +767,19 @@ You will see a screenshot similar to this:</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Overview
+              Container Insights
             </div>
           </div>
         </a>
       
       
-        <a href="../argo-cd/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../metrics-server/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              ArgoCD
+              Metrics Server
             </div>
           </div>
           <div class="md-footer__button md-icon">

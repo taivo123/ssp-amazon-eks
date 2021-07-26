@@ -304,7 +304,7 @@
   
     <li class="md-nav__item">
       <a href="../../addons/app-mesh/" class="md-nav__link">
-        App Mesh
+        AWS App Mesh
       </a>
     </li>
   
@@ -365,6 +365,78 @@
     <li class="md-nav__item">
       <a href="../../addons/container-insights/" class="md-nav__link">
         Container Insights
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../addons/external-dns/" class="md-nav__link">
+        External DNS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../addons/metrics-server/" class="md-nav__link">
+        Metrics Server
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../addons/nginx/" class="md-nav__link">
+        Nginx
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../addons/ssm-agent/" class="md-nav__link">
+        SSM Agent
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/weaveworks/weave-gitops-ssp-addon" class="md-nav__link">
+        Weave GitOps
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../addons/xray/" class="md-nav__link">
+        AWS XRay
       </a>
     </li>
   
@@ -452,8 +524,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stack-configuration" class="md-nav__link">
-    Stack Configuration
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
   </a>
   
 </li>
@@ -512,8 +591,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stack-configuration" class="md-nav__link">
-    Stack Configuration
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
   </a>
   
 </li>
@@ -550,43 +636,96 @@
                 
                 
                 <h1 id="ec2-cluster-provider">EC2 Cluster Provider<a class="headerlink" href="#ec2-cluster-provider" title="Permanent link">&para;</a></h1>
-<h2 id="stack-configuration">Stack Configuration<a class="headerlink" href="#stack-configuration" title="Permanent link">&para;</a></h2>
-<p>Supports context variables (specify in cdk.json, cdk.context.json, ~/.cdk.json or pass with -c command line option):</p>
+<p>The <code>EC2ClusterProvider</code> allows you to provision an EKS cluster which leverages <a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html">EKS managed node groups</a>(MNGs) for compute capacity. MNGs automate the provisioning and lifecycle management of nodes (Amazon EC2 instances) for Amazon EKS Kubernetes clusters.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">props</span>: <span class="kt">EC2ProviderClusterProps</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">minSize</span>: <span class="kt">1</span><span class="p">,</span>
+    <span class="nx">maxSize</span>: <span class="kt">10</span><span class="p">,</span>
+    <span class="nx">desiredSize</span>: <span class="kt">4</span><span class="p">,</span>
+    <span class="nx">instanceTypes</span><span class="o">:</span> <span class="p">[</span><span class="nx">ew</span> <span class="nx">InstanceType</span><span class="p">(</span><span class="s1">&#39;m5.large&#39;</span><span class="p">)],</span>
+    <span class="nx">amiType</span>: <span class="kt">NodegroupAmiType.AL2_X86_64</span><span class="p">,</span>
+    <span class="nx">nodeGroupCapacityType</span>: <span class="kt">CapacityType.ON_DEMAND</span><span class="p">,</span>
+    <span class="nx">version</span>: <span class="kt">KubernetesVersion.V1_20</span><span class="p">,</span>
+    <span class="nx">amiReleaseVersion</span><span class="o">:</span> <span class="s2">&quot;1.20.4-20210519&quot;</span> <span class="c1">// this will upgrade kubelet to 1.20.4</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">clusterProvider</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">EC2ClusterProvider</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+<span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">EksBlueprint</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;blueprint&#39;</span><span class="p">,</span> <span class="nx">teams</span><span class="p">,</span> <span class="nx">addOns</span><span class="p">,</span> <span class="nx">clusterProvider</span> <span class="p">});</span>
+</code></pre></div>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>THe <code>EC2ClusterProvider</code> supports the following configuration options. </p>
+<table>
+<thead>
+<tr>
+<th>Prop</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minSize</td>
+<td>Min cluster size, must be positive integer greater than 0 (default 1).</td>
+</tr>
+<tr>
+<td>maxSize</td>
+<td>Max cluster size, must be greater than minSize (default 3).</td>
+</tr>
+<tr>
+<td>desiredSize</td>
+<td>Desired cluster size, must be greater or equal to minSize (default <code>min-size</code>).</td>
+</tr>
+<tr>
+<td>instanceTypes</td>
+<td>Type of instance for the EKS cluster, must be a valid instance type, i.e. t3.medium (default "m5.large")</td>
+</tr>
+<tr>
+<td>amiType</td>
+<td>The AMI type for the managed node group.</td>
+</tr>
+<tr>
+<td>amiReleaseVersion</td>
+<td>The AMI Kuberenetes release version for the node group.</td>
+</tr>
+<tr>
+<td>nodeGroupCapacityType</td>
+<td>The capacity type for the node group (on demand or spot).</td>
+</tr>
+<tr>
+<td>vpcSubnets</td>
+<td>The subnets for the cluster.</td>
+</tr>
+<tr>
+<td>privateCluster</td>
+<td>public cluster, you will need to provide a list of subnets. There should be public and private subnets for EKS cluster to work. For more information see <a href="https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html">Cluster VPC Considerations</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>Configuration can also be supplied via context variables (specify in cdk.json, cdk.context.json, ~/.cdk.json or pass with -c command line option):</p>
 <ul>
-<li><code>eks.default.instance-type</code>: (defaulted to "m5.large") Type of instance for the EKS cluster, must be a valid instance type like t3.medium</li>
-<li><code>eks.default.vpc</code>: Specifies whether to use an existing VPC (if specified) or create a new one if not specified.</li>
-<li><code>eks.default.min-size</code>: Min cluster size, must be positive integer greater than 0 (default 1).</li>
-<li><code>eks.default.max-size</code>: Max cluster size, must be greater than minSize (default 3).</li>
-<li><code>eks.default.desired-size</code>: Desired cluster size, must be greater or equal to minSize (default <code>min-size</code>).</li>
+<li><code>eks.default.min-size</code></li>
+<li><code>eks.default.max-size</code> </li>
+<li><code>eks.default.desired-size</code></li>
+<li><code>eks.default.instance-type</code> </li>
+<li><code>eks.default.private-cluster</code></li>
 </ul>
-<p><code>eks.default.vpc</code> supports an option to look up default VPC in your account/region if the value is set to <code>default</code>. Note, there should be  public and private subnets for EKS cluster to work. For more information see <a href="https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html">Cluster VPC Considerations</a>.</p>
 <p>Configuration of the EC2 parameters through context parameters makes sense if you would like to apply default configuration to multiple clusters without the need to explicitly pass <code>EC2ProviderClusterProps</code> to each cluster provider.</p>
 <h2 id="upgrading-worker-nodes">Upgrading Worker Nodes<a class="headerlink" href="#upgrading-worker-nodes" title="Permanent link">&para;</a></h2>
-<p>Upgrading Kubernetes version at the cluster configuration at present won't impact the kubelet version running on the worker nodes. 
-To perform an in-place upgrade of the cluster, including worker nodes use the following configuration:</p>
-<div class="highlight"><pre><span></span><code>const props: EC2ProviderClusterProps = {
-    version: KubernetesVersion.V1_20,
-    instanceTypes: [new InstanceType(&#39;t3.large&#39;)],
-    amiType: NodegroupAmiType.AL2_X86_64,
-    amiReleaseVersion: &quot;1.20.4-20210519&quot; // this will upgrade kubelet to 1.20.4
-}
-
-const myClusterProvider = new EC2ClusterProvider(props);
-
-new EksBlueprint(app, { id: &quot;test-cluster-provider&quot;, clusterProvider: myClusterProvider });
+<p>Upgrading Kubernetes versions via cluster configuration at present won't impact the kubelet version running on the worker nodes. To perform an in-place upgrade of the cluster, you must also update the <code>amiReleaseVersion</code> property. The following demonstrates how to do so.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">props</span>: <span class="kt">EC2ProviderClusterProps</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">version</span>: <span class="kt">KubernetesVersion.V1_20</span><span class="p">,</span>
+    <span class="nx">amiReleaseVersion</span><span class="o">:</span> <span class="s2">&quot;1.20.4-20210519&quot;</span> <span class="c1">// this will upgrade kubelet to 1.20.4</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>Note: consult the <a href="https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html">official EKS documentation</a> for the information of the AMI release version that matches your Kubernetes version.</p>
+<p>Note: consult the <a href="https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html">official EKS documentation</a> for information ion the AMI release version that matches Kubernetes versions.</p>
 <h2 id="creating-clusters-with-spot-capacity-type">Creating Clusters with Spot Capacity Type<a class="headerlink" href="#creating-clusters-with-spot-capacity-type" title="Permanent link">&para;</a></h2>
-<p>You can specify capacity type with the cluster configuration options:</p>
-<div class="highlight"><pre><span></span><code>const props: EC2ProviderClusterProps = {
-    nodeGroupCapacityType: CapacityType.SPOT,
-    version: KubernetesVersion.V1_20,
-    instanceTypes: [new InstanceType(&#39;t3.large&#39;), new InstanceType(&#39;m5.large&#39;)],
-    amiType: NodegroupAmiType.AL2_X86_64,
-    amiReleaseVersion: &quot;1.20.4-20210519&quot; // this will upgrade kubelet to 1.20.4
-}
+<p>To create clusters which leverage Spot capacity, set the <code>nodeGroupCapacityType</code> value to <code>CapacityType.SPOT</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">props</span>: <span class="kt">EC2ProviderClusterProps</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">nodeGroupCapacityType</span>: <span class="kt">CapacityType.SPOT</span><span class="p">,</span>
+    <span class="nx">version</span>: <span class="kt">KubernetesVersion.V1_20</span><span class="p">,</span>
+    <span class="nx">instanceTypes</span><span class="o">:</span> <span class="p">[</span><span class="k">new</span> <span class="nx">InstanceType</span><span class="p">(</span><span class="s1">&#39;t3.large&#39;</span><span class="p">),</span> <span class="k">new</span> <span class="nx">InstanceType</span><span class="p">(</span><span class="s1">&#39;m5.large&#39;</span><span class="p">)],</span>
+    <span class="nx">amiReleaseVersion</span><span class="o">:</span> <span class="s2">&quot;1.20.4-20210519&quot;</span> <span class="c1">// this will upgrade kubelet to 1.20.4</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>Note two attributes in this configuration that are relevant for Spot: <code>nodeGroupCapacityType</code> and <code>instaceTypes</code>. The latter indicates the types of instances which could be leveraged for Spot capacity and it makes sense to have a number of instance types to maximize availability. </p>
+<p>Note that two attributes in this configuration are relevant for Spot: <code>nodeGroupCapacityType</code> and <code>instaceTypes</code>. The latter indicates the types of instances which could be leveraged for Spot capacity and it makes sense to have a number of instance types to maximize availability. </p>
                 
               
               

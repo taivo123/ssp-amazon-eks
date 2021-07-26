@@ -365,7 +365,7 @@
   
     <li class="md-nav__item">
       <a href="../addons/app-mesh/" class="md-nav__link">
-        App Mesh
+        AWS App Mesh
       </a>
     </li>
   
@@ -426,6 +426,78 @@
     <li class="md-nav__item">
       <a href="../addons/container-insights/" class="md-nav__link">
         Container Insights
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../addons/external-dns/" class="md-nav__link">
+        External DNS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../addons/metrics-server/" class="md-nav__link">
+        Metrics Server
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../addons/nginx/" class="md-nav__link">
+        Nginx
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../addons/ssm-agent/" class="md-nav__link">
+        SSM Agent
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/weaveworks/weave-gitops-ssp-addon" class="md-nav__link">
+        Weave GitOps
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../addons/xray/" class="md-nav__link">
+        AWS XRay
       </a>
     </li>
   
@@ -593,7 +665,7 @@
         <span class="kd">const</span> <span class="nx">platformTeam</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">team</span><span class="p">.</span><span class="nx">TeamPlatform</span><span class="p">(</span><span class="nx">accountID</span><span class="o">!</span><span class="p">)</span>
         <span class="kd">const</span> <span class="nx">teams</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ssp</span><span class="p">.</span><span class="nx">Team</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="nx">platformTeam</span><span class="p">];</span>
 
-        <span class="c1">// AddOns for the cluster.</span>
+        <span class="c1">// Add-ons for the cluster.</span>
         <span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ssp</span><span class="p">.</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span>
             <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">NginxAddOn</span><span class="p">,</span>
             <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">ArgoCDAddOn</span><span class="p">,</span>
@@ -685,7 +757,7 @@
         <span class="kd">const</span> <span class="nx">platformTeam</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">team</span><span class="p">.</span><span class="nx">TeamPlatform</span><span class="p">(</span><span class="nx">accountID</span><span class="o">!</span><span class="p">)</span>
         <span class="kd">const</span> <span class="nx">teams</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ssp</span><span class="p">.</span><span class="nx">Team</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="nx">platformTeam</span><span class="p">];</span>
 
-        <span class="c1">// AddOns for the cluster.</span>
+        <span class="c1">// Add-ons for the cluster.</span>
         <span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ssp</span><span class="p">.</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span>
             <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">NginxAddOn</span><span class="p">,</span>
             <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">ArgoCDAddOn</span><span class="p">,</span>

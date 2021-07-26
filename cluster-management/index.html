@@ -14,7 +14,7 @@
     
     
       
-        <title>Core Concepts - Amazon EKS SSP Quick Start</title>
+        <title>Multi-Cluster Management - Amazon EKS SSP Quick Start</title>
       
     
     
@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#core-concepts" class="md-skip">
+        <a href="#multi-cluster-management" class="md-skip">
           Skip to content
         </a>
       
@@ -89,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Core Concepts
+              Multi-Cluster Management
             
           </span>
         </div>
@@ -223,86 +223,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Core Concepts
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../core-concepts/" class="md-nav__link">
         Core Concepts
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#blueprint" class="md-nav__link">
-    Blueprint
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cluster" class="md-nav__link">
-    Cluster
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-on" class="md-nav__link">
-    Add-on
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#team" class="md-nav__link">
-    Team
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pipeline" class="md-nav__link">
-    Pipeline
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#application" class="md-nav__link">
-    Application
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -603,43 +528,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#blueprint" class="md-nav__link">
-    Blueprint
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cluster" class="md-nav__link">
-    Cluster
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-on" class="md-nav__link">
-    Add-on
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#team" class="md-nav__link">
-    Team
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pipeline" class="md-nav__link">
-    Pipeline
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#application" class="md-nav__link">
-    Application
+  <a href="#multi-region-management" class="md-nav__link">
+    Multi-Region Management
   </a>
   
 </li>
@@ -656,67 +546,96 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aws-quickstart/quickstart-ssp-amazon-eks/edit/master/docs/core-concepts.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aws-quickstart/quickstart-ssp-amazon-eks/edit/master/docs/cluster-management.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="core-concepts">Core Concepts<a class="headerlink" href="#core-concepts" title="Permanent link">&para;</a></h1>
-<p>This document provides a high level overview of the Core Concepts that are embedded in the <code>cdk-eks-blueprint</code> framework. For the purposes of this document, we will assume the reader is familiar with Git, Docker, Kubernetes and AWS. </p>
-<table>
-<thead>
-<tr>
-<th>Concept</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#blueprint">Blueprint</a></td>
-<td>A <code>blueprint</code> combines <code>clusters</code>, <code>add-ons</code>, and <code>teams</code> into a cohesive object that can deployed as a whole.</td>
-</tr>
-<tr>
-<td><a href="#cluster">Cluster</a></td>
-<td>A Well-Architected EKS Cluster.</td>
-</tr>
-<tr>
-<td><a href="#add-on">Add-on</a></td>
-<td>Allow you to configure, deploy, and update the operational software, or add-ons, that provide key functionality to support your Kubernetes applications.</td>
-</tr>
-<tr>
-<td><a href="#team">Team</a></td>
-<td>A logical grouping of IAM identities that have access to a Kubernetes namespace(s).</td>
-</tr>
-<tr>
-<td><a href="#pipeline">Pipeline</a></td>
-<td>Continuous Delivery pipelines for deploying <code>clusters</code> and <code>add-ons</code>.</td>
-</tr>
-<tr>
-<td><a href="#application">Application</a></td>
-<td>An application that runs within an EKS Cluster.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="blueprint">Blueprint<a class="headerlink" href="#blueprint" title="Permanent link">&para;</a></h2>
-<p>The <code>cdk-eks-blueprint</code> framework allows you to configure and deploy what we call <code>blueprint</code> clusters. A <code>blueprint</code> consists of an EKS cluster, a set of <code>add-ons</code> that will be deployed into the cluster, and a set of <code>teams</code> who will have access to a cluster. Once a <code>blueprint</code> is configured, it can be easily deployed across any number of AWS accounts and regions. <code>Blueprints</code> also leverage GitOps tooling to facilitate cluster bootstrapping and workload onboarding. </p>
-<p>To view sample <code>blueprint</code> implementations, please see our <a href="https://github.com/aws-samples/ssp-eks-patterns">patterns repository</a>. </p>
-<h2 id="cluster">Cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h2>
-<p>A <code>cluster</code> is simply an EKS cluster. The <code>cdk-eks-blueprint</code> framework provides for customizing the compute options you leverage with your <code>clusters</code>. The framework currently supports <code>EC2</code>, <code>Fargate</code> and <code>BottleRocket</code> instances. To specify the type of compute you want to use for your <code>cluster</code>, you supply a <code>ClusterProvider</code> object to your <code>blueprint</code>. The framework defaults to leveraging the <code>EC2ClusterProvider</code>.</p>
-<p>Each <code>ClusterProvider</code> provides additional configuration options as well. For example, the <code>EC2ClusterProvider</code> allows you to configure instance types, min and max instance counts, and amiType, among other options. </p>
-<p>See our <a href="../cluster-providers"><code>Cluster Providers</code></a> documentation page for detailed information. </p>
-<h2 id="add-on">Add-on<a class="headerlink" href="#add-on" title="Permanent link">&para;</a></h2>
-<p><code>Add-ons</code> allow you to configure the tools and services that you would like to run in order to support your EKS workloads. When you configure <code>add-ons</code> for a <code>blueprint</code>, the <code>add-ons</code> will be provisioned at deploy time. Add-ons can deploy both Kubernetes specific resources and AWS resources needed to support add-on functionality. </p>
-<p>For examples, the <code>MetricsServerAddon</code> only deploys the Kubernetes manifests that are needed to run the Kubernetes Metrics Server. By contrast, the <code>AWSLoadBalancerControllerAddon</code> deploys Kubernetes YAML, in addition to creating resources via AWS APIs that are needed to support the AWS Load Balancer Controller. </p>
-<p>See our <a href="../add-ons"><code>Add-ons</code></a> documentation page for detailed information. </p>
-<h2 id="team">Team<a class="headerlink" href="#team" title="Permanent link">&para;</a></h2>
-<p><code>Teams</code> allow you to configure the logical grouping of users that have access to your EKS clusters, in addition to the access permissions they are granted. The framework currently supports two types of <code>teams</code>: <code>ApplicationTeam</code> and <code>PlatformTeam</code>. <code>ApplicationTeam</code> members are granted access to specific namespaces. <code>PlatformTeam</code> members are granted administrative access to your clusters. </p>
-<p>See our <a href="../teams"><code>Teams</code></a> documentation page for detailed information. </p>
-<h2 id="pipeline">Pipeline<a class="headerlink" href="#pipeline" title="Permanent link">&para;</a></h2>
-<p><code>Pipelines</code> allow you to configure <code>Continuous Delivery</code> (CD) pipelines for your cluster <code>blueprints</code> that are directly integrated with your Git provider.</p>
-<p>See our <a href="../pipelines"><code>Pipelines</code></a> documentation page for detailed information. </p>
-<h2 id="application">Application<a class="headerlink" href="#application" title="Permanent link">&para;</a></h2>
-<p><code>Applications</code> represent the actual workloads that run within a Kubernetes cluster. The framework leverages a GitOps approach for deploying applications onto clusters. </p>
-<p>See our <a href="../applications">`Applications</a> documentation for detailed information.</p>
+                <h1 id="multi-cluster-management">Multi-Cluster Management<a class="headerlink" href="#multi-cluster-management" title="Permanent link">&para;</a></h1>
+<p>Multi-cluster management refers to the strategies associated with managing and updating cluster configuration across many Amazon EKS clusters. Infrastructure as code (IaC) tools like the AWS CDK provides the ability to bring automation and consistency when deploying your clusters. You need the ability to apply the same configurations to as many of your clusters as necessary and by defining all of your resources via Infrastructure as Code (IaC), it removes the problem of having to generate or apply custom YAML files for each one of your clusters allowing your teams to move faster. Defining your clusters resources using the AWS CDK allows your teams to focus on the underlying workloads as the infrastructure components will be taken care of via the AWS CDK. </p>
+<p>The main benefits organizations can see using the AWS CDK to manage their Amazon EKS clusters can be summarized as follows:
+- Consistency across all clusters and environments
+- Streamlining access control across your organization
+- Ease of management for multiple clusters
+- Access to GitOps methodologies and best practices
+- Automated lifecycle management for cluster deployment</p>
+<p>The Amazon EKS SSP Quick Start references the <a href="https://github.com/aws-samples/ssp-eks-patterns">ssp-eks-patterns repository</a> repository that includes examples of different deployment patterns and options which includes patterns for multi-cluster that can be deployed across multiple regions. If you take a look at the main.ts file in the patterns repository, you will notice that the stacks that define our Amazon EKS clusters and associated pipelines that are deployed to different regions as shown in the snippet below:</p>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="o">!</span><span class="err">/usr/bin/env node</span>
+<span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">cdk</span> <span class="k">from</span> <span class="s1">&#39;@aws-cdk/core&#39;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cdk</span><span class="p">.</span><span class="nx">App</span><span class="p">();</span>
+<span class="c1">//-------------------------------------------</span>
+<span class="c1">// Single Cluster with multiple teams.</span>
+<span class="c1">//-------------------------------------------</span>
+<span class="k">import</span> <span class="nx">MultiTeamConstruct</span> <span class="k">from</span> <span class="s1">&#39;../lib/multi-team-construct&#39;</span>
+<span class="k">new</span> <span class="nx">MultiTeamConstruct</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="s1">&#39;multi-team&#39;</span><span class="p">);</span>
+<span class="c1">//-------------------------------------------</span>
+<span class="c1">// Multiple clusters, multiple regions.</span>
+<span class="c1">//-------------------------------------------</span>
+<span class="k">import</span> <span class="nx">MultiRegionConstruct</span> <span class="k">from</span> <span class="s1">&#39;../lib/multi-region-construct&#39;</span>
+<span class="k">new</span> <span class="nx">MultiRegionConstruct</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="s1">&#39;multi-region&#39;</span><span class="p">);</span>
+<span class="c1">//-------------------------------------------</span>
+<span class="c1">// Single Fargate cluster.</span>
+<span class="c1">//-------------------------------------------</span>
+<span class="k">import</span> <span class="nx">FargateConstruct</span> <span class="k">from</span> <span class="s1">&#39;../lib/fargate-construct&#39;</span>
+<span class="k">new</span> <span class="nx">FargateConstruct</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="s1">&#39;fargate&#39;</span><span class="p">);</span>
+<span class="c1">//-------------------------------------------</span>
+<span class="c1">// Multiple clusters with deployment pipeline.</span>
+<span class="c1">//-------------------------------------------</span>
+<span class="k">import</span> <span class="nx">PipelineStack</span> <span class="k">from</span> <span class="s1">&#39;../lib/pipeline-stack&#39;</span>
+<span class="kd">const</span> <span class="nx">account</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">CDK_DEFAULT_ACCOUNT</span>
+<span class="kd">const</span> <span class="nx">region</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">CDK_DEFAULT_REGION</span>
+<span class="kd">const</span> <span class="nx">env</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">account</span><span class="p">,</span> <span class="nx">region</span> <span class="p">}</span>
+<span class="k">new</span> <span class="nx">PipelineStack</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="s1">&#39;pipeline&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">env</span> <span class="p">});</span>
+</code></pre></div>
+<p>Using the AWS CDK, you can define the specific region to deploy your clusters using environment variables as a construct in Typescript as shown in the example above. If you were to deploy all the stacks in your main.ts file you would be able to view your running clusters by region by running the following command</p>
+<div class="highlight"><pre><span></span><code>aws eks list-cluster --region &lt;insert region&gt;
+</code></pre></div>
+<p>If for example you chose the region us-west-2, you would get a similar output:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;clusters&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;all clusters in this region&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="multi-region-management">Multi-Region Management<a class="headerlink" href="#multi-region-management" title="Permanent link">&para;</a></h2>
+<p>In a production environment, it is common to have clusters that reside in different locations. This could be in different regions, on-prem, or follow a hybrid cloud model. Some of the common design patterns that come in to play when it comes to multi-cluster management across these different operational models include things like high availability, data replication, networking, traffic routing, and the underlying management of those clusters. In the ssp-ek-patterns/lib/multi-region-construct directory, you will find the index.ts file which shows a concrete example of how to deploy multiple clusters to different regions as shown below</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">cdk</span> <span class="k">from</span> <span class="s1">&#39;@aws-cdk/core&#39;</span><span class="p">;</span>
+<span class="c1">// SSP Lib</span>
+<span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">ssp</span> <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span>
+<span class="c1">// Team implementations</span>
+<span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">team</span> <span class="k">from</span> <span class="s1">&#39;../teams&#39;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="nx">MultiRegionConstruct</span> <span class="k">extends</span> <span class="nx">cdk</span><span class="p">.</span><span class="nx">Construct</span> <span class="p">{</span>
+    <span class="kr">constructor</span><span class="p">(</span><span class="nx">scope</span>: <span class="kt">cdk.Construct</span><span class="p">,</span> <span class="nx">id</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span>
+        <span class="c1">// Setup platform team</span>
+        <span class="kd">const</span> <span class="nx">accountID</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">CDK_DEFAULT_ACCOUNT</span><span class="o">!</span>
+        <span class="kd">const</span> <span class="nx">platformTeam</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">team</span><span class="p">.</span><span class="nx">TeamPlatform</span><span class="p">(</span><span class="nx">accountID</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="nx">teams</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ssp</span><span class="p">.</span><span class="nx">Team</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="nx">platformTeam</span><span class="p">];</span>
+        <span class="c1">// AddOns for the cluster.</span>
+        <span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ssp</span><span class="p">.</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">NginxAddOn</span><span class="p">,</span>
+            <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">ArgoCDAddOn</span><span class="p">,</span>
+            <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">CalicoAddOn</span><span class="p">,</span>
+            <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">MetricsServerAddOn</span><span class="p">,</span>
+            <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">ClusterAutoScalerAddOn</span><span class="p">,</span>
+            <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">ContainerInsightsAddOn</span><span class="p">,</span>
+        <span class="p">];</span>
+        <span class="kd">const</span> <span class="nx">east</span> <span class="o">=</span> <span class="s1">&#39;blueprint-us-east-2&#39;</span>
+        <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">EksBlueprint</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">-</span><span class="si">${</span><span class="nx">east</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span> <span class="nx">addOns</span><span class="p">,</span> <span class="nx">teams</span> <span class="p">},</span> <span class="p">{</span>
+            <span class="nx">env</span><span class="o">:</span> <span class="p">{</span> <span class="nx">region</span>: <span class="kt">east</span> <span class="p">}</span>
+        <span class="p">});</span>
+        <span class="kd">const</span> <span class="nx">central</span> <span class="o">=</span> <span class="s1">&#39;blueprint-us-central-2&#39;</span>
+        <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">EksBlueprint</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">-</span><span class="si">${</span><span class="nx">central</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span> <span class="nx">addOns</span><span class="p">,</span> <span class="nx">teams</span> <span class="p">},</span> <span class="p">{</span>
+            <span class="nx">env</span><span class="o">:</span> <span class="p">{</span> <span class="nx">region</span>: <span class="kt">central</span> <span class="p">}</span>
+        <span class="p">});</span>
+        <span class="kd">const</span> <span class="nx">west</span> <span class="o">=</span> <span class="s1">&#39;blueprint-us-west-2&#39;</span>
+        <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">EksBlueprint</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">-</span><span class="si">${</span><span class="nx">west</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span> <span class="nx">addOns</span><span class="p">,</span> <span class="nx">teams</span> <span class="p">},</span> <span class="p">{</span>
+            <span class="nx">env</span><span class="o">:</span> <span class="p">{</span> <span class="nx">region</span>: <span class="kt">west</span> <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+This construct imports all of the core components of the Shared Services Platform library, Teams construct, and Addons as modules which then deploys our clusters to different regions. The main point to take away from this is that we are adding automation and consistency to our clusters as we deploy multiple clusters to multiple regions since all of our components have already been defined in the Shared Services Platform library along with Teams and Addons. </p>
                 
               
               
@@ -732,39 +651,6 @@
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        <a href="../getting-started/" class="md-footer__link md-footer__link--prev" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Getting Started
-            </div>
-          </div>
-        </a>
-      
-      
-        <a href="../teams/" class="md-footer__link md-footer__link--next" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Teams
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

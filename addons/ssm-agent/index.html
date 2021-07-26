@@ -14,7 +14,7 @@
     
     
       
-        <title>AWS App Mesh - Amazon EKS SSP Quick Start</title>
+        <title>SSM Agent - Amazon EKS SSP Quick Start</title>
       
     
     
@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws-app-mesh-add-on" class="md-skip">
+        <a href="#ssm-agent-add-on" class="md-skip">
           Skip to content
         </a>
       
@@ -89,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              AWS App Mesh
+              SSM Agent
             
           </span>
         </div>
@@ -303,79 +303,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          AWS App Mesh
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../app-mesh/" class="md-nav__link">
         AWS App Mesh
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    Usage
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#app-mesh-sidecar-injection" class="md-nav__link">
-    App Mesh Sidecar Injection
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tracing-integration" class="md-nav__link">
-    Tracing Integration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#app-mesh-and-xray-integration-example" class="md-nav__link">
-    App Mesh and XRay Integration Example
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functionality" class="md-nav__link">
-    Functionality
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -479,11 +411,64 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../ssm-agent/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          SSM Agent
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         SSM Agent
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-case-private-clusters" class="md-nav__link">
+    Use Case: Private Clusters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -602,33 +587,18 @@
     Usage
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#app-mesh-sidecar-injection" class="md-nav__link">
-    App Mesh Sidecar Injection
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-case-private-clusters" class="md-nav__link">
+    Use Case: Private Clusters
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#tracing-integration" class="md-nav__link">
-    Tracing Integration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#app-mesh-and-xray-integration-example" class="md-nav__link">
-    App Mesh and XRay Integration Example
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functionality" class="md-nav__link">
-    Functionality
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -644,75 +614,98 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aws-quickstart/quickstart-ssp-amazon-eks/edit/master/docs/addons/app-mesh.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aws-quickstart/quickstart-ssp-amazon-eks/edit/master/docs/addons/ssm-agent.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="aws-app-mesh-add-on">AWS App Mesh Add-on<a class="headerlink" href="#aws-app-mesh-add-on" title="Permanent link">&para;</a></h1>
-<p><a href="https://aws.amazon.com/app-mesh/">AWS App Mesh</a> is a service mesh that makes it easy to monitor and control services.The App Mesh add-on provisions the necessary AWS resources and Helm charts into an EKS cluster that are needed to support App Mesh for EKS workloads. </p>
-<p>Full documentation on using App Mesh with EKS <a href="https://docs.aws.amazon.com/app-mesh/latest/userguide/getting-started-kubernetes.html">can be found here</a>.</p>
+                <h1 id="ssm-agent-add-on">SSM Agent Add-on<a class="headerlink" href="#ssm-agent-add-on" title="Permanent link">&para;</a></h1>
+<p>This add-on uses the Kubernetes DaemonSet resource type to install AWS Systems Manager Agent (SSM Agent) on all worker nodes, instead of installing it manually or replacing the Amazon Machine Image (AMI) for the nodes. DaemonSet uses a CronJob on the worker node to schedule the installation of SSM Agent.</p>
+<p>A common use-case for installing SSM Agent on the worker nodes is to be able open a terminal session on an instance without the need to create a bastion instance and without having to install SSH keys on the worker nodes.</p>
+<p>The AWS Identity and Access Management (IAM) managed role <strong>AmazonSSMManagedInstanceCore</strong> provides the required permissions for SSM Agent to run on EC2 instances. This role is automatically attached to the instances when this add-on is enabled.</p>
+<p><strong>Limitations</strong></p>
+<ul>
+<li>
+<p>This add-on isn't applicable to AWS Fargate, because DaemonSets aren't supported on the Fargate platform.</p>
+</li>
+<li>
+<p>This add-on applies only to Linux-based worker nodes.</p>
+</li>
+<li>
+<p>The DaemonSet pods run in privileged mode. If the Amazon EKS cluster has a webhook that blocks pods in privileged mode, the SSM Agent will not be installed.</p>
+</li>
+<li>
+<p>Only latest version of SSM Agent add-on can be installed.</p>
+</li>
+</ul>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">AppMeshAddOn</span><span class="p">,</span> <span class="nx">ClusterAddOn</span><span class="p">,</span> <span class="nx">EksBlueprint</span> <span class="p">}</span>  <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SSMAgentAddOn</span> <span class="p">}</span>  <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">appMeshAddOn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AppMeshAddOn</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span> <span class="nx">appMeshAddOn</span> <span class="p">];</span>
+<span class="k">readonly</span> <span class="nx">ssmAgent</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SSMAgentAddon</span><span class="p">();</span>
+
+<span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span> <span class="nx">ssmAgent</span> <span class="p">];</span>
 
 <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cdk</span><span class="p">.</span><span class="nx">App</span><span class="p">();</span>
 <span class="k">new</span> <span class="nx">EksBlueprint</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="s1">&#39;my-stack-name&#39;</span><span class="p">,</span> <span class="nx">addOns</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{</span>
-  <span class="nx">env</span><span class="o">:</span> <span class="p">{</span>    
+  <span class="nx">env</span><span class="o">:</span> <span class="p">{</span>
       <span class="nx">account</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">AWS_ACCOUNT_ID</span><span class="o">&gt;</span><span class="p">,</span>
       <span class="nx">region</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">AWS_REGION</span><span class="o">&gt;</span><span class="p">,</span>
   <span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
-<h2 id="app-mesh-sidecar-injection">App Mesh Sidecar Injection<a class="headerlink" href="#app-mesh-sidecar-injection" title="Permanent link">&para;</a></h2>
-<p>You can configure certain namespaces for automatic injection of App Mesh sidecar (Envoy) proxy. This will enable handling cross-cutting aspects such as service to service communication, resiliency patterns (Circuit breaker/retries) as well handle ingress and egress for the workloads running in the namespace.</p>
-<p>Here is an example of a team with a namespace configured for automatic sidecar injection:</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">TeamBurnhamSetup</span> <span class="k">extends</span> <span class="nx">ApplicationTeam</span> <span class="p">{</span>
-    <span class="kr">constructor</span><span class="p">(</span><span class="nx">scope</span>: <span class="kt">Construct</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">({</span>
-            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;burnham&quot;</span><span class="p">,</span>
-            <span class="nx">users</span>: <span class="kt">getUserArns</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="s2">&quot;team-burnham.users&quot;</span><span class="p">),</span>
-            <span class="nx">namespaceAnnotations</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;appmesh.k8s.aws/sidecarInjectorWebhook&quot;</span><span class="o">:</span> <span class="s2">&quot;enabled&quot;</span>
-            <span class="p">}</span>
-        <span class="p">});</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="tracing-integration">Tracing Integration<a class="headerlink" href="#tracing-integration" title="Permanent link">&para;</a></h2>
-<p>App Mesh integrates with a number of tracing providers for distributed tracing support. At the moment it supports AWS X-Ray, Jaeger and Datadog providers. 
-X-Ray integration at present requires either a managed node group or a self-managed auto-scaling group backed by EC2. Fargate is not supported. </p>
-<p>Enabling integration:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">appMeshAddOn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">AppMeshAddOn</span><span class="p">({</span><span class="nx">enableTracing</span>: <span class="kt">true</span><span class="p">,</span> <span class="nx">tracingProvider</span><span class="o">:</span> <span class="s2">&quot;x-ray&quot;</span><span class="p">}),</span>
-</code></pre></div>
-<p>When configured, App Mesh will automatically inject an XRay sidecar to handle tracing which enables troubleshooting latency issues.</p>
-<h2 id="app-mesh-and-xray-integration-example">App Mesh and XRay Integration Example<a class="headerlink" href="#app-mesh-and-xray-integration-example" title="Permanent link">&para;</a></h2>
-<p><code>team-burnham</code> sample workload repository is configured with an <a href="https://github.com/aws-samples/ssp-eks-workloads/tree/master/teams/team-burnham/dev">example workload</a> that demonstrates meshified workloads with SSP. </p>
-<p>After workload is bootstrapped with ArgoCD or applied directly to the cluster in <code>team-burnham</code> namespace it will create a <a href="https://github.com/aws/aws-app-mesh-examples/tree/main/examples/apps/djapp">DJ application</a> similar to the one used for the <a href="https://www.eksworkshop.com/intermediate/330_app_mesh/">EKS Workshop</a>. 
-It was adapted for GitOps integration with SSP and relies on automatic sidecar injection as well as tracing integration with App Mesh.</p>
-<p>After the workload is deployed you can generate some traffic to populated traces:</p>
-<div class="highlight"><pre><span></span><code>$ <span class="nb">export</span> <span class="nv">DJ_POD_NAME</span><span class="o">=</span><span class="k">$(</span>kubectl get pods -n team-burnham -l <span class="nv">app</span><span class="o">=</span>dj -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[].metadata.name}&#39;</span><span class="k">)</span>
-$ kubectl -n team-burnham <span class="nb">exec</span> -it <span class="si">${</span><span class="nv">DJ_POD_NAME</span><span class="si">}</span> -c dj bash
-$ <span class="k">while</span> true<span class="p">;</span> <span class="k">do</span>
-  curl http://jazz.team-burnham.svc.cluster.local:9080/
-  <span class="nb">echo</span>
-  curl http://metal.team-burnham.svc.cluster.local:9080/
-  <span class="nb">echo</span>
-<span class="k">done</span>
-</code></pre></div>
-<p>The above script will start producing traces with XRay. Once traces are produced (for a minute or more) you can navigate to the AWS XRay console and click on Service Map. 
-You will see a screenshot similar to this:</p>
-<p><img alt="App Mesh XRay Service Map" src="/assets/images/appmesh-xray.png" /></p>
-<h2 id="functionality">Functionality<a class="headerlink" href="#functionality" title="Permanent link">&para;</a></h2>
+<p>To validate that SSM Agent is running on worker node instance:</p>
+<blockquote>
+<p><strong>Pre-Requisite</strong>: Install the Session Manager plugin for the AWS CLI as per <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html">instructions</a> for your OS.</p>
+</blockquote>
 <ol>
-<li>Creates an App Mesh IAM service account.</li>
-<li>Adds both <code>AWSCloudMapFullAccess</code> and <code>AWSAppMeshFullAccess</code> roles to the service account.</li>
-<li>Adds <code>AWSXRayDaemonWriteAccess</code> to the instance role if XRay integration is enabled.</li>
-<li>Creates the <code>appmesh-system</code> namespace.</li>
-<li>Deploys the <a href="https://github.com/aws/eks-charts/tree/master/stable/appmesh-controller"><code>appmesh-controller</code></a> Helm chart into the cluster.</li>
+<li>Get the EC2 Instance Id of a worker node</li>
 </ol>
+<div class="highlight"><pre><span></span><code><span class="nv">instance_id</span><span class="o">=</span><span class="k">$(</span>kubectl get nodes -o custom-columns<span class="o">=</span>NAME:.metadata.name,INSTANCEID:.spec.providerID <span class="p">|</span> awk -F/ <span class="s1">&#39;FNR == 2 {print $5}&#39;</span><span class="k">)</span>
+</code></pre></div>
+<ol>
+<li>Use the <code>start-session</code> api to see if you can open a terminal into the instance</li>
+</ol>
+<div class="highlight"><pre><span></span><code>aws ssm start-session --target <span class="nv">$instance_id</span>
+</code></pre></div>
+<h3 id="use-case-private-clusters">Use Case: Private Clusters<a class="headerlink" href="#use-case-private-clusters" title="Permanent link">&para;</a></h3>
+<p>If you are disabling public access for your EKS cluster endpoint such that the cluster endpoint is provisioned as private only i.e <code>endpointPublicAccess=false</code> and <code>endpointPrivateAccess=true</code>, then you can use one of the worker nodes as a TCP jump box to your EKS cluster api.</p>
+<p>To set up a TCP tunnel with your worker node as a jump box:</p>
+<ol>
+<li>Use SSM <code>send-command</code> api to create a TCP tunnel to Cluster API using <code>socat</code>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Get the Cluster API endpoint first</span>
+<span class="nv">CLUSTER_NAME</span><span class="o">=</span>&lt;insert your cluster name, e.g. blueprint-construct-dev&gt;
+
+<span class="nv">CLUSTER_API</span><span class="o">=</span><span class="k">$(</span>aws eks describe-cluster --name <span class="nv">$CLUSTER_NAME</span> <span class="p">|</span> jq -r <span class="s1">&#39;.cluster.endpoint&#39;</span> <span class="p">|</span> awk -F/ <span class="s1">&#39;{print $3}&#39;</span><span class="k">)</span>
+
+aws ssm send-command <span class="se">\</span>
+  --instance-ids <span class="nv">$instance_id</span> <span class="se">\</span>
+  --document-name <span class="s2">&quot;AWS-RunShellScript&quot;</span> <span class="se">\</span>
+  --comment <span class="s2">&quot;tcp tunnel to cluster api&quot;</span> <span class="se">\</span>
+  --parameters <span class="nv">commands</span><span class="o">=</span><span class="s2">&quot;nohup sudo socat TCP-LISTEN:443\,fork TCP:</span><span class="nv">$CLUSTER_API</span><span class="s2">:443 &amp;&quot;</span>
+</code></pre></div>
+<ol>
+<li>Update <code>~/.kube/config</code> to use port 8443 instead of 443 as your local host may not allow you to bind port 443 (depending on your machine network configuration you may not be able to bind to port 443. In such a case, you can bind to port 8443)</li>
+</ol>
+<div class="highlight"><pre><span></span><code>sed -i -e <span class="s2">&quot;s/https:\/\/</span><span class="nv">$CLUSTER_API</span><span class="s2">/https:\/\/</span><span class="nv">$CLUSTER_API</span><span class="s2">:8443/&quot;</span> ~/.kube/config
+</code></pre></div>
+<ol>
+<li>Update /etc/hosts so that <code>$CLUSTER_API</code> resolves to <code>127.0.0.1</code>.</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code>sudo <span class="nb">echo</span> <span class="s2">&quot;127.0.0.1 </span><span class="nv">$CLUSTER_API</span><span class="s2">&quot;</span> &gt;&gt; /etc/hosts
+</code></pre></div>
+4. Start an SSM session to forward remote port 443 to local port 8443:</p>
+<div class="highlight"><pre><span></span><code>aws ssm start-session <span class="se">\</span>
+  --target <span class="nv">$instance_id</span> <span class="se">\</span>
+  --document-name AWS-StartPortForwardingSession <span class="se">\</span>
+  --parameters <span class="s1">&#39;{&quot;portNumber&quot;:[&quot;443&quot;], &quot;localPortNumber&quot;:[&quot;8443&quot;]}&#39;</span>
+</code></pre></div>
+<p>At this point you should be able to execute <code>kubectl ...</code> commands against your cluster API from another terminal window.</p>
+<p><strong>Limitations</strong></p>
+<ul>
+<li>This approach cannot be used for Fargate or BottleRocket based providers.</li>
+<li><code>socat</code> is available on EKS optimized AMI out of the box but may have to be explicitly installed on others AMIs.</li>
+</ul>
                 
               
               
@@ -731,7 +724,7 @@ You will see a screenshot similar to this:</p>
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../nginx/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -740,19 +733,19 @@ You will see a screenshot similar to this:</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Overview
+              Nginx
             </div>
           </div>
         </a>
       
       
-        <a href="../argo-cd/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../xray/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              ArgoCD
+              AWS XRay
             </div>
           </div>
           <div class="md-footer__button md-icon">

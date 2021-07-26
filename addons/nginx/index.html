@@ -14,7 +14,7 @@
     
     
       
-        <title>AWS App Mesh - Amazon EKS SSP Quick Start</title>
+        <title>Nginx - Amazon EKS SSP Quick Start</title>
       
     
     
@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws-app-mesh-add-on" class="md-skip">
+        <a href="#nginx-add-on" class="md-skip">
           Skip to content
         </a>
       
@@ -89,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              AWS App Mesh
+              Nginx
             
           </span>
         </div>
@@ -303,79 +303,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          AWS App Mesh
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../app-mesh/" class="md-nav__link">
         AWS App Mesh
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    Usage
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#app-mesh-sidecar-injection" class="md-nav__link">
-    App Mesh Sidecar Injection
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tracing-integration" class="md-nav__link">
-    Tracing Integration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#app-mesh-and-xray-integration-example" class="md-nav__link">
-    App Mesh and XRay Integration Example
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functionality" class="md-nav__link">
-    Functionality
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -467,11 +399,72 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../nginx/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Nginx
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Nginx
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dns-integration-and-routing" class="md-nav__link">
+    DNS Integration and Routing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functionality" class="md-nav__link">
+    Functionality
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -605,22 +598,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#app-mesh-sidecar-injection" class="md-nav__link">
-    App Mesh Sidecar Injection
+  <a href="#configuration" class="md-nav__link">
+    Configuration
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tracing-integration" class="md-nav__link">
-    Tracing Integration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#app-mesh-and-xray-integration-example" class="md-nav__link">
-    App Mesh and XRay Integration Example
+  <a href="#dns-integration-and-routing" class="md-nav__link">
+    DNS Integration and Routing
   </a>
   
 </li>
@@ -644,19 +630,24 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aws-quickstart/quickstart-ssp-amazon-eks/edit/master/docs/addons/app-mesh.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aws-quickstart/quickstart-ssp-amazon-eks/edit/master/docs/addons/nginx.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="aws-app-mesh-add-on">AWS App Mesh Add-on<a class="headerlink" href="#aws-app-mesh-add-on" title="Permanent link">&para;</a></h1>
-<p><a href="https://aws.amazon.com/app-mesh/">AWS App Mesh</a> is a service mesh that makes it easy to monitor and control services.The App Mesh add-on provisions the necessary AWS resources and Helm charts into an EKS cluster that are needed to support App Mesh for EKS workloads. </p>
-<p>Full documentation on using App Mesh with EKS <a href="https://docs.aws.amazon.com/app-mesh/latest/userguide/getting-started-kubernetes.html">can be found here</a>.</p>
+                <h1 id="nginx-add-on">NGINX Add-on<a class="headerlink" href="#nginx-add-on" title="Permanent link">&para;</a></h1>
+<p>This add-on installs <a href="https://kubernetes.github.io/ingress-nginx/deploy/">NGINX Ingress Controller</a> on Amazon EKS. NGINX ingress controller is using <a href="https://www.nginx.org/">NGINX</a> as a reverse proxy and load balancer. </p>
+<p>Other than handling Kubernetes ingress objects, this ingress controller can facilitate multi-tenancy and segregation of workload ingresses based on host name (host-based routing) and/or URL Path (path based routing). </p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">AppMeshAddOn</span><span class="p">,</span> <span class="nx">ClusterAddOn</span><span class="p">,</span> <span class="nx">EksBlueprint</span> <span class="p">}</span>  <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
+<p>NGINX add-on is a standard SSP add-on and it is usage is similar to the rest of the add-ons.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">NginxAddOn</span><span class="p">,</span> <span class="nx">ClusterAddOn</span><span class="p">,</span> <span class="nx">EksBlueprint</span> <span class="p">}</span>  <span class="k">from</span> <span class="s1">&#39;@shapirov/cdk-eks-blueprint&#39;</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">appMeshAddOn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AppMeshAddOn</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span> <span class="nx">appMeshAddOn</span> <span class="p">];</span>
+<span class="kd">const</span> <span class="nx">subdomain</span>  <span class="o">=</span> <span class="p">...;</span>
+<span class="kd">const</span> <span class="nx">nginxAddOn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NginxAddOn</span><span class="p">(({</span> 
+    <span class="nx">externaDnsHostname</span>: <span class="kt">subdomain</span>
+<span class="p">}));</span>
+
+<span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span> <span class="nx">nginxAddOn</span> <span class="p">];</span>
 
 <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cdk</span><span class="p">.</span><span class="nx">App</span><span class="p">();</span>
 <span class="k">new</span> <span class="nx">EksBlueprint</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="s1">&#39;my-stack-name&#39;</span><span class="p">,</span> <span class="nx">addOns</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{</span>
@@ -666,52 +657,86 @@
   <span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
-<h2 id="app-mesh-sidecar-injection">App Mesh Sidecar Injection<a class="headerlink" href="#app-mesh-sidecar-injection" title="Permanent link">&para;</a></h2>
-<p>You can configure certain namespaces for automatic injection of App Mesh sidecar (Envoy) proxy. This will enable handling cross-cutting aspects such as service to service communication, resiliency patterns (Circuit breaker/retries) as well handle ingress and egress for the workloads running in the namespace.</p>
-<p>Here is an example of a team with a namespace configured for automatic sidecar injection:</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">TeamBurnhamSetup</span> <span class="k">extends</span> <span class="nx">ApplicationTeam</span> <span class="p">{</span>
-    <span class="kr">constructor</span><span class="p">(</span><span class="nx">scope</span>: <span class="kt">Construct</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">({</span>
-            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;burnham&quot;</span><span class="p">,</span>
-            <span class="nx">users</span>: <span class="kt">getUserArns</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="s2">&quot;team-burnham.users&quot;</span><span class="p">),</span>
-            <span class="nx">namespaceAnnotations</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;appmesh.k8s.aws/sidecarInjectorWebhook&quot;</span><span class="o">:</span> <span class="s2">&quot;enabled&quot;</span>
-            <span class="p">}</span>
-        <span class="p">});</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<p>To validate that installation is successful run the following command:</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get po -n kube-system
+NAME                                                              READY   STATUS    RESTARTS   AGE
+ssp-addon-nginx-ingress-78b8567p4q6   <span class="m">1</span>/1     Running   <span class="m">0</span>          4d10h
 </code></pre></div>
-<h2 id="tracing-integration">Tracing Integration<a class="headerlink" href="#tracing-integration" title="Permanent link">&para;</a></h2>
-<p>App Mesh integrates with a number of tracing providers for distributed tracing support. At the moment it supports AWS X-Ray, Jaeger and Datadog providers. 
-X-Ray integration at present requires either a managed node group or a self-managed auto-scaling group backed by EC2. Fargate is not supported. </p>
-<p>Enabling integration:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">appMeshAddOn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">AppMeshAddOn</span><span class="p">({</span><span class="nx">enableTracing</span>: <span class="kt">true</span><span class="p">,</span> <span class="nx">tracingProvider</span><span class="o">:</span> <span class="s2">&quot;x-ray&quot;</span><span class="p">}),</span>
+<p>Note that the ingress controller is deployed in the <code>kube-system</code> namespace.</p>
+<p>Once deployed, it allows applications to create ingress objects and use host based routing with external DNS support, if External DNS Add-on is installed.</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>backendProtocol</code>: indication for AWS Load Balancer controller with respect to the protocol supported on the load balancer. TCP by default.</li>
+<li><code>crossZoneEnabled</code>: whether to create a cross-zone load balancer with the service that backs NGINX.</li>
+<li><code>internetFacing</code>: whether the created load balancer is internet facing. Defaults to <code>true</code> if not specified. Internal load balancer is provisioned if set to <code>false</code></li>
+<li><code>targetType</code>: <code>IP</code> or <code>instance</code> mode. Defaults to <code>IP</code> which requires VPC-CNI and has better performance eliminating a hop through kubeproxy. Instance mode leverages traditional NodePort mode on the instances. </li>
+<li><code>externaDnsHostname</code>: Used in conjunction with the <a href="../external-dns/">external DNS add-on</a> to handle automatic registration of the service with Route53. </li>
+<li><code>values</code>: Arbitrary values to pass to the chart as per https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-helm/#</li>
+</ul>
+<h2 id="dns-integration-and-routing">DNS Integration and Routing<a class="headerlink" href="#dns-integration-and-routing" title="Permanent link">&para;</a></h2>
+<p>If <a href="../external-dns/">External DNS Add-on</a> is installed, it is possible to configure NGINX ingress with an external NLB load balancer and leverage wild-card DNS domains (and public certificate) to route external traffic to individual workloads. </p>
+<p>The following example provides support for AWS Load Balancer controller, External DNS and NGINX add-ons to enable such routing:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">wildcardDomain</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">addOns</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ssp</span><span class="p">.</span><span class="nx">ClusterAddOn</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">AwsLoadBalancerControllerAddOn</span><span class="p">,</span>
+            <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">ExternalDnsAddon</span><span class="p">({</span>
+                <span class="nx">hostedZone</span>: <span class="kt">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">DelegatingHostedZoneProvider</span><span class="p">(</span>
+                    <span class="nx">parentDomain</span><span class="p">,</span>
+                    <span class="nx">subdomain</span><span class="p">,</span> 
+                    <span class="nx">parentDnsAccountId</span><span class="p">,</span>
+                    <span class="s1">&#39;DomainOperatorRole&#39;</span><span class="p">,</span> 
+                    <span class="nx">wildcardDomain</span>
+                <span class="p">)</span>
+            <span class="p">}),</span>
+            <span class="k">new</span> <span class="nx">ssp</span><span class="p">.</span><span class="nx">NginxAddOn</span><span class="p">({</span> <span class="nx">internetFacing</span>: <span class="kt">true</span><span class="p">,</span> <span class="nx">backendProtocol</span><span class="o">:</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span> <span class="nx">externaDnsHostname</span>: <span class="kt">subdomain</span><span class="p">,</span> <span class="nx">crossZoneEnabled</span>: <span class="kt">false</span> <span class="p">})</span>
+        <span class="p">];</span>
 </code></pre></div>
-<p>When configured, App Mesh will automatically inject an XRay sidecar to handle tracing which enables troubleshooting latency issues.</p>
-<h2 id="app-mesh-and-xray-integration-example">App Mesh and XRay Integration Example<a class="headerlink" href="#app-mesh-and-xray-integration-example" title="Permanent link">&para;</a></h2>
-<p><code>team-burnham</code> sample workload repository is configured with an <a href="https://github.com/aws-samples/ssp-eks-workloads/tree/master/teams/team-burnham/dev">example workload</a> that demonstrates meshified workloads with SSP. </p>
-<p>After workload is bootstrapped with ArgoCD or applied directly to the cluster in <code>team-burnham</code> namespace it will create a <a href="https://github.com/aws/aws-app-mesh-examples/tree/main/examples/apps/djapp">DJ application</a> similar to the one used for the <a href="https://www.eksworkshop.com/intermediate/330_app_mesh/">EKS Workshop</a>. 
-It was adapted for GitOps integration with SSP and relies on automatic sidecar injection as well as tracing integration with App Mesh.</p>
-<p>After the workload is deployed you can generate some traffic to populated traces:</p>
-<div class="highlight"><pre><span></span><code>$ <span class="nb">export</span> <span class="nv">DJ_POD_NAME</span><span class="o">=</span><span class="k">$(</span>kubectl get pods -n team-burnham -l <span class="nv">app</span><span class="o">=</span>dj -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[].metadata.name}&#39;</span><span class="k">)</span>
-$ kubectl -n team-burnham <span class="nb">exec</span> -it <span class="si">${</span><span class="nv">DJ_POD_NAME</span><span class="si">}</span> -c dj bash
-$ <span class="k">while</span> true<span class="p">;</span> <span class="k">do</span>
-  curl http://jazz.team-burnham.svc.cluster.local:9080/
-  <span class="nb">echo</span>
-  curl http://metal.team-burnham.svc.cluster.local:9080/
-  <span class="nb">echo</span>
-<span class="k">done</span>
+<p>Assuming the subdomain in the above example is <code>dev.my-domain.com</code> and wilcard is enabled for the external DNS add-on customers can now create ingress objects for host-based routing. Let's define an ingress object for <code>team-riker</code> that is currently deploying guestbook application with no ingress:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">extensions/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">annotations</span><span class="p">:</span>
+    <span class="nt">kubernetes.io/ingress.class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nginx</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ingress-riker</span>
+  <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">team-riker</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">rules</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">riker.dev.my-domain.com</span>
+    <span class="nt">http</span><span class="p">:</span>
+      <span class="nt">paths</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">backend</span><span class="p">:</span>
+          <span class="nt">serviceName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">guestbook-ui</span>
+          <span class="nt">servicePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+        <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/</span>
+        <span class="nt">pathType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Prefix</span>
 </code></pre></div>
-<p>The above script will start producing traces with XRay. Once traces are produced (for a minute or more) you can navigate to the AWS XRay console and click on Service Map. 
-You will see a screenshot similar to this:</p>
-<p><img alt="App Mesh XRay Service Map" src="/assets/images/appmesh-xray.png" /></p>
+<p>A similar ingess may be defined for <code>team-troi</code> routing to the workloads deployed by that team:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">extensions/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">annotations</span><span class="p">:</span>
+    <span class="nt">kubernetes.io/ingress.class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nginx</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ingress-troi</span>
+  <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">team-troi</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">rules</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">troi.dev.my-domain.com</span>
+    <span class="nt">http</span><span class="p">:</span>
+      <span class="nt">paths</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">backend</span><span class="p">:</span>
+          <span class="nt">serviceName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">guestbook-ui</span>
+          <span class="nt">servicePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+        <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/</span>
+        <span class="nt">pathType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Prefix</span>
+</code></pre></div>
+<p>After the above ingresses applied (ideally through a GitOps engine) you can now navigate to the specified hosts respectively:</p>
+<p><a href="http://riker.dev.my-domain.com">http://riker.dev.my-domain.com</a>
+<a href="http://troi.dev.my-domain.com">http://troi.dev.my-domain.com</a></p>
 <h2 id="functionality">Functionality<a class="headerlink" href="#functionality" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Creates an App Mesh IAM service account.</li>
-<li>Adds both <code>AWSCloudMapFullAccess</code> and <code>AWSAppMeshFullAccess</code> roles to the service account.</li>
-<li>Adds <code>AWSXRayDaemonWriteAccess</code> to the instance role if XRay integration is enabled.</li>
-<li>Creates the <code>appmesh-system</code> namespace.</li>
-<li>Deploys the <a href="https://github.com/aws/eks-charts/tree/master/stable/appmesh-controller"><code>appmesh-controller</code></a> Helm chart into the cluster.</li>
+<li>Installs NGINX ingress controller</li>
+<li>Provides convenience options to integrate with AWS Load Balancer controller to leverage NLB for the load balancer</li>
+<li>Provides convenience options to integrate with External DNS add-on for integration with Amazon Route 53. </li>
 </ol>
                 
               
@@ -731,7 +756,7 @@ You will see a screenshot similar to this:</p>
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../metrics-server/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -740,19 +765,19 @@ You will see a screenshot similar to this:</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Overview
+              Metrics Server
             </div>
           </div>
         </a>
       
       
-        <a href="../argo-cd/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../ssm-agent/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              ArgoCD
+              SSM Agent
             </div>
           </div>
           <div class="md-footer__button md-icon">
