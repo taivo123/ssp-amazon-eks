@@ -10,36 +10,50 @@ export default class BlueprintConstruct extends cdk.Construct {
     constructor(scope: cdk.Construct, id: string, props: cdk.StackProps) {
         super(scope, id);
 
-        // Setup platform team.
+        /**
+         * Create a platform team and add the current user.
+         */
         const account = props.env!.account!
         const platformTeam = new team.TeamPlatform(account)
 
-        // Teams for the cluster.
+        /**
+         * Setup teams for our cluster.
+         */
         const teams: Array<ssp.Team> = [
             platformTeam,
             new team.TeamTroi,
             new team.TeamRiker,
             new team.TeamBurnham(scope)
         ];
-        const prodBootstrapArgo = new ssp.addons.ArgoCDAddOn({
+
+        /**
+         * Configure ArgoCD with our App of Apps repository.
+         */
+        const argo = new ssp.addons.ArgoCDAddOn({
             bootstrapRepo: {
                 repoUrl: 'https://github.com/aws-samples/ssp-eks-workloads.git',
                 path: 'envs/prod',
             }
         });
-        // AddOns for the cluster.
+
+        /**
+         * Configure add-ons for the cluster.
+         */
         const addOns: Array<ssp.ClusterAddOn> = [
+            argo,
             new ssp.addons.AppMeshAddOn,
-            prodBootstrapArgo,
-            new ssp.addons.NginxAddOn,
+            new ssp.addons.AwsLoadBalancerControllerAddOn(),
             new ssp.addons.CalicoAddOn,
-            new ssp.addons.MetricsServerAddOn,
             new ssp.addons.ClusterAutoScalerAddOn,
             new ssp.addons.ContainerInsightsAddOn,
-            new ssp.addons.AwsLoadBalancerControllerAddOn(),
+            new ssp.addons.MetricsServerAddOn,
+            new ssp.addons.NginxAddOn,
             new ssp.addons.SSMAgentAddOn()
         ];
 
+        /**
+         * Provision the cluster.
+         */
         const blueprintID = `${id}-dev`
         new ssp.EksBlueprint(scope, { id: blueprintID, addOns, teams }, props)
     }

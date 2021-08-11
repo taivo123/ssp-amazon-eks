@@ -117,7 +117,40 @@ You should see output that lists all namespaces in your cluster.
 
 Next, let's walk you through how to deploy workloads to your cluster with ArgoCD. This approach leverages the [App of Apps](https://argoproj.github.io/argo-cd/operator-manual/cluster-bootstrapping/#app-of-apps-pattern) pattern to deploy multiple workloads across multiple namespaces. The sample app of apps repository that we use in this getting started guide can be found [here](https://github.com/aws-samples/ssp-eks-workloads).
 
-You can leverage [Automatic Bootstrapping](addons/argo-cd.md#Bootstrapping) for automatic onboarding of workloads. This feature may be leveraged even when workload repositories are not ready yet, as it creates a placeholder for future workloads and decouples workload onboarding for the infrastructure provisioning pipeline. The next steps, described in this guide apply for cases when customer prefer to bootstrap their workloads manually through ArgoCD UI console.
+You can leverage [Automatic Bootstrapping](addons/argo-cd.md#Bootstrapping) for automatic onboarding of workloads. This feature may be leveraged even when workload repositories are not ready yet, as it creates a placeholder for future workloads and decouples workload onboarding for the infrastructure provisioning pipeline. 
+
+```typescript
+import 'source-map-support/register';
+import * as cdk from '@aws-cdk/core';
+import * as ssp from '@shapirov/cdk-eks-blueprint';
+
+const app = new cdk.App();
+
+const repoURL = 'https://github.com/aws-samples/ssp-eks-workloads.git'
+const path = 'envs/prod'
+const bootstrapRepo = { repoUrl, path}
+
+const addOns: Array<ssp.ClusterAddOn> = [
+    new ssp.addons.ArgoCDAddOn({bootstrapRepo}),
+    new ssp.addons.AwsLoadBalancerControllerAddOn
+    new ssp.addons.AwsLoadBalancerControllerAddOn
+    new ssp.addons.CalicoAddOn,
+    new ssp.addons.ClusterAutoScalerAddOn,
+    new ssp.addons.MetricsServerAddOn,
+    new ssp.addons.NginxAddOn,    
+];
+
+const opts = { id: 'east-test-1', addOns }
+new ssp.EksBlueprint(app, opts, {
+    env: {
+        account: 'XXXXXXXXXXXXX',
+        region: 'us-east-1'
+    },
+});
+```
+
+
+
 
 ### Install ArgoCD CLI
 

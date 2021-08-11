@@ -1,14 +1,13 @@
+import bcrypt = require('bcrypt')
 import { Construct } from "@aws-cdk/core";
 import { HelmChart, KubernetesManifest, ServiceAccount } from "@aws-cdk/aws-eks";
 import { ManagedPolicy } from "@aws-cdk/aws-iam";
-import { ApplicationRepository, ClusterAddOn, ClusterPostDeploy, ClusterInfo, Team } from "../../spi";
 
 import { getSecretValue } from '../../utils/secrets-manager-utils';
 import { sshRepoRef, userNameRepoRef } from './manifest-utils';
 import { btoa } from '../../utils/string-utils';
-import bcrypt = require('bcrypt');
 import { Constants } from "..";
-
+import { ApplicationRepository, ClusterAddOn, ClusterPostDeploy, ClusterInfo, Team } from "../../spi";
 
 /**
  * Configuration options for ArgoCD add-on.
@@ -82,7 +81,7 @@ export class ArgoCDAddOn implements ClusterAddOn, ClusterPostDeploy {
             }
         };
 
-        if(this.options.adminPasswordSecretName) {
+        if (this.options.adminPasswordSecretName) {
             const adminSecret = await this.createAdminSecret(clusterInfo.cluster.stack.region);
             values['configs'] = {
                 secret: {
@@ -159,9 +158,9 @@ export class ArgoCDAddOn implements ClusterAddOn, ClusterPostDeploy {
     /**
      * @returns bcrypt hash of the admin secret provided from the AWS secret manager.
      */
-    protected async createAdminSecret(region: string) : Promise<string> {
+    protected async createAdminSecret(region: string): Promise<string> {
         const secretValue = await getSecretValue(this.options.adminPasswordSecretName!, region);
-        return  bcrypt.hash(secretValue, 10);
+        return bcrypt.hash(secretValue, 10);
     }
 
     /**
@@ -214,7 +213,8 @@ export class ArgoCDAddOn implements ClusterAddOn, ClusterPostDeploy {
             case "TOKEN":
                 // eslint-disable-next-line no-case-declarations
                 const secretJson: any = JSON.parse(secretValue);
-                credentials = { ...credentials, ...{
+                credentials = {
+                    ...credentials, ...{
                         username: btoa(secretJson["username"]),
                         password: btoa(secretJson["password"])
                     }
