@@ -10,15 +10,11 @@ export default class BlueprintConstruct extends cdk.Construct {
     constructor(scope: cdk.Construct, id: string, props: cdk.StackProps) {
         super(scope, id);
 
-        /**
-         * Create a platform team and add the current user.
-         */
+        // Create a platform team and add the current user.
         const account = props.env!.account!
         const platformTeam = new team.TeamPlatform(account)
 
-        /**
-         * Setup teams for our cluster.
-         */
+        // Setup teams for our cluster.
         const teams: Array<ssp.Team> = [
             platformTeam,
             new team.TeamTroi,
@@ -26,9 +22,7 @@ export default class BlueprintConstruct extends cdk.Construct {
             new team.TeamBurnham(scope)
         ];
 
-        /**
-         * Configure ArgoCD with our App of Apps repository.
-         */
+        // Configure ArgoCD with our App of Apps repository.
         const argo = new ssp.addons.ArgoCDAddOn({
             bootstrapRepo: {
                 repoUrl: 'https://github.com/aws-samples/ssp-eks-workloads.git',
@@ -36,9 +30,8 @@ export default class BlueprintConstruct extends cdk.Construct {
             }
         });
 
-        /**
-         * Configure add-ons for the cluster.
-         */
+
+        // Configure add-ons for the cluster.
         const addOns: Array<ssp.ClusterAddOn> = [
             argo,
             new ssp.addons.AppMeshAddOn,
@@ -51,10 +44,8 @@ export default class BlueprintConstruct extends cdk.Construct {
             new ssp.addons.SSMAgentAddOn()
         ];
 
-        /**
-         * Provision the cluster.
-         */
+        // Provision the cluster.
         const blueprintID = `${id}-dev`
-        new ssp.EksBlueprint(scope, { id: blueprintID, addOns, teams }, props)
+        new ssp.EkssBlueprint(scope, { id: blueprintID, addOns, teams }, props)
     }
 }
