@@ -535,6 +535,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#triggering-e2e-testing" class="md-nav__link">
+    Triggering E2E Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#publishing" class="md-nav__link">
     Publishing
   </a>
@@ -575,6 +582,15 @@
 <p>Build the project with <code>Typescript</code>. </p>
 <div class="highlight"><pre><span></span><code>make build.
 </code></pre></div>
+<h2 id="triggering-e2e-testing">Triggering E2E Testing<a class="headerlink" href="#triggering-e2e-testing" title="Permanent link">&para;</a></h2>
+<p>The CI system attached to the project will run all stacks under examples as end-to-end integration testing. </p>
+<p>Currently it works the following way:</p>
+<ul>
+<li>A human maintainer reviews the pr code to ensure it is not malicious </li>
+<li>If the code is trusted and the maintainer wishes to run e2e tests, they comment on the pr with /do-e2e-tests. This will trigger the build and test. Any visibility into the state can only occur through AWS maintainers.</li>
+<li>If job succeeds, the CI bot approves the PR. If it fails it requests changes. Details on what failed will need to be manually shared with external contributors.</li>
+<li>At present shapirov103, kcoleman731 and askulkarni2 have rights to invoke the bot. </li>
+</ul>
 <h2 id="publishing">Publishing<a class="headerlink" href="#publishing" title="Permanent link">&para;</a></h2>
 <p>At the moment leveraging a private NPM repository for "shapirov". TODO: move under aws-labs.</p>
 <ol>
