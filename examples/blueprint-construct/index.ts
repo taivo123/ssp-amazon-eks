@@ -47,6 +47,7 @@ export default class BlueprintConstruct extends cdk.Construct {
         const addOns: Array<ssp.ClusterAddOn> = [
             new ssp.addons.AppMeshAddOn(),
             prodBootstrapArgo,
+            new ssp.addons.NginxAddOn(),
             new ssp.addons.CalicoAddOn(),
             new ssp.addons.MetricsServerAddOn(),
             new ssp.addons.ClusterAutoScalerAddOn(),
@@ -57,7 +58,8 @@ export default class BlueprintConstruct extends cdk.Construct {
             new ssp.addons.NginxAddOn(),
             new ssp.addons.VpcCniAddOn(),
             new ssp.addons.CoreDnsAddOn(),
-            new ssp.addons.KubeProxyAddOn()
+            new ssp.addons.KubeProxyAddOn(),
+            new ssp.addons.OpaGatekeeperAddOn()
         ];
 
         const blueprintID = `${blueprintProps.id}-dev`
