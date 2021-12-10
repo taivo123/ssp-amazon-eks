@@ -4,20 +4,26 @@ This add-on installs [NGINX Ingress Controller](https://kubernetes.github.io/ing
 
 Other than handling Kubernetes ingress objects, this ingress controller can facilitate multi-tenancy and segregation of workload ingresses based on host name (host-based routing) and/or URL Path (path based routing). 
 
+***IMPORTANT***: 
+This add-on depends on [AWS Load Balancer Controller](aws-load-balancer-controller.md) Add-on in order to enable NLB support.
+
+***AWS Load Balancer Controller add-on must be present in add-on array*** and ***must be in add-on array before the NGINX ingress controller add-on*** for it to work, as shown in below example. Otherwise will run into error `Assertion failed: Missing a dependency for AwsLoadBalancerControllerAddOn`.
+
 ## Usage
 
 ```typescript
-import { NginxAddOn, ClusterAddOn, EksBlueprint }  from '@shapirov/cdk-eks-blueprint';
+import { AwsLoadBalancerControllerAddOn, NginxAddOn, ClusterAddOn, EksBlueprint }  from '@aws-quickstart/ssp-amazon-eks';
 
 const externalDnsHostname  = ...;
-const addOn = new NginxAddOn({ externalDnsHostname });
-const addOns: Array<ClusterAddOn> = [ addOn ];
+const awsLbControllerAddOn = new AwsLoadBalancerControllerAddon();
+const nginxAddOn = new NginxAddOn({ externalDnsHostname });
+const addOns: Array<ClusterAddOn> = [ awsLbControllerAddOn, nginxAddOn ];
 
 const app = new cdk.App();
 new EksBlueprint(app, 'my-stack-name', addOns, [], {
   env: {    
       account: <AWS_ACCOUNT_ID>,
-      region: <AWS_REGION>,
+      region: <AWS_REGION>
   },
 });
 ```
@@ -50,23 +56,23 @@ If [External DNS Add-on](../addons/external-dns.md) is installed, it is possible
 The following example provides support for AWS Load Balancer controller, External DNS and NGINX add-ons to enable such routing:
 
 ```typescript
-const wildcardDomain = true;
-const addOns: Array<ssp.ClusterAddOn> = [
-            new ssp.AwsLoadBalancerControllerAddOn,
-            new ssp.addons.ExternalDnsAddon({
-                hostedZone: new ssp.addons.DelegatingHostedZoneProvider(
-                    parentDomain,
-                    subdomain, 
-                    parentDnsAccountId,
-                    'DomainOperatorRole', 
-                    wildcardDomain
-                )
-            }),
-            new ssp.NginxAddOn({ internetFacing: true, backendProtocol: "tcp", externaDnsHostname: subdomain, crossZoneEnabled: false })
-        ];
+ssp.EksBlueprint.builder()
+    //  Register hosted zone1 under the name of MyHostedZone1
+    .resourceProvider("MyHostedZone1",  new ssp.DelegatingHostedZoneProvider({
+        parentDomain: 'myglobal-domain.com',
+        subdomain: 'dev.myglobal-domain.com', 
+        parentAccountId: parentDnsAccountId,
+        delegatingRoleName: 'DomainOperatorRole',
+        wildcardSubdomain: true
+    })
+    .addOns(new ssp.addons.ExternalDnsAddon({
+        hostedZoneProviders: ["MyHostedZone1"];
+    })
+    .addOns(new ssp.NginxAddOn({ internetFacing: true, backendProtocol: "tcp", externaDnsHostname: subdomain, crossZoneEnabled: false })
+    .build(...);
 ```
 
-Assuming the subdomain in the above example is `dev.my-domain.com` and wilcard is enabled for the external DNS add-on customers can now create ingress objects for host-based routing. Let's define an ingress object for `team-riker` that is currently deploying guestbook application with no ingress:
+Assuming the subdomain in the above example is `dev.my-domain.com` and wildcard is enabled for the external DNS add-on customers can now create ingress objects for host-based routing. Let's define an ingress object for `team-riker` that is currently deploying guestbook application with no ingress:
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -88,7 +94,7 @@ spec:
         pathType: Prefix
 ```
 
-A similar ingess may be defined for `team-troi` routing to the workloads deployed by that team:
+A similar ingress may be defined for `team-troi` routing to the workloads deployed by that team:
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -115,8 +121,52 @@ After the above ingresses applied (ideally through a GitOps engine) you can now 
 [http://riker.dev.my-domain.com](http://riker.dev.my-domain.com)
 [http://troi.dev.my-domain.com](http://troi.dev.my-domain.com)
 
+## TLS Termination and Certificates
+
+You can configure the NGINX add-on to terminate TLS at the load balancer and supply an ACM certificate through the platform blueprint.
+
+A certificate can be registered using a named [resource provider](../resource-providers/index.md).
+
+For convenience the framework provides a couple of common certificate providers:
+
+**Import Certificate**
+
+This case is used when certificate is already created and you just need to reference it with the blueprint stack:
+
+```typescript
+const myCertArn = "";
+ssp.EksBlueprint.builder()
+    .resourceProvider(GlobalResources.Certificate, new ImportCertificateProvider(myCertArn, "cert1-id"))
+    .addOns(new NginxAddOn({
+        certificateResourceName: GlobalResources.Certificate,
+        externalDnsHostname: 'my.domain.com'
+    }))
+    .teams(...)
+    .build(app, 'stack-with-cert-provider');
+```
+
+**Create Certificate**
+
+This approach is used when certificate should be created with the blueprint stack. In this case, the new certificate requires DNS validation which can be accomplished automatically if the corresponding Route53 hosted zone is provisioned (either along with the stack or separately) and registered as a resource provider.
+
+```typescript
+ssp.EksBlueprint.builder()
+    .resourceProvider(GlobalResources.HostedZone ,new ImportHostedZoneProvider('hosted-zone-id1', 'my.domain.com'))
+    .resourceProvider(GlobalResources.Certificate, new CreateCertificateProvider('domain-wildcard-cert', '*.my.domain.com', GlobalResources.HostedZone)) // referencing hosted zone for automatic DNS validation
+    .addOns(new AwsLoadBalancerControllerAddOn())
+    // Use hosted zone for External DNS
+    .addOns(new ExternalDnsAddon({hostedZoneResources: [GlobalResources.HostedZone]}))
+    // Use certificate registered before with NginxAddon
+    .addOns(new NginxAddOn({
+        certificateResourceName: GlobalResources.Certificate,
+        externalDnsHostname: 'my.domain.com'
+    }))
+    .teams(...)
+    .build(app, 'stack-with-resource-providers');
+```
 ## Functionality
 
 1. Installs NGINX ingress controller
 2. Provides convenience options to integrate with AWS Load Balancer controller to leverage NLB for the load balancer
 3. Provides convenience options to integrate with External DNS add-on for integration with Amazon Route 53. 
+4. Allows configuring TLS termination at the load balancer provisioned with the add-on. 

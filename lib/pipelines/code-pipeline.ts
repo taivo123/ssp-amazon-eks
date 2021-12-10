@@ -1,11 +1,10 @@
-import * as cdk from '@aws-cdk/core';
-import * as pipelines from '@aws-cdk/pipelines';
 import * as codepipeline from '@aws-cdk/aws-codepipeline';
 import * as actions from '@aws-cdk/aws-codepipeline-actions';
+import * as cdk from '@aws-cdk/core';
 import { Construct, StackProps } from '@aws-cdk/core';
+import * as pipelines from '@aws-cdk/pipelines';
 import { ApplicationRepository, AsyncStackBuilder, StackBuilder } from '../spi';
-import { AddStageOptions } from '@aws-cdk/pipelines';
-import { withUsageTracking } from '../utils/usage-utils'; 
+import { withUsageTracking } from '../utils/usage-utils';
 
 
 /**
@@ -57,7 +56,7 @@ export interface StackStage {
     /**
      * Optional stage properties, such as {manualApprovals: true} which can control stage transitions.
      */
-    stageProps?: AddStageOptions
+    stageProps?: pipelines.AddStageOptions;
 }
 
 /**
@@ -117,12 +116,19 @@ export class CodePipelineStack extends cdk.Stack {
     constructor(scope: Construct, pipelineProps: PipelineProps, id: string,  props?: StackProps) {
         super(scope, id, withUsageTracking(CodePipelineStack.USAGE_ID, props));
         const pipeline  = CodePipeline.build(this, pipelineProps);
+
+        const promises : Promise<ApplicationStage>[] = [];
+
         for(let stage of pipelineProps.stages) {
             const appStage = new ApplicationStage(this, stage.id, stage.stackBuilder);
-            appStage.waitForAsyncTasks().then( res => {
-                pipeline.addApplicationStage(res, stage.stageProps);
-            });
+            promises.push(appStage.waitForAsyncTasks());
         }
+
+        Promise.all(promises).then(stages => {
+            for(let i in stages) {
+                pipeline.addApplicationStage(stages[i], pipelineProps.stages[i].stageProps);
+            }
+        });
     }
 }
 
@@ -174,7 +180,7 @@ class CodePipeline {
             installCommands: [
                 // Upgrade NPM to v7.
                 'npm install --global npm',
-                'npm install -g aws-cdk@1.119.0', 
+                'npm install -g aws-cdk@1.124.0', 
                 // Install deps
                 'npm install',
             ],

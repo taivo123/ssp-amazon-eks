@@ -1,13 +1,13 @@
 # Getting Started 
 
-This getting started guide will walk you through setting up a new CDK project which leverages the `cdk-eks-blueprint` NPM module to deploy a simple SSP. 
+This getting started guide will walk you through setting up a new CDK project which leverages the `ssp-amazon-eks` NPM module to deploy a simple SSP. 
 
 ## Project setup
 
-To use the `cdk-eks-blueprint` module, you must have the [AWS Cloud Development Kit (CDK)](https://aws.amazon.com/cdk/) installed. Install CDK via the following.
+To use the `ssp-amazon-eks` module, you must have the [AWS Cloud Development Kit (CDK)](https://aws.amazon.com/cdk/) installed. Install CDK via the following.
 
 ```bash
-npm install -g aws-cdk@1.119.0
+npm install -g aws-cdk@1.124.0
 ```
 
 Verify the installation.
@@ -24,10 +24,10 @@ cdk init app --language typescript
 
 ## Deploy a Blueprint EKS Cluster
 
-Install the `cdk-eks-blueprint` NPM package via the following.
+Install the `ssp-amazon-eks` NPM package via the following.
 
 ```bash
-npm i @shapirov/cdk-eks-blueprint
+npm i @aws-quickstart/ssp-amazon-eks
 ```
 
 Replace the contents of `bin/<your-main-file>.ts` (where `your-main-file` by default is the name of the root project directory) with the following code. This code will deploy a new EKS Cluster and install the `ArgoCD` addon.
@@ -35,30 +35,28 @@ Replace the contents of `bin/<your-main-file>.ts` (where `your-main-file` by def
 ```typescript
 import 'source-map-support/register';
 import * as cdk from '@aws-cdk/core';
-import * as ssp from '@shapirov/cdk-eks-blueprint';
+import * as ssp from '@aws-quickstart/ssp-amazon-eks';
 
 const app = new cdk.App();
 
 const addOns: Array<ssp.ClusterAddOn> = [
-    new ssp.addons.NginxAddOn,
     new ssp.addons.ArgoCDAddOn,
     new ssp.addons.CalicoAddOn,
     new ssp.addons.MetricsServerAddOn,
     new ssp.addons.ClusterAutoScalerAddOn,
     new ssp.addons.ContainerInsightsAddOn,
     new ssp.addons.AwsLoadBalancerControllerAddOn(),
+    new ssp.addons.NginxAddOn,
     new ssp.addons.VpcCniAddOn(),
     new ssp.addons.CoreDnsAddOn(),
-    new ssp.addons.KubeProxyAddOn()
+    new ssp.addons.KubeProxyAddOn(),
+    new ssp.addons.XrayAddOn()
 ];
 
-const opts = { id: 'east-test-1', addOns }
-new ssp.EksBlueprint(app, opts, {
-    env: {
-        account: 'XXXXXXXXXXXXX',
-        region: 'us-east-1'
-    },
-});
+const account = 'XXXXXXXXXXXXX';
+const region = 'us-east-2';
+const props = { env: { account, region } };
+new ssp.EksBlueprint(app, { id: 'east-test-1', addOns}, props);
 ```
 
 Each combination of target account and region must be bootstrapped prior to deploying stacks. Bootstrapping is an process of creating IAM roles and lambda functions that can execute some of the common CDK constructs.
@@ -69,13 +67,17 @@ Each combination of target account and region must be bootstrapped prior to depl
 cdk bootstrap
 ```
 
+Note: if the account/region combination used in the code example above is different from the initial combination used with `cdk bootstrap`, you will need to perform `cdk bootstrap` again to avoid error.
+
+Please reference [CDK](https://docs.aws.amazon.com/cdk/latest/guide/home.html) usage doc for detail.
+
 Deploy the stack using the following command. This command will take roughly 20 minutes to complete.
 
 ```
 cdk deploy
 ```
 
-Congratulations! You have deployed your first EKS cluster with `cdk-eks-blueprint`. The above code will provision the following:
+Congratulations! You have deployed your first EKS cluster with `ssp-amazon-eks`. The above code will provision the following:
 
 - [x] A new Well-Architected VPC with both Public and Private subnets.
 - [x] A new Well-Architected EKS cluster in the region and account you specify.
@@ -86,6 +88,9 @@ Congratulations! You have deployed your first EKS cluster with `cdk-eks-blueprin
 - [x] AWS and Kubernetes resources needed to support [Cluster Autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html).
 - [x] AWS and Kubernetes resources needed to forward logs and metrics to [Container Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy-container-insights-EKS.html).
 - [x] AWS and Kubernetes resources needed to support [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html).
+- [x] [Amazon VPC CNI add-on (VpcCni)](https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html) into your cluster to support native VPC networking for Amazon EKS.
+- [x] [CoreDNS Amazon EKS add-on (CoreDns)](https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html) into your cluster. CoreDns is a flexible, extensible DNS server that can serve as the Kubernetes cluster DNS
+- [x] [ kube-proxy Amazon EKS add-on (KubeProxy)](https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html) into your cluster to maintains network rules on each Amazon EC2 node
 - [x] AWS and Kubernetes resources needed to support [AWS X-Ray](https://aws.amazon.com/xray/).
 
 ## Cluster Access
@@ -123,6 +128,8 @@ Next, let's walk you through how to deploy workloads to your cluster with ArgoCD
 You can leverage [Automatic Bootstrapping](addons/argo-cd.md#Bootstrapping) for automatic onboarding of workloads. This feature may be leveraged even when workload repositories are not ready yet, as it creates a placeholder for future workloads and decouples workload onboarding for the infrastructure provisioning pipeline. The next steps, described in this guide apply for cases when customer prefer to bootstrap their workloads manually through ArgoCD UI console.
 
 ### Install ArgoCD CLI
+
+These steps are needed for manual workload onboarding. For automatic bootstrapping please refer to the [Automatic Bootstrapping](addons/argo-cd.md#Bootstrapping).
 
 Follow the instructions found [here](https://argoproj.github.io/argo-cd/cli_installation/) as it will include instructions for your specific OS. You can test that the ArgoCD CLI was installed correctly using the following:
 
@@ -202,10 +209,10 @@ argocd app sync dev-apps
 
 ### Validate deployments. 
 
-To validate your deployments, leverage `kubectl port-forwarding` to access the `guestbook-ui` service for `team-burnham`.
+To validate your deployments, leverage `kubectl port-forwarding` to access the `guestbook-ui` service for `team-riker`.
 
 ```
-kubectl port-forward svc/guestbook-ui -n team-burnham 4040:80
+kubectl port-forward svc/guestbook-ui -n team-riker 4040:80
 ```
 
 Open up `localhost:4040` in your browser and you should see the application.
